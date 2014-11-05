@@ -1,8 +1,8 @@
 /** Food database
-    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, Rama. */
+    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, */
 
 #include <iostream>
-#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -11,16 +11,22 @@ void menu();
 
 int main()
 {
+  fstream data; //open file for read AND write
+  data.open("Archive.txt")
+  
   menu();
   
+  data.close();
+  
+  system("pause");//close database
   return 0;
 }
 
 void menu()
 {
-  char choice;
-  
-  while(ch != 9)
+  c
+  whar choice;
+  hile(ch != 9)
   {
     //menu text is taken directly from the project req
     //recommend we change or lsightly modify some of the names so more "user friendly"ish
@@ -65,10 +71,3 @@ void menu()
     break;
   }
 }
-
-// I/O will be a function within main. Please save this part for me - Joanne
-/*
-
-
-*/
-
