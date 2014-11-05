@@ -1,7 +1,8 @@
 /** Food database
-    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, */
+    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, Rama. */
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
