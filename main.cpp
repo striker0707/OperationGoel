@@ -24,9 +24,8 @@ int main()
 
 void menu()
 {
-  c
-  whar choice;
-  hile(ch != 9)
+  char choice;
+  while(ch != 9)
   {
     //menu text is taken directly from the project req
     //recommend we change or lsightly modify some of the names so more "user friendly"ish
