@@ -37,7 +37,7 @@ bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 	}
 
 	while(currentPtr != 0 && currentPtr->getItem() < newEntry) 
-	//walks through list till the end or new data is in the correct position(descending order) 
+	//walks through list till the end or where data needs to be added, pointers get set to prepare for data insertion
 	{
 		prev = currentPtr;
 		currentPtr = currentPtr->getNext();
