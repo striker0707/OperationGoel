@@ -12,12 +12,15 @@ class Food
 {
 private:
 	string name;
-	int calories;
-	int gramsFat;
+	float calories;
+	float gramsFat;
 public:
 	Food();
 	string getName() const;
-	int getCalories() const;
+	float getCalories() const;
+	float getGramsFat() const;
+	void setCalories(float cal);
+	void setGramsF(float gFat);
 	friend ostream& operator<< (ostream& out, Food& dr);
 	bool operator> (const Food& rdr);
 	bool operator< (const Food& rdr);
