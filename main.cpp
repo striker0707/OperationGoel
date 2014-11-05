@@ -1,4 +1,8 @@
+/** Food database
+    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, */
+
 #include <iostream>
+
 using namespace std;
 
 //function prototypes
