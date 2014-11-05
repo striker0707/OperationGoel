@@ -25,10 +25,14 @@ public:
 	float getGramsFat() const;
 	void setCalories(float cal);
 	void setGramsF(float gFat);
+	//Prints attributes of food class
+	void print(Food& fd);
 	
 	Food& operator= (const Food& other);
 	friend ostream& operator<< (ostream& out, Food& dr);
 	bool operator> (const Food& rdr);
 	bool operator< (const Food& rdr);
 };
+
+}
 #endif;
