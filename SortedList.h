@@ -92,14 +92,16 @@ bool SortedList<ItemType>::remove(const ItemType& anEntry)
 }  
 
 template<class ItemType>
-bool SortedList<ItemType>::getEntry( ItemType & target, ItemType & returnedEntry) const
+bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) const
 {
 	bool found = false;
 
 	Node<ItemType>* currentPtr = headPtr;
 	while(currentPtr != 0 && found == false)
+	// walk list
 	{
-		if( currentPtr->getItem().getKey() == target.getKey() )
+		if( currentPtr->getItem() == target )
+		//need to overload "==" operator
 		{
 			returnedEntry = currentPtr->getItem();
 			found = true;
