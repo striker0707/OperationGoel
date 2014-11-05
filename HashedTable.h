@@ -5,17 +5,24 @@
 #include "HashedEntry.h"
 
 template <class KeyType, class ItemType>
-class HashedEntry : public TableInterface < class KeyType, class ItemType >
+class HashedTable : public TableInterface < class KeyType, class ItemType >
 {
 private:
+	static const int DEFAULT_SIZE = 101;
+	HashedEntry<KeyType, ItemType>** hashTable;
+	int itemCount;
+	int hashTableSize;
+	
 
 public:
 	//constructors
-	HashedEntry(); // default constructor
-	
+	HashedTable(); // default constructor
 
+	//copy constructor
+	HashedTable(const HashedTable<KeyType, ItemType>& table);
+	
 	//destructor
-	virtual ~HashedEntry();
+	virtual ~HashedTable();
 	
 	//methods
 	bool isEmpty(); 
