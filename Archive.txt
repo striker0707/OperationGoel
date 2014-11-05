@@ -1,5 +1,3 @@
-Food         Calories    Total Fat    Cholesterol    Sodium    Protein
-
 Waffles      190         8            15             370       5
 Banana       110         0            0              0         1
 Choco Milk   210         8            30             200       9
