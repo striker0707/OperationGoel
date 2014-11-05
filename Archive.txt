@@ -1,0 +1,17 @@
+Food         Calories    Total Fat    Cholesterol    Sodium    Protein
+
+Waffles      190         8            15             370       5
+Banana       110         0            0              0         1
+Choco Milk   210         8            30             200       9
+Cheddar      110         9            30             180       6
+Ham          70          2.2          28.35          786.24    10.52
+Lettuce      15          0            0              35        1
+Tomato       35          0            0              9         2
+Sliced Bread 70          1            0              90        2
+Milk         110         5            35             80        6
+Spam         174         15           39             767       7    
+Rice         205         .4           0              2         4.3
+Potato       110         0            0              0         3
+Beans        34          0            0              7         2
+Noodles      192         .35          0              33.44     1.6
+Apple        130         0            0              0         1
