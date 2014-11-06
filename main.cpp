@@ -7,30 +7,26 @@
 using namespace std;
 
 //function prototypes
-bool openinputFile (ifstream &inputFile);
-bool openoutputFile (ofstream &outputFile);
+bool openFile (ofstream &dataFile);
 void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
 
 int main()
 {
-    ifstream inputFile;                     // Intializes inputFile
-    ofstream outputFile;                    // Intializes outputFile
+    ofstream dataFile;                    // Intializes outputFile
     
      // Check if input and output files successfully opened
-
-    bool openinputFile(ifstream &inputFile);                    // Refers to the bool function below to check if input opens
-    bool openoutputFile(ofstream &outputFile);                  // Refers to the bool function below to check if output opens
+    bool openFile(ofstream &dataFile);                    // Refers to the bool function below to check if files open
     
-    if (openinputFile(inputFile)==false || openoutputFile(outputFile)==false)       // Checks if both output and input are false
+    if (openFile(dataFile)==false)       // Checks if both output and input are false
     {
-        cout << "Unable to open input file" << endl;                      // If false, prints an error message
+        cout << "Unable to open data file" << endl;                      // If false, prints an error message
         cout << "Ending Program" << endl;
         return 1;   // Ends Program if the if statement is true
     }      // End if
     else    // When successful opening, program will print sucession
     {
-        cout << "Files opened successfully, output file will have updated archive when program terminates" << endl;
+        cout << "File opened successfully, file will have updated archive when program terminates" << endl;
     } // end if else
 
     while (foodname >> calories >> totalfat >> cholest >> sodium >> protein) // Reads file inputs continously until it runs out of inputs
@@ -106,7 +102,7 @@ void menu()
 }
 
 // Bool used to see if input file successfully opened
-bool openinputFile (ifstream &inputFile)
+bool openFile (ofstream &dataFile)
 {
     string inputFileName = "Archive.txt";         // Declares variable for input name and assigns it to our data file
     
@@ -122,24 +118,6 @@ bool openinputFile (ifstream &inputFile)
     }
 
 } // End bool
-
-// Bool used to see if output file successfully opened
-bool openoutputFile (ofstream &outputFile)
-{
-    string outputFileName = "Archive.txt";     // Declares variable for output name
-
-    outputFile.open(outputFileName.c_str());                // Opens output file with given name
-
-    if(outputFile.fail())                                   // If the output file fails
-    {
-        return 0;                                           // End program if output file cannot open
-    }
-    else
-    {
-        return 1;                                           // Continues program if output file opens
-    }
-
-}// End bool
 
 // This function is to print the payment table
 void printToOutput(ofstream &outputFile, Hashtable hashtableobj)
