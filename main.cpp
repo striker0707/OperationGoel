@@ -122,9 +122,9 @@ bool openFile (ofstream &dataFile)
 } // End bool
 
 // This function is to print the payment table
-void printToOutput(ofstream &outputFile, Hashtable hashtableobj)
+void printToOutput(ofstream &dataFile, Hashtable hashtableobj)
 {
     //This will ultimately depend on how the hashtable is made and used. Will be updated laters
- outputFile << hashtableobj;
+ dataFile << hashtableobj;
 }
 
