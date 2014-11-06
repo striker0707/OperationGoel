@@ -108,9 +108,9 @@ bool openFile (ofstream &dataFile)
 {
     string inputFileName = "Archive.txt";         // Declares variable for input name and assigns it to our data file
     
-    inputFile.open(inputFileName.c_str());                  // Opens input file with given name
+    dataFile.open(dataFile.c_str());                  // Opens input file with given name
 
-    if (inputFile.fail())                                   // If the input file fails
+    if (dataFile.fail())                                   // If the input file fails
     {
         return 0;                                           // End program if input file cannot open
     }
