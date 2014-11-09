@@ -47,8 +47,7 @@ int main()
   
  // data.close();
  
-    inputFile.close();      // Closes input file
-    outputFile.close();     // Closes output file
+    dataFile.close();     // Closes data file
   
     system("pause");//close database
     return 0;
