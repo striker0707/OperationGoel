@@ -22,6 +22,7 @@ public:
 	Food();
 	//Copy Constructor
 	Food(const Food &obj);
+	//Constructor to create new foodobj
 	Food(string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro);
 	
 	//Accessor functions
