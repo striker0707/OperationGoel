@@ -29,12 +29,12 @@ given data into the tree.
 @param newData The data for the root. */
 	virtual void setRootData( const ItemType& newData) = 0;
 /** Adds a new node containing the given data to this binary tree.
-@param newData The data for the new node. */
+@param newData The data for the new node. 
 	@post The binary tree contains a new node.
 	@return True if the addition is successful, or false not. */
 	virtual bool add( const ItemType& newData) = 0;
 /** Removes the node containing the given data item from this binary tree.
-@param data The data value to remove from the binary tree. */
+@param data The data value to remove from the binary tree. 
 	@return True if the removal is successful, or false not. */
 	virtual bool remove( const ItemType& data) = 0;
 /** Removes all nodes from this binary tree. */
