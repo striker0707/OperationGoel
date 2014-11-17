@@ -105,7 +105,7 @@ Food& operator= (const Food& other)
     {
     if (this != &other)
         {
-       cout << "same names" << endl;
+       cout << " not same names" << endl;
         }
     return *this;
     }
