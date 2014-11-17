@@ -35,4 +35,5 @@ public:
 	void traverse(void visit(ItemType&)) const;
 
 };
+
 #endif

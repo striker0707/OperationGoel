@@ -7,7 +7,7 @@ class TableInterface
 public:
 
 	virtual bool isEmpty() const = 0;
-	virtual bool int getNumberOfItems() const = 0;
+	virtual int getNumberOfItems() const = 0;
 	virtual bool add(const KeyType& searchKey, const ItemType& newItem) = 0;
 	virtual bool remove(const KeyType& searchKey) = 0;
 	virtual void clear() = 0;

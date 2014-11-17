@@ -5,6 +5,7 @@
 #define _FOOD
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 //test
@@ -27,7 +28,7 @@ public:
 	
 	//Accessor functions
 	string getName() const;
-    	float getCalories() const;
+    float getCalories() const;
 	float getGramsFat() const;
 	float getCholesterol() const;
 	float getSodium() const;
@@ -51,5 +52,4 @@ public:
 	bool operator< (const Food& rdr);
 };
 
-}
 #endif;

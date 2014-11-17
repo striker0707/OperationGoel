@@ -5,12 +5,13 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include "HashedTable.h"
 
 using namespace std;
 
 //function prototypes
 bool openFile (ofstream &dataFile);
-void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
+//void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
 
 int main()
@@ -31,13 +32,13 @@ int main()
         cout << "File opened successfully, file will have updated archive when program terminates" << endl;
     } // end if else
 
-    while (foodname >> calories >> totalfat >> cholest >> sodium >> protein) // Reads file inputs continously until it runs out of inputs
-    {
-        foodobj(foodname, calories, totalfat, cholest, sodium, protein)   // Makes a foodobj with appropriate variables
-        // Put into hashtable somehow..
-        // Keys get assigned here or whatever.
+    //while (foodname >> calories >> totalfat >> cholest >> sodium >> protein) // Reads file inputs continously until it runs out of inputs
+    //{
+    //    foodobj(foodname, calories, totalfat, cholest, sodium, protein);   // Makes a foodobj with appropriate variables
+    //    // Put into hashtable somehow..
+    //    // Keys get assigned here or whatever.
 
-    } // End while
+    //} // End while
 
     
   //fstream data; //open file for read AND write
@@ -56,7 +57,8 @@ int main()
 void menu()
 {
   char choice;
-  while(ch != 9)
+ 
+  while(choice != 9)
   {
     //menu text is taken directly from the project req
     //recommend we change or lsightly modify some of the names so more "user friendly"ish
@@ -71,34 +73,34 @@ void menu()
     cout << "8) SECRET MENU OPTION" << endl;
     cout << "9) Quit" << endl;
     
-    cin >> choice
+    cin >> choice;
     
     //ENTER FUNCTION CALLS FOR EACH MODULE AS WE COMPLETE IT,
     //PLEASE COMMENT OUT YOUR FUNCTION CALL IF YOU COMMIT A CHANGE THAT IS NOT COMPILABLE
-    switch(choice)
-    case 1:
-      break;
-    case 2:
-      break;
-    case 3:
-      break;
-    case 4:
-      break;
-    case 5:
-      break;
-    case 6:
-      break;
-    case 7:
-      break;
-    case 8:
-      break;
-    case 9: //user quit case
-      return 0;
-      break;
-    default:
-    cout << "Invalid Option, please enter a valid option (1-9)." << endl;
-    system("pause");
-    break;
+    //switch(choice)
+    //case 1:
+    //  break;
+    //case 2:
+    //  break;
+    //case 3:
+    //  break;
+    //case 4:
+    //  break;
+    //case 5:
+    //  break;
+    //case 6:
+    //  break;
+    //case 7:
+    //  break;
+    //case 8:
+    //  break;
+    //case 9: //user quit case
+    //  return 0;
+    //  break;
+    //default:
+    //cout << "Invalid Option, please enter a valid option (1-9)." << endl;
+    //system("pause");
+    //break;
   }
 }
 
