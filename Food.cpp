@@ -109,4 +109,18 @@ Food& operator= (const Food& other)
         }
     return *this;
     }
+bool operator< (const Food& rdr) //I don't know what does that mean rdr. So was little confused 
+      {
+         if(Food < rdr.Food)
+         {
+            return true;
+         }
+         if(Food == rdr.Food && Food < rdr.Food)
+         {
+            return true;
+         }
+         return false;
+      }
+      
+
     
