@@ -3,5 +3,6 @@ OperationGoel
 
 GOEL BIG OR GOEL HOME
 
-TODO:
-EVERYTHING
+To DO ASAP:
+	- HashTable
+	- BST

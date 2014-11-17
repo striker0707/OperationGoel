@@ -5,7 +5,6 @@ template<class KeyType, class ItemType>
 class TableInterface
 {
 public:
-
 	virtual bool isEmpty() const = 0;
 	virtual int getNumberOfItems() const = 0;
 	virtual bool add(const KeyType& searchKey, const ItemType& newItem) = 0;
@@ -14,6 +13,5 @@ public:
 	virtual ItemType getItem(const KeyType& searchKey) const = 0;
 	virtual bool contains(const KeyType& searchKey) const = 0;
 	virtual void traverse(void visit(ItemType&)) const = 0;
-
 };
 #endif

@@ -16,8 +16,8 @@ private:
 	float calories;
 	float gramsFat;
 	float cholesterol;
-    	float sodium;
-    	float protein;
+    float sodium;
+    float protein;
 public:
 	//Default Constructor
 	Food();
@@ -34,7 +34,7 @@ public:
 	float getSodium() const;
 	float getProtein() const;
     	
-    	//Mutator functions
+    //Mutator functions
 	void setName(string inputname);
 	void setCalories(float cal);
 	void setGramsF(float gFat);

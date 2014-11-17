@@ -6,6 +6,7 @@
 #include <string>
 #include <iomanip>
 #include "HashedTable.h"
+#include "BinarySearchTree.h"
 
 using namespace std;
 
