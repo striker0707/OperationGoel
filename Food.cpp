@@ -100,3 +100,13 @@ void Food::print(Food& fd)
     cout << "Sodium : " << fd.getSodium() << endl;
     cout << "Protein : " << fd.getProtein() << endl;
 }
+
+Food& operator= (const Food& other)
+    {
+    if (this != &other)
+        {
+       cout << "same names" << endl;
+        }
+    return *this;
+    }
+    
