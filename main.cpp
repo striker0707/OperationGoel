@@ -23,15 +23,15 @@ int main()
     bool openFile(ofstream &dataFile);                    // Refers to the bool function below to check if files open
     
     if (openFile(dataFile)==false)       // Checks if both output and input are false
-    {
-        cout << "Unable to open data file" << endl;                      // If false, prints an error message
-        cout << "Ending Program" << endl;
-        return 1;   // Ends Program if the if statement is true
-    }      // End if
+        {
+            cout << "Unable to open data file" << endl;                      // If false, prints an error message
+            cout << "Ending Program" << endl;
+            return 1;   // Ends Program if the if statement is true
+        }      // End if
     else    // When successful opening, program will print sucession
-    {
-        cout << "File opened successfully, file will have updated archive when program terminates" << endl;
-    } // end if else
+        {
+            cout << "File opened successfully, file will have updated archive when program terminates" << endl;
+        } // end if else
 
     //while (foodname >> calories >> totalfat >> cholest >> sodium >> protein) // Reads file inputs continously until it runs out of inputs
     //{
