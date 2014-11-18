@@ -11,45 +11,47 @@
 using namespace std;
 
 //function prototypes
-bool openFile (ofstream &dataFile);
+void writetoOutput(ofstream &stream, HashTable hobj);
+
 //void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
 
 int main()
 {
-    ofstream dataFile;                    // Intializes outputFile
-    
-     // Check if input and output files successfully opened
-    bool openFile(ofstream &dataFile);                    // Refers to the bool function below to check if files open
-    
-    if (openFile(dataFile)==false)       // Checks if both output and input are false
+    ifstream inputFile;
+	ofstream outputFile;
+	
+	bool openinputFile(ifstream &inputFile);
+	bool openoutputFile(ofstream &outputFile);
+  
+    if (openinputFile(inputFile)==false || openoutputFile(outputFile)==false)       // Checks if both output and input are false
         {
-            cout << "Unable to open data file" << endl;                      // If false, prints an error message
-            cout << "Ending Program" << endl;
-            return 1;   // Ends Program if the if statement is true
+        cout << "Unable to open input file" << endl;                      // If false, prints an error message
+        cout << "Ending Program" << endl;
+        return 1;   // Ends Program if the if statement is true
         }      // End if
     else    // When successful opening, program will print sucession
         {
-            cout << "File opened successfully, file will have updated archive when program terminates" << endl;
+        cout << "Files opened successfully, open output file to see results when program ends" << endl;
         } // end if else
 
-    //while (foodname >> calories >> totalfat >> cholest >> sodium >> protein) // Reads file inputs continously until it runs out of inputs
-    //{
-    //    foodobj(foodname, calories, totalfat, cholest, sodium, protein);   // Makes a foodobj with appropriate variables
-    //    // Put into hashtable somehow..
-    //    // Keys get assigned here or whatever.
-
-    //} // End while
-
-    
-  //fstream data; //open file for read AND write
-  //data.open("Archive.txt")
+    while (inputFile >> variable1 >> variable2 >> variable3 >> variable4 >> variable5 >> variable6) // Reads file inputs continously until it runs out of inputs
+        {
+			//Food(variable1, variable2, variable3, variable4, variable5, variable6);
+			//Put into hash table somehow.
+        
+        }
+  
+  
   
     menu();
-  
- // data.close();
- 
-    dataFile.close();     // Closes data file
+    
+    writetoOutput(outputFile, hashtableobj);
+	
+    inputFile.close();      // Closes input file
+    outputFile.close();     // Closes output file
+
+
   
     system("pause");//close database
     return 0;
@@ -105,28 +107,51 @@ void menu()
   }
 }
 
-// Bool used to see if input file successfully opened
-bool openFile (ofstream &dataFile)
+bool openinputFile (ifstream &inputFile)
 {
-    string inputFileName = "Archive.txt";         // Declares variable for input name and assigns it to our data file
-    
-    dataFile.open(dataFile.c_str());                  // Opens input file with given name
+    string inputFileName;           // Declares variable for input name
 
-    if (dataFile.fail())                                   // If the input file fails
+    cout << "Enter input filename: " << endl;          // Prompts user for input file name
+    getline(cin,inputFileName);                             // Reads input file name
+
+    inputFile.open(inputFileName.c_str());                  // Opens input file with given name
+
+    if (inputFile.fail())                                   // If the input file fails
     {
-        return 0;                                           // End program if input file cannot open
+		return 0;                                           // End program if input file cannot open
     }
     else
     {
-        return 1;                                           // Continues program if input file opens
+		return 1;                                           // Continues program if input file opens
     }
 
 } // End bool
 
+bool openoutputFile (ofstream &outputFile)
+{
+    string outputFileName;          // Declares variable for output name
+
+    cout << "Enter output filename: " << endl;         //Prompts user for output file name
+    getline(cin,outputFileName);                            // Reads output file name
+
+    outputFile.open(outputFileName.c_str());                // Opens output file with given name
+
+    if(outputFile.fail())                                   // If the output file fails
+    {
+        return 0;                                           // End program if output file cannot open
+    }
+    else
+    {
+        return 1;                                           // Continues program if output file opens
+    }
+
+}// End bool
+
+
 // This function is to print the payment table
-void printToOutput(ofstream &dataFile, Hashtable hashtableobj)
+void printToOutput(ofstream &dataFile, Hashtable hobj)
 {
     //This will ultimately depend on how the hashtable is made and used. Will be updated laters
- dataFile << hashtableobj;
+ dataFile << hobj;
 }
 
