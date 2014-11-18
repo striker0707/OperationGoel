@@ -39,10 +39,8 @@ int main()
 
     while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
         {
-			Food(fname, cal, gfat, chol, sodi, prot);
-			//Put into hash table somehow.
-
-        
+		Food(fname, cal, gfat, chol, sodi, prot);
+		//Put into hash table somehow.
         }
   
   
@@ -121,11 +119,11 @@ bool openinputFile (ifstream &inputFile)
 
     if (inputFile.fail())                                   // If the input file fails
     {
-		return 0;                                           // End program if input file cannot open
+	return 0;                                           // End program if input file cannot open
     }
     else
     {
-		return 1;                                           // Continues program if input file opens
+	return 1;                                           // Continues program if input file opens
     }
 
 } // End bool
@@ -155,6 +153,6 @@ bool openoutputFile (ofstream &outputFile)
 void printToOutput(ofstream &dataFile, Hashtable hobj)
 {
     //This will ultimately depend on how the hashtable is made and used. Will be updated laters
- dataFile << hobj;
+ 	dataFile << hobj;
 }
 
