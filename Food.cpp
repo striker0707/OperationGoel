@@ -102,37 +102,42 @@ void Food::print(Food& fd)
 }
 
 Food& operator= (const Food& other)
-    {
+{
     if (this != &other)
-        {
+    {
        cout << " not same names" << endl;
-        }
-    return *this;
     }
+    
+    return this;
+}
 bool operator< (const Food& rdr) //I don't know what does that mean rdr. So was little confused 
-      {
-         if(Food < rdr.Food)
-         {
-            return true;
-         }
-         if(Food == rdr.Food && Food < rdr.Food)
-         {
-            return true;
-         }
-         return false;
-      }
+{
+    if(Food < rdr.Food)
+    {
+        return true;
+    }
+    
+    if(Food == rdr.Food && Food < rdr.Food)
+    {
+        return true;
+    }
+         
+    return false;
+    
+}
 bool operator> (const Food& rdr);
-      {
-         if(Food > rdr.Food)
-         {
-            return true;
-         }
-         if(Food == rdr.Food && Food > rdr.Food)
-         {
-            return true;
-         }
-         return false;
-      }
-      
-
+{
+    if(Food > rdr.Food)
+    {
+        return true;
+    }
+    
+    if(Food == rdr.Food && Food > rdr.Food)
+    {
+        return true;
+    }
+    
+    return false;
+    
+}
     
