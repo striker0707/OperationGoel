@@ -18,27 +18,30 @@ void menu();
 
 int main()
 {
-    ifstream inputFile;
+	string fname;
+	float cal, gfat, chol, sodi, prot;
+    	ifstream inputFile;
 	ofstream outputFile;
 	
 	bool openinputFile(ifstream &inputFile);
 	bool openoutputFile(ofstream &outputFile);
   
     if (openinputFile(inputFile)==false || openoutputFile(outputFile)==false)       // Checks if both output and input are false
-        {
+    {
         cout << "Unable to open input file" << endl;                      // If false, prints an error message
         cout << "Ending Program" << endl;
         return 1;   // Ends Program if the if statement is true
-        }      // End if
+    }      // End if
     else    // When successful opening, program will print sucession
-        {
+    {
         cout << "Files opened successfully, open output file to see results when program ends" << endl;
-        } // end if else
+    } // end if else
 
-    while (inputFile >> variable1 >> variable2 >> variable3 >> variable4 >> variable5 >> variable6) // Reads file inputs continously until it runs out of inputs
+    while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
         {
-			//Food(variable1, variable2, variable3, variable4, variable5, variable6);
+			Food(fname, cal, gfat, chol, sodi, prot);
 			//Put into hash table somehow.
+
         
         }
   
