@@ -20,12 +20,29 @@ private:
 	int hashingFunction(string key);
 public:
 	HashedTable();
+	/** Outputs to screen entry count, probes, collisions, load factor */
 	void displayStats();
 	bool search(string entry);
 };
 
 HashedTable::HashedTable()
 {
+	DataRecord newEntry;
+
+	ifstream fin("Archive.txt");
+		
+	if (fin.is_open())
+	{
+		while ( !fin.eof() )
+		{
+																				
+			//calls hashingfunction first to get index
+			//then uses SortedList's insert function to insert in linkedlist
+			table[hashingFunction(newEntry.getKey())].insert(newEntry);	//insert into table				
+			
+																		
+		}
+	}
 
 }
 

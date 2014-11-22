@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include "HashedTable.h"
+#include "HashTable.h"
 #include "BinarySearchTree.h"
 
 using namespace std;
