@@ -7,11 +7,12 @@
 #include <iomanip>
 #include "HashTable.h"
 #include "BinarySearchTree.h"
+#include "Food.h"
 
 using namespace std;
 
 //function prototypes
-void writetoOutput(ofstream &stream, HashTable hobj);
+void writetoOutput(ofstream &stream, HashTable<Food> hobj);
 
 //void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
@@ -20,8 +21,9 @@ int main()
 {
 	string fname;
 	float cal, gfat, chol, sodi, prot;
-    	ifstream inputFile;
+    ifstream inputFile;
 	ofstream outputFile;
+	HashTable<Food> hashedTable;
 	
 	bool openinputFile(ifstream &inputFile);
 	bool openoutputFile(ofstream &outputFile);
@@ -38,16 +40,16 @@ int main()
     } // end if else
 
     while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
-        {
+	{
 		Food(fname, cal, gfat, chol, sodi, prot);
-		//Put into hash table somehow.
-        }
+		
+	}
   
   
   
     menu();
     
-    writetoOutput(outputFile, hashtableobj);
+    writetoOutput(outputFile, hashedTable);
 	
     inputFile.close();      // Closes input file
     outputFile.close();     // Closes output file
@@ -60,7 +62,7 @@ int main()
 
 void menu()
 {
-  char choice;
+  char choice = -1;
  
   while(choice != 9)
   {
@@ -150,9 +152,9 @@ bool openoutputFile (ofstream &outputFile)
 
 
 // This function is to print the payment table
-void printToOutput(ofstream &dataFile, Hashtable hobj)
+void printToOutput(ofstream &dataFile, HashTable<Food> hobj)
 {
     //This will ultimately depend on how the hashtable is made and used. Will be updated laters
- 	dataFile << hobj;
+ 	/*dataFile << hobj;*/
 }
 
