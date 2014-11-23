@@ -118,7 +118,7 @@ public:
 		cout<<endl<<"No collisions: "<<noProbes<<endl;
 
 	}
-	int hashingFunction(string key)
+	int hashingFunction(const KeyType key)
 	{
 		unsigned index = 0;
 		for(unsigned int i = 0; i < key.size(); i++)
