@@ -48,8 +48,11 @@ public:
 	
 	//Overloaded functions
 	bool operator == (const Food& rdr);
-	bool operator> (const Food& rdr);
-	bool operator< (const Food& rdr);
+	bool operator > (const Food& rdr);
+	bool operator < (const Food& rdr);
+	Food operator + (const Food&);
+	Food operator - (const Food&);
+	friend ostream& operator << (ostream&, const Food&);
 };
 
 #endif;

@@ -121,3 +121,40 @@ bool Food::operator > (const Food& rdr)
 	return (calories > rdr.calories);
 }
     
+Food Food::operator + (const Food& aFood)
+{
+	Food food;
+	food.name = " ";
+	food.calories = this->calories + aFood.calories;
+	food.gramsFat = this->gramsFat + aFood.gramsFat;
+	food.cholesterol = this->cholesterol + aFood.cholesterol;
+    food.sodium = this->sodium + aFood.sodium;
+    food.protein = this->protein + aFood.protein;
+
+	return food;
+}
+
+Food Food::operator - (const Food& aFood)
+{
+	Food food;
+	food.name = " ";
+	food.calories = this->calories - aFood.calories;
+	food.gramsFat = this->gramsFat - aFood.gramsFat;
+	food.cholesterol = this->cholesterol - aFood.cholesterol;
+    food.sodium = this->sodium - aFood.sodium;
+    food.protein = this->protein - aFood.protein;
+
+	return food;
+}
+
+ostream& operator << (ostream& foodPrint, const Food& aFood)
+{
+	cout << "Your total nutrition facts are:" << endl;
+	cout << "Calories: " << aFood.getCalories() << endl;
+	cout << "Fat: " << aFood.getGramsFat() << endl;
+	cout << "Cholesterol: " << aFood.getCholesterol() << endl;
+	cout << "Sodium: " << aFood.getSodium() << endl;
+	cout << "Protien: " << aFood.getProtein() << endl;
+
+	return foodPrint;
+}
