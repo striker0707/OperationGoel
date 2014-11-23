@@ -6,7 +6,7 @@
 using namespace std;
 
 //Constructors
-Node::Node()
+BSTNode::BSTNode()
 {
     personobj.setpname("0");
     personobj.setDOB("0");
@@ -14,7 +14,7 @@ Node::Node()
     rightptr = nullptr;
 }
 
-Node::Node(People inputperson)
+BSTNode::BSTNode(People inputperson)
 {
     personobj = inputperson;
     leftptr = nullptr;
@@ -22,38 +22,38 @@ Node::Node(People inputperson)
 }
 
 //Getter and setter functions
-void Node::setperson(People inputpobj)
+void BSTNode::setperson(People inputpobj)
 {
     personobj = inputpobj;
 }
 
-People Node::getperson()
+People BSTNode::getperson()
 {
     return personobj;
 }
 
-Node* Node::getrightptr()
+BSTNode* BSTNode::getrightptr()
 {
     return rightptr;
 }
 
-Node* Node::getleftptr()
+BSTNode* BSTNode::getleftptr()
 {
     return leftptr;
 }
 
-void Node::setrightptr(Node* inputrptr)
+void BSTNode::setrightptr(Node* inputrptr)
 {
     rightptr = inputrptr;
 }
 
-void Node::setleftptr(Node* inputlptr)
+void BSTNode::setleftptr(Node* inputlptr)
 {
     leftptr = inputlptr;
 }
 
 //Print method
-string Node::print() const
+string BSTNode::print() const
 {
     string output = personobj.getpname() + ": " + personobj.getDOB();
     output += " left:" + ((leftptr != nullptr) ? leftptr->getperson().getpname() : "nullptr");
