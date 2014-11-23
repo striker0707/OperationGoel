@@ -32,8 +32,6 @@ private:
 public:  
 	// insert a node at the correct location
     bool insert(const ItemType & newEntry);
-	// insert a node by birthday
-	bool insertbyBirth(const ItemType & newEntry);
 	// remove a node if found
 	bool remove(const ItemType & anEntry);
 	// find a target node
@@ -55,17 +53,6 @@ bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry)
 	count++;
 	return true;
 }  
-
-template<class ItemType>
-bool BinarySearchTree<ItemType>::insertbyBirth(const ItemType & newEntry)
-{
-	BinaryNode<ItemType>* newNodePtr = new BinaryNode<ItemType>(newEntry);
-	rootPtr = _insertbyBirth(rootPtr, newNodePtr); 
-	count++;
-	return true;
-}  
-
-
 
 template<class ItemType>
 bool BinarySearchTree<ItemType>::remove(const ItemType & target)
