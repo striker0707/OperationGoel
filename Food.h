@@ -18,6 +18,7 @@ private:
 	float cholesterol;
     float sodium;
     float protein;
+    string sortkey;
 public:
 	//Default Constructor
 	Food();
@@ -26,6 +27,8 @@ public:
 	Food(const Food &obj);
 	//Constructor to create new foodobj
 	Food(string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro);
+	//Sortkey constructor
+	Food(string inputskey, string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro);
 	
 	//Accessor functions
 	string getName() const;
