@@ -29,25 +29,29 @@ public:
 	}
 	bool isEmpty()
 	{
-		if(count == 0)
-			return true;
-		return false;
+		return (count == 0);
 	}
 	bool insert(const ItemType& newEntry, const KeyType& key)
 	{
 		int i;
 		i = hashingFunction(key);
 		table[i].insert(newEntry);
+		
+		count++;
 
 		return true;
 	}
 	bool remove(const KeyType& key)
 	{
 		int i;
+		ItemType targetKey(key);
+		ItemType foundItem;
 		i = hashingFunction(key);
-		if(table[i].get)
+
+		if(table[i].getEntry(targetKey,foundItem))
 		{
-			table[i].remove();
+			table[i].remove(foundItem);
+			count--;
 			return true;
 		}
 
