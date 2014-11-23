@@ -47,6 +47,7 @@ public:
 	void print(Food& fd);
 	
 	//Overloaded functions
+	bool operator == (const Food& rdr);
 	bool operator> (const Food& rdr);
 	bool operator< (const Food& rdr);
 };

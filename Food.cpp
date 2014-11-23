@@ -107,6 +107,11 @@ void Food::print(Food& fd)
     cout << "Protein : " << fd.getProtein() << endl;
 }
 
+bool Food::operator == (const Food& rdr)
+{
+	return (name == rdr.name);
+}
+
 bool Food::operator < (const Food& rdr)
 {
 	return (name < rdr.name);
