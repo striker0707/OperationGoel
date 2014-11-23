@@ -6,7 +6,9 @@ GOEL BIG OR GOEL HOME
 Note: PLEASE SYNC FILES BEFORE EDITING and PROPERLY USE GITHUB
 
 To DO ASAP:
+
 	- Main
+
 	- FoodProgam.h
 
 Weekly Report
