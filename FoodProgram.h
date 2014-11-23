@@ -34,6 +34,7 @@ public:
 #endif;
 
 /* Remember that all food data needs to be stored as dynamic memory in both the BST and HT */
+/* "As the records are read, they are placed in dynamic memory and the memory location (address) is then inserted" */
 
 void FoodProgram::menu() const
 {

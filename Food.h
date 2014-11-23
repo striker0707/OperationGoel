@@ -12,6 +12,7 @@ using namespace std;
 class Food
 {
 private:
+	/* name is also unique key to be used in HT */
 	string name;
 	float calories;
 	float gramsFat;
