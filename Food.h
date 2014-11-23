@@ -47,8 +47,6 @@ public:
 	void print(Food& fd);
 	
 	//Overloaded functions
-	Food& operator= (const Food& other);
-	friend ostream& operator<< (ostream& out, Food& dr);
 	bool operator> (const Food& rdr);
 	bool operator< (const Food& rdr);
 };

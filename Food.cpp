@@ -107,43 +107,12 @@ void Food::print(Food& fd)
     cout << "Protein : " << fd.getProtein() << endl;
 }
 
-//Food& operator= (const Food& other)
-//{
-//    if (this != &other)
-//    {
-//       cout << " not same names" << endl;
-//    }
-//    
-//    return this;
-//}
-//bool operator< (const Food& rdr) //I don't know what does that mean rdr. So was little confused 
-//{
-//    if(Food < rdr.Food)
-//    {
-//        return true;
-//    }
-//    
-//    if(Food == rdr.Food && Food < rdr.Food)
-//    {
-//        return true;
-//    }
-//         
-//    return false;
-//    
-//}
-//bool operator> (const Food& rdr);
-//{
-//    if(Food > rdr.Food)
-//    {
-//        return true;
-//    }
-//    
-//    if(Food == rdr.Food && Food > rdr.Food)
-//    {
-//        return true;
-//    }
-//    
-//    return false;
-//    
-//}
-//    
+bool Food::operator < (const Food& rdr)
+{
+	return (name < rdr.name);
+}
+bool Food::operator > (const Food& rdr)
+{
+	return (calories > rdr.calories);
+}
+    
