@@ -7,9 +7,7 @@ Note: PLEASE SYNC FILES BEFORE EDITING and PROPERLY USE GITHUB
 
 To DO ASAP:
 	
-	- HashTable
-	
-	- BST
+	- Main and linking
 
 Weekly Report
 =============
