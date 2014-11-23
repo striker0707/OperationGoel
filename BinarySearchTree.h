@@ -14,8 +14,6 @@ class BinarySearchTree : public BinaryTree<ItemType>
 private:
 	// internal insert node: insert newNode in nodePtr subtree
 	BinaryNode<ItemType>* _insert(BinaryNode<ItemType>* nodePtr, BinaryNode<ItemType>* newNode);
-
-	BinaryNode<ItemType>* _insertbyBirth(BinaryNode<ItemType>* nodePtr, BinaryNode<ItemType>* newNode);
    
 	// internal remove node: locate and delete target node under nodePtr subtree
 	BinaryNode<ItemType>* _remove(BinaryNode<ItemType>* nodePtr, const ItemType target, bool & success);
@@ -28,6 +26,9 @@ private:
    
 	// search for target node
 	BinaryNode<ItemType>* findNode(BinaryNode<ItemType>* treePtr, const ItemType & target) const;
+
+	// internal print indentend tree
+	BinaryNode<ItemType>* _indentedTree(BinaryNode<ItemType>* nodePtr, string indent);
    
 public:  
 	// insert a node at the correct location
@@ -38,6 +39,9 @@ public:
 	bool getEntry(const ItemType & target, ItemType & returnedItem) const;
 	// update data
 	bool update(bool updatedName, ItemType& target, ItemType& newData);
+	// prints indented tree
+	bool indentedTree(BinaryNode<ItemType>* nodePtr);
+	bool indentedTree();
  
 };
 
@@ -96,6 +100,28 @@ bool BinarySearchTree<ItemType>::update(bool updatedName, ItemType& target, Item
 		return false;
 } 
 
+template<class ItemType>
+bool BinarySearchTree<ItemType>::indentedTree()
+{
+	BinaryNode<ItemType>* nodePtr;
+	cout<<endl;
+	nodePtr = _indentedTree(rootPtr,"");
+	if(nodePtr == 0)
+		return false;
+	return true;
+}
+
+template<class ItemType>
+bool BinarySearchTree<ItemType>::indentedTree(BinaryNode<ItemType>* nodePtr)
+{
+	BinaryNode<ItemType>* nodePtr;
+	cout<<endl;
+	nodePtr = _indentedTree(nodePtr,"");
+	if(nodePtr == 0)
+		return false;
+	return true;
+}
+
 //////////////////////////// private functions ////////////////////////////////////////////
 
 template<class ItemType>
@@ -117,27 +143,8 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_insert(BinaryNode<ItemType>* 
 }  
 
 template<class ItemType>
-BinaryNode<ItemType>* BinarySearchTree<ItemType>::_insertbyBirth(BinaryNode<ItemType>* nodePtr,
-                                                          BinaryNode<ItemType>* newNodePtr)
-{
-	if ( nodePtr == 0 )
-		return newNodePtr;
-	else
-	{
-		if( newNodePtr->getItem().getBirthday() < nodePtr->getItem().getBirthday() ) //compares both birthday strings
-			nodePtr->setLeftPtr(_insert( nodePtr->getLeftPtr(), newNodePtr ));
-		else
-			nodePtr->setRightPtr(_insert( nodePtr->getRightPtr(), newNodePtr ));
-		return nodePtr;
-	}
-
-
-}  
-
-template<class ItemType>
 BinaryNode<ItemType>* BinarySearchTree<ItemType>::_remove(BinaryNode<ItemType>* nodePtr,
                                                           const ItemType target, bool & success)
-
 {
 	if (nodePtr == 0)                   
 	{
@@ -204,7 +211,6 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::removeLeftmostNode(BinaryNode<
 	}       
 }
 
-
 template<class ItemType>
 BinaryNode<ItemType>* BinarySearchTree<ItemType>::findNode(BinaryNode<ItemType>* nodePtr,
                                                            const ItemType & target) const 
@@ -222,4 +228,17 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::findNode(BinaryNode<ItemType>*
 			return nodePtr;
 	}      
 		
-}  
+} 
+template<class ItemType>
+BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemType>* nodePtr, string indent)
+{
+	if(nodePtr == 0)
+		return nodePtr;
+	else
+	{
+		_indentedTree(nodePtr->getLeftPtr(), indent + "	");
+		cout << indent <<"|"<< nodePtr->getItem() <<"|"<< endl;
+		_indentedTree(nodePtr->getRightPtr(), indent + "	");
+		return nodePtr;
+	}
+}
