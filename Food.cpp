@@ -114,11 +114,11 @@ bool Food::operator == (const Food& rdr)
 
 bool Food::operator < (const Food& rdr)
 {
-	return (name < rdr.name);
+	return (sortKey < rdr.sortKey);
 }
 bool Food::operator > (const Food& rdr)
 {
-	return (calories > rdr.calories);
+	return (sortKey > rdr.sortKey);
 }
     
 Food Food::operator + (const Food& aFood)

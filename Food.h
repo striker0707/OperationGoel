@@ -18,7 +18,7 @@ private:
 	float cholesterol;
     float sodium;
     float protein;
-    string sortkey;
+    float sortKey;
 public:
 	//Default Constructor
 	Food();
