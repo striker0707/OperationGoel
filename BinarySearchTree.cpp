@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-#include "Node.h"
+#include "BSTNode.h"
 #include "BinarySearchTree.h"
 #include "Queue.h"
 
