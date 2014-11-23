@@ -5,6 +5,7 @@
 #include "SortedList.h"
 #include "Food.h"
 #include "HashTable.h"
+#include "BinarySearchTree.h"
 
 using namespace std;
 

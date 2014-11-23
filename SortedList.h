@@ -5,7 +5,6 @@
 #define _SORTED_LIST
 
 #include "LinkedList.h"
-#include "Node.h"
 
 template<class ItemType>
 class SortedList : public LinkedList<ItemType>
