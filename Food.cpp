@@ -26,7 +26,6 @@ Food::Food(const Food &fobj)
     
 }
 
-
 Food::Food(string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro)
 {
     name = inputfname;
