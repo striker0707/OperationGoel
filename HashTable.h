@@ -4,12 +4,9 @@
 #ifndef _HASH_TABLE
 #define _HASH_TABLE
 
-#include <fstream>
-#include <iostream>
 #include <vector>
 #include <string>
 #include "SortedList.h"
-#include "LinkedList.h"
 
 using namespace std;
 
@@ -60,7 +57,11 @@ public:
 
 		return false;
 	}
-	void clear();
+	void clear()
+	{
+		for(int i=0;i<MAX;i++)
+			table[i].clear();
+	}
 	bool contains(const KeyType& sKey)
 	{
 		bool success = false;
