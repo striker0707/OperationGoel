@@ -15,10 +15,10 @@ BinarySearchTree::BinarySearchTree()
 }
 
 //Search method
-bool BinarySearchTree::search(People pobj)
+bool BinarySearchTree::search(Food fobj)
 {
 	//If located item is located in root, return root;
-    if(((root->getperson()).getsortkey() == pobj.getsortkey()))
+    if(((root->getfood()).getsortkey() == fobj.getsortkey()))
     {
         return root;
     }
@@ -26,12 +26,12 @@ bool BinarySearchTree::search(People pobj)
     else
     {
 		//If not located in root, recurse through the entire bst tree
-        return searchHelper(root, pobj);
+        return searchHelper(root, fobj);
     }
 }
 
 //searchHelper method
-bool BinarySearchTree::searchHelper(BSTNode* n, People pobj)
+bool BinarySearchTree::searchHelper(BSTNode* n, Food fobj)
 {
 	//If the located node is empty, return null
     if (n == nullptr)
@@ -40,29 +40,29 @@ bool BinarySearchTree::searchHelper(BSTNode* n, People pobj)
     }
     
 	//If located node is on the n node, return n;
-    if(pobj.getsortkey() == (n->getperson()).getsortkey())
+    if(fobj.getsortkey() == (n->getfood()).getsortkey())
     {
         return n;
     }
     
 	//If node is on the left side of the bst tree, recurse until found
-    else if(pobj.getsortkey() < (n->getperson()).getsortkey())
+    else if(fobj.getsortkey() < (n->getfood()).getsortkey())
     {
-        return searchHelper(n->getleftptr(), pobj);
+        return searchHelper(n->getleftptr(), fobj);
     }
     else
     {
 		//If node is on the right side of the bst tree, recurse until found.
-        return searchHelper(n->getrightptr(), pobj);
+        return searchHelper(n->getrightptr(), fobj);
     }
     
 }
 
 //Add method
-bool BinarySearchTree::add(People pobj)
+bool BinarySearchTree::add(Food fobj)
 {
 	//If bst is empty, intialize node as root
-    Node* newnodeptr = new Node(pobj);
+    BSTNode* newnodeptr = new Node(fobj);
     if (root == nullptr)
     {
         root = newnodeptr;
@@ -79,7 +79,7 @@ bool BinarySearchTree::add(People pobj)
 bool BinarySearchTree::addHelper(BSTNode* n, BSTNode* newNode)
 {
 	//If new node is suppose to be added to the left
-    if((newNode->getperson().getsortkey()) < (n->getperson().getsortkey()))
+    if((newNode->getfood().getsortkey()) < (n->getfood().getsortkey()))
     {
 		//If node is found on the root's left child
         if(n->getleftptr() == nullptr)
@@ -167,13 +167,13 @@ void BinarySearchTree::inorderHelper(BSTNode* n, ostream& stream)
 }
 
 //remove method
-bool BinarySearchTree::remove(const People& pobj)
+bool BinarySearchTree::remove(const Food& fobj)
 {
 	//If remove node is equal to root
-    if(root->getperson().getsortkey() == pobj.getsortkey())
+    if(root->getfood().getsortkey() == fobj.getsortkey())
     {
 		//Recieve replacement node and replace with root
-        Node* newRootNode = removeNode(root);
+        BSTNode* newRootNode = removeNode(root);
 		
         root = newRootNode;
 	
@@ -183,15 +183,15 @@ bool BinarySearchTree::remove(const People& pobj)
     else
     {
 		//Else traverse the entire bst to find replacement node
-        return removeHelper(root, pobj);
+        return removeHelper(root, fobj);
     }
 }
 
 //RemoveHelpher
-bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
+bool BinarySearchTree::removeHelper(BSTNode* n, const Food& fobj)
 {
 	//If the remove node is located to the left
-    if(pobj.getsortkey() < (n->getperson().getsortkey()))
+    if(fobj.getsortkey() < (n->getname().getsortkey()))
     {
 		//And if it equals to the n's left child
         if(n->getleftptr() == nullptr)
@@ -201,10 +201,10 @@ bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
         }
         
 		//If remove node is located to n's leftchild
-        if(pobj.getsortkey() == n->getleftptr()->getperson().getsortkey())
+        if(fobj.getsortkey() == n->getleftptr()->getfood().getsortkey())
         {
 			//Get the correct node to replace it with and set it to n's left child
-            Node* newLeftNode = removeNode(n->getleftptr());
+            BSTNode* newLeftNode = removeNode(n->getleftptr());
 			
             n->setleftptr(newLeftNode);
 			
@@ -215,12 +215,12 @@ bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
         else
         {
 			//Else recurse until node is found
-            return removeHelper(n->getleftptr(), pobj);
+            return removeHelper(n->getleftptr(), fobj);
         }
     }
     
 	//If node is on the right side
-    else if (pobj.getsortkey() > (n->getperson().getsortkey()))
+    else if (fobj.getsortkey() > (n->getfood().getsortkey()))
     {
 		//And node's right child is null, return null
         if(n->getrightptr() == nullptr)
@@ -230,10 +230,10 @@ bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
         }
         
 		//If the nodes right child matches with remove obj
-        if(pobj.getsortkey() == n->getrightptr()->getperson().getsortkey())
+        if(fobj.getsortkey() == n->getrightptr()->getfood().getsortkey())
         {
 			//Find the replacement node and set it to the node's right
-            Node* newRightNode = removeNode(n->getrightptr());
+            BSTNode* newRightNode = removeNode(n->getrightptr());
 			
             n->setrightptr(newRightNode);
 			
@@ -243,7 +243,7 @@ bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
         else
         {
 			//Else recurse until found
-            return removeHelper(n->getrightptr(), pobj);
+            return removeHelper(n->getrightptr(), fobj);
         }
         
     }
@@ -254,7 +254,7 @@ bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
     }
 }
     
-Node* BinarySearchTree::removeNode(BSTNode* n)
+BSTNode* BinarySearchTree::removeNode(BSTNode* n)
 {
     //In the case of a leaf node
    if(n->getleftptr() == nullptr && n->getrightptr() == nullptr)
@@ -265,7 +265,7 @@ Node* BinarySearchTree::removeNode(BSTNode* n)
     //In the case of a node with 2 children
     if(n->getleftptr() != nullptr && n->getrightptr() != nullptr)
     {
-        Node* tempnode = n->getrightptr();
+        BSTNode* tempnode = n->getrightptr();
         
         //And in the case that the node's left child is null
         if (tempnode->getleftptr() == nullptr)
@@ -281,7 +281,7 @@ Node* BinarySearchTree::removeNode(BSTNode* n)
             tempnode = tempnode->getleftptr();
         }
         
-        Node* returnnode = tempnode->getleftptr();
+        BSTNode* returnnode = tempnode->getleftptr();
         
         
         // After traversing, in the case that the node we want to replace with has a right child
@@ -303,7 +303,8 @@ Node* BinarySearchTree::removeNode(BSTNode* n)
     //In the case that the node is a single parent and has a right child
     if((n->getleftptr() != nullptr && n->getrightptr() == nullptr))
     {
-		Node* tempnode = n->getleftptr();
+	BSTNode* tempnode = n->getleftptr();
+	
         delete n;
         return tempnode;
     }
@@ -311,7 +312,8 @@ Node* BinarySearchTree::removeNode(BSTNode* n)
     //In the case that the node is a single parent and has a left child
     if((n->getleftptr() == nullptr && n->getrightptr() != nullptr))
     {
-		Node* tempnode = n->getrightptr();
+	BSTNode* tempnode = n->getrightptr();
+	
         delete n;
         return tempnode;
     }
@@ -322,13 +324,13 @@ Node* BinarySearchTree::removeNode(BSTNode* n)
 }
 
 //Modify method
-void BinarySearchTree::modify(People pobj, People newpobj)
+void BinarySearchTree::modify(Food fobj, Food newfobj)
 {
 	//Calls on remove and add methods
-    remove(pobj);
-    add(newpobj);
+    remove(fobj);
+    add(newfobj);
     
-    cout << "Item has been successfully removed and modified" << endl;
+    cout << "Food has been successfully removed and modified" << endl;
 }
 
 //Breadth first method
