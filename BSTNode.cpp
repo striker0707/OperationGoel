@@ -1,5 +1,5 @@
 
-#include "Node.h"
+#include "BSTNode.h"
 #include <iostream>
 #include <string>
 
