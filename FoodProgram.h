@@ -1,3 +1,6 @@
+#ifndef _FOOD_PROGRAM
+#define _FOOD_PROGRAM
+
 #include <string>
 #include "SortedList.h"
 #include "Food.h"
@@ -27,6 +30,8 @@ public:
 	bool remove(string targetEntry);
 
 };
+
+#endif;
 
 /* Remember that all food data needs to be stored as dynamic memory in both the BST and HT */
 

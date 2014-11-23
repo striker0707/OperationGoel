@@ -1,6 +1,9 @@
 // HashedTable adt
 // By Elton Vinh
 
+#ifndef _HASH_TABLE
+#define _HASH_TABLE
+
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -130,3 +133,4 @@ public:
 		return index;
 	}
 };
+#endif;
