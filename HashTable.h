@@ -6,7 +6,7 @@
 #include <vector>
 #include "SortedList.h"
 #include "LinkedList.h"
-#include "DataRecord.h"
+#include "Food.h"
 
 using namespace std;
 
@@ -15,9 +15,10 @@ const int MAX = 100;
 class HashedTable
 {
 private:
-	SortedList<DataRecord> table[MAX];
+	SortedList<Food> table[MAX];
 	float sizeofArray;
 	int hashingFunction(string key);
+	int count;
 public:
 	HashedTable();
 	/** Outputs to screen entry count, probes, collisions, load factor */
@@ -27,7 +28,7 @@ public:
 
 HashedTable::HashedTable()
 {
-	DataRecord newEntry;
+	Food newEntry;
 
 	ifstream fin("Archive.txt");
 		
@@ -38,9 +39,9 @@ HashedTable::HashedTable()
 																				
 			//calls hashingfunction first to get index
 			//then uses SortedList's insert function to insert in linkedlist
-			table[hashingFunction(newEntry.getKey())].insert(newEntry);	//insert into table				
-			
-																		
+			table[hashingFunction(newEntry.getName())].insert(newEntry);	//insert into table	
+			count++;
+																	
 		}
 	}
 
@@ -48,7 +49,6 @@ HashedTable::HashedTable()
 
 void HashedTable::displayStats()
 {
-	int count = 0;
 	int largestProbes = 0;
 	int i = 0;
 	float loadFactor = 0.0;
@@ -83,7 +83,7 @@ void HashedTable::displayStats()
 		cout<<"index "<< indexofLargestProbes[i] <<": ";
 		table[indexofLargestProbes[i]].display();
 	}
-	cout<<endl<<"No collision: "<<noProbes<<" words"<<endl;
+	cout<<endl<<"No collision: "<<noProbes<<endl;
 }
 
 int HashedTable::hashingFunction(string key)
@@ -102,11 +102,11 @@ bool HashedTable::search(string entry)
 {
 	bool success = false;
 	int index;
-	DataRecord drEntry(entry);
-	DataRecord returnedEntry;
+	Food searchEntry(entry);
+	Food returnedEntry;
 	
 	index = hashingFunction(entry);
-	if( table[index].getEntry(drEntry, returnedEntry) )
+	if( table[index].getEntry(searchEntry, returnedEntry) )
 	{
 		success = true;
 		return success;

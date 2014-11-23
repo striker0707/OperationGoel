@@ -16,11 +16,12 @@ private:
 	float calories;
 	float gramsFat;
 	float cholesterol;
-    	float sodium;
-    	float protein;
+    float sodium;
+    float protein;
 public:
 	//Default Constructor
 	Food();
+	Food(string n);
 	//Copy Constructor
 	Food(const Food &obj);
 	//Constructor to create new foodobj

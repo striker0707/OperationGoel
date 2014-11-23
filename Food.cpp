@@ -10,6 +10,11 @@ Food::Food()
     protein = 0;
 }
 
+Food::Food(string n)
+{
+	name = n;
+}
+
 Food::Food(const Food &fobj)
 {
     name = fobj.getName();
@@ -20,6 +25,7 @@ Food::Food(const Food &fobj)
     protein = fobj.getProtein();
     
 }
+
 
 Food::Food(string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro)
 {
