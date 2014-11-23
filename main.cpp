@@ -12,7 +12,7 @@
 using namespace std;
 
 //function prototypes
-void writetoOutput(ofstream &stream, HashTable<Food> hobj);
+void writetoOutput(ofstream &stream, HashTable<string,Food> hobj);
 
 //void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
@@ -23,12 +23,12 @@ int main()
 	float cal, gfat, chol, sodi, prot;
     ifstream inputFile;
 	ofstream outputFile;
-	HashTable<Food> hashedTable;
+	HashTable<string,Food> hashedTable;
 	
 	bool openinputFile(ifstream &inputFile);
 	bool openoutputFile(ofstream &outputFile);
   
-    if (openinputFile(inputFile)==false || openoutputFile(outputFile)==false)       // Checks if both output and input are false
+    if (openinputFile(inputFile) == false || openoutputFile(outputFile) == false)       // Checks if both output and input are false
     {
         cout << "Unable to open input file" << endl;                      // If false, prints an error message
         cout << "Ending Program" << endl;
@@ -41,8 +41,8 @@ int main()
 
     while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
 	{
-		Food(fname, cal, gfat, chol, sodi, prot);
-		
+		Food newFood = Food(fname, cal, gfat, chol, sodi, prot);
+		hashedTable.insert(newFood, fname); //fname can be changed to any other attribute to be placed into hashtable
 	}
   
   
@@ -152,7 +152,7 @@ bool openoutputFile (ofstream &outputFile)
 
 
 // This function is to print the payment table
-void printToOutput(ofstream &dataFile, HashTable<Food> hobj)
+void printToOutput(ofstream &dataFile, HashTable<string,Food> hobj)
 {
     //This will ultimately depend on how the hashtable is made and used. Will be updated laters
  	/*dataFile << hobj;*/
