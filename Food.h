@@ -18,7 +18,8 @@ private:
 	float cholesterol;
     float sodium;
     float protein;
-    float sortKey;
+    /* sortKey is used by BST to sort BST based on one of the attributes above */
+	float sortKey;
 public:
 	//Default Constructor
 	Food();
