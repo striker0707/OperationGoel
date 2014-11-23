@@ -19,11 +19,11 @@ class BSTNode
     public:
 		//Default constructor
 		BSTNode();
-		BSTNode(People inputperson);
+		BSTNode(Food inputfobj);
 		
 		//Getter and setter functions
 		void setfood(Food inputfobj);
-		Food getperson();
+		Food getfood();
     
 		BSTNode* getleftptr();
 		BSTNode* getrightptr();
