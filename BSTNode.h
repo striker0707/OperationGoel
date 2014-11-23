@@ -2,7 +2,7 @@
 #define __Lab3__Node__
 
 #include <stdio.h>
-#include "People.h"
+#include "Food.h"
 #include <iostream>
 #include <string>
 
@@ -12,7 +12,7 @@ class BSTNode
 {
 	//Declartion of variables
     private:
-		People personobj;
+		Food foodobj;
 		BSTNode* leftptr;
 		BSTNode* rightptr;
     
@@ -22,8 +22,8 @@ class BSTNode
 		BSTNode(People inputperson);
 		
 		//Getter and setter functions
-		void setperson(People inputpobj);
-		People getperson();
+		void setfood(Food inputfobj);
+		Food getperson();
     
 		BSTNode* getleftptr();
 		BSTNode* getrightptr();
