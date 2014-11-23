@@ -35,17 +35,19 @@ public:
 	}
 	bool insert(const ItemType& newEntry, const KeyType& key)
 	{
-		//calls hashingfunction first to get index
-		//then uses SortedList's insert function to insert in linkedlist
-		table[hashingFunction(key)].insert(newEntry);
+		int i;
+		i = hashingFunction(key);
+		table[i].insert(newEntry);
 
 		return true;
 	}
 	bool remove(const KeyType& key)
 	{
-		if(contains(key))
+		int i;
+		i = hashingFunction(key);
+		if(table[i].get)
 		{
-			table[hashingFunction(key)].remove();
+			table[i].remove();
 			return true;
 		}
 
@@ -55,18 +57,19 @@ public:
 	bool contains(const KeyType& sKey)
 	{
 		bool success = false;
-		int index;
-		DataRecord drEntry(entry);
-		DataRecord returnedEntry;
 	
-		index = hashingFunction(entry);
-		if( table[index].getEntry(drEntry, returnedEntry) )
-		{
-			success = true;
-			return success;
-		}
 
 		return success;
+	}
+	bool getItem(const KeyType& sKey, ItemType& foundItem)
+	{
+		ItemType targetKey = ItemType(skey);
+		int i = hashingFunction(skey);
+		if(table[i].getEntry(targetKey,foundItem))
+		{
+			return true;
+		}
+		return false;
 	}
 	void displayStats()
 	{
