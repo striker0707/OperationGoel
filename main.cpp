@@ -12,7 +12,7 @@
 using namespace std;
 
 //function prototypes
-void writetoOutput(ofstream &stream, HashTable<string,Food> hobj);
+//void writetoOutput(ofstream &stream, HashTable<string,Food> hobj);
 
 //void printToOutput(ofstream &outputFile, Hashtable hashtableobj); // Need hashtable obj that we will print out our memory to outputfile
 void menu();
@@ -49,7 +49,7 @@ int main()
   
     menu();
     
-    writetoOutput(outputFile, hashedTable);
+    //writetoOutput(outputFile, hashedTable);
 	
     inputFile.close();      // Closes input file
     outputFile.close();     // Closes output file
