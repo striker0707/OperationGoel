@@ -54,6 +54,25 @@ int main()
     inputFile.close();      // Closes input file
     outputFile.close();     // Closes output file
 
+	/** BST ///////////////////////////////////////////////////
+	
+	node<food> current;
+	SortedList<food> foodDB;
+	ostream os(foodfile)
+
+	while (!foodfile.eof)
+		pull food data into linkedlist
+
+	BinarySearchTree<food> bst;
+
+	current = foodDB.getHead;
+
+	while(not end of linkedlist)
+		current.getItem().setSortKey(current.getItem().getAttribute()) //get attribute is whatever we want to sort bst by
+		bst.insert(current.getItem())
+		current = current->getNext();
+
+	/////////////////////////////////////////////////////////*/
 
   
     system("pause");//close database
