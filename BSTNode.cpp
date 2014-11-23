@@ -18,15 +18,15 @@ BSTNode::BSTNode()
     rightptr = nullptr;
 }
 
-BSTNode::BSTNode(People inputfoodobj)
+BSTNode::BSTNode(Food inputfobj)
 {
-    foodobj = inputfoodobj;
+    foodobj = inputfobj;
     leftptr = nullptr;
     rightptr =  nullptr;
 }
 
 //Getter and setter functions
-void BSTNode::setperson(Food inputfobj)
+void BSTNode::setfood(Food inputfobj)
 {
     foodobj = inputfobj;
 }
