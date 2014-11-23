@@ -8,28 +8,32 @@ using namespace std;
 //Constructors
 BSTNode::BSTNode()
 {
-    personobj.setpname("0");
-    personobj.setDOB("0");
+    foodobj.setName(" ");
+    foodobj.setCalories(0);
+    foodobj.setGramsFat(0);
+    foodobj.setCholesterol(0);
+    foodobj.setSodium(0);
+    foodobj.setProtein(0);
     leftptr = nullptr;
     rightptr = nullptr;
 }
 
-BSTNode::BSTNode(People inputperson)
+BSTNode::BSTNode(People inputfoodobj)
 {
-    personobj = inputperson;
+    foodobj = inputfoodobj;
     leftptr = nullptr;
     rightptr =  nullptr;
 }
 
 //Getter and setter functions
-void BSTNode::setperson(People inputpobj)
+void BSTNode::setperson(Food inputfobj)
 {
-    personobj = inputpobj;
+    foodobj = inputfobj;
 }
 
-People BSTNode::getperson()
+Food BSTNode::getfood()
 {
-    return personobj;
+    return foodobj;
 }
 
 BSTNode* BSTNode::getrightptr()
@@ -42,12 +46,12 @@ BSTNode* BSTNode::getleftptr()
     return leftptr;
 }
 
-void BSTNode::setrightptr(Node* inputrptr)
+void BSTNode::setrightptr(BSTNode* inputrptr)
 {
     rightptr = inputrptr;
 }
 
-void BSTNode::setleftptr(Node* inputlptr)
+void BSTNode::setleftptr(BSTNode* inputlptr)
 {
     leftptr = inputlptr;
 }
@@ -55,8 +59,8 @@ void BSTNode::setleftptr(Node* inputlptr)
 //Print method
 string BSTNode::print() const
 {
-    string output = personobj.getpname() + ": " + personobj.getDOB();
-    output += " left:" + ((leftptr != nullptr) ? leftptr->getperson().getpname() : "nullptr");
-    output += " right:" + ((rightptr != nullptr) ? rightptr->getperson().getpname() : "nullptr");
+    string output = foodobj.getName();
+    output += " left:" + ((leftptr != nullptr) ? leftptr->getfood().getName() : "nullptr");
+    output += " right:" + ((rightptr != nullptr) ? rightptr->getfood().getName() : "nullptr");
     return output;
 }
