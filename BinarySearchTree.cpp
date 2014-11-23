@@ -31,7 +31,7 @@ bool BinarySearchTree::search(People pobj)
 }
 
 //searchHelper method
-bool BinarySearchTree::searchHelper(Node* n, People pobj)
+bool BinarySearchTree::searchHelper(BSTNode* n, People pobj)
 {
 	//If the located node is empty, return null
     if (n == nullptr)
@@ -76,7 +76,7 @@ bool BinarySearchTree::add(People pobj)
 }
 
 //AddHelpher method
-bool BinarySearchTree::addHelper(Node* n, Node* newNode)
+bool BinarySearchTree::addHelper(BSTNode* n, BSTNode* newNode)
 {
 	//If new node is suppose to be added to the left
     if((newNode->getperson().getsortkey()) < (n->getperson().getsortkey()))
@@ -131,7 +131,7 @@ void BinarySearchTree::postorder(ostream& stream)
     }
 }
 
-void BinarySearchTree::postorderHelper(Node *n, ostream& stream)
+void BinarySearchTree::postorderHelper(BSTNode *n, ostream& stream)
 {
 	//As long as n is not a nullptr
     if (n != nullptr)
@@ -156,7 +156,7 @@ void BinarySearchTree::inorder(ostream& stream)
     }
 }
 
-void BinarySearchTree::inorderHelper(Node* n, ostream& stream)
+void BinarySearchTree::inorderHelper(BSTNode* n, ostream& stream)
 {
     if(n != nullptr)
     {
@@ -188,7 +188,7 @@ bool BinarySearchTree::remove(const People& pobj)
 }
 
 //RemoveHelpher
-bool BinarySearchTree::removeHelper(Node* n, const People& pobj)
+bool BinarySearchTree::removeHelper(BSTNode* n, const People& pobj)
 {
 	//If the remove node is located to the left
     if(pobj.getsortkey() < (n->getperson().getsortkey()))
@@ -254,7 +254,7 @@ bool BinarySearchTree::removeHelper(Node* n, const People& pobj)
     }
 }
     
-Node* BinarySearchTree::removeNode(Node* n)
+Node* BinarySearchTree::removeNode(BSTNode* n)
 {
     //In the case of a leaf node
    if(n->getleftptr() == nullptr && n->getrightptr() == nullptr)
