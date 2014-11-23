@@ -55,8 +55,11 @@ bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 			headPtr = newNodePtr;
 	}
 	else
+	{
 	//if inserting at the end of the list
+		prev->setNext(newNodePtr);
 		newNodePtr->setNext(0);
+	}
 
 	itemCount++;
 	return true;
@@ -74,7 +77,7 @@ bool SortedList<ItemType>::remove(const ItemType& anEntry)
 
 	while( currentPtr != 0 )
 	{
-		if( currentPtr->getItem == anEntry() )
+		if( currentPtr->getItem() == anEntry )
 		{
 			ptrToDelete = currentPtr;
 			if( prev != 0 )
