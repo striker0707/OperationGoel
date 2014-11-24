@@ -84,7 +84,7 @@ public:
 		int i = 0;
 		float loadFactor = 0.0;
 		int noProbes = 0;
-		int averageProbes;
+		int averageProbes = -1;
 		vector<int> indexofLargestProbes;	//holds the index values of the elements with largest number of probes
 		vector<int> probeCountofEachIndex;	//holds the number of probes in each index
 		
@@ -129,7 +129,7 @@ public:
 		for( i = 0; i < probeCountofEachIndex.size(); i++)
 		{
 			averageProbes =+ probeCountofEachIndex[i];
-			averageProbes =/ occupiedIndexes;
+			averageProbes /= occupiedIndexes;
 		}
 
 		cout << "There are currently " << count <<" items." << endl;
