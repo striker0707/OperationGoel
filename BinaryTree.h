@@ -186,14 +186,16 @@ template<class ItemType>
 void BinaryTree<ItemType>::breadthfirst(void visit(ItemType &)) const
 {
 	queue<BinaryNode<ItemType>*> q;
+	ItemType item;
 
 	if(rootPtr != 0)
 		q.push(rootPtr);
 	
 	while (!q.empty())
 	{
+		item = q.front()->getItem();
+		visit(item);
 		cout << q.front()->getItem() << endl;
-		visit(q.front()->getItem());
 		if(q.front()->getLeftPtr() != 0)
 			q.push(q.front()->getLeftPtr());
 		if(q.front()->getRightPtr() != 0)
