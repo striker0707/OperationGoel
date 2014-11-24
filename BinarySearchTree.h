@@ -236,9 +236,10 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemT
 		return nodePtr;
 	else
 	{
-		_indentedTree(nodePtr->getLeftPtr(), indent + "	");
-		cout << indent <<"|"<< nodePtr->getItem() <<"|"<< endl;
 		_indentedTree(nodePtr->getRightPtr(), indent + "	");
+		cout << indent <<"|"<< nodePtr->getItem() <<"|"<< endl;
+		_indentedTree(nodePtr->getLeftPtr(), indent + "	");
+		
 		return nodePtr;
 	}
 }
