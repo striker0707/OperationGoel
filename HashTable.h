@@ -101,8 +101,8 @@ public:
 			/** Tracks probe count of each index */
 			if( table[i].size() != 0 && table[i].size() > 1 )
 			{
-				cout << "Index:	"<< i <<" Probes:	"<< table[i].size() << endl;
-				probeCountofEachIndex.push_back(table[i].size());
+				cout << "Index:	"<< i <<" Probes:	"<< table[i].size()-1 << endl;
+				probeCountofEachIndex.push_back(table[i].size()-1);
 			}
 
 			/** Determines how many indexes are occupied */
@@ -117,16 +117,20 @@ public:
 			if( table[i].size() != 0 && table[i].size() == 1)
 				noProbes++;
 		}
+		
+		///** Stores indexes equal to the greatest number of probes in vector for later printing */
+		//for( i = 0; i < MAX; i++ )
+		//{
+		//	if( (table[i].size()-1) == largestProbes )
+		//			indexofLargestProbes.push_back(i);
+		//}
 
 		/** Calculates average amount of probes */
-		/** Stores indexes equal to the greatest number of probes in vector for later printing */
+
 		for( i = 0; i < probeCountofEachIndex.size(); i++)
 		{
 			averageProbes =+ probeCountofEachIndex[i];
 			averageProbes =/ occupiedIndexes;
-
-			if( (probeCountofEachIndex) == largestProbes )
-				indexofLargestProbes.push_back(i);
 		}
 
 		cout << "There are currently" << count <<" items." << endl;
@@ -135,14 +139,14 @@ public:
 		cout << "Load factor: "<< loadFactor << "%" << endl << endl;
 		cout << endl <<"Average amount of probes: " << averageProbes << endl;
 		cout << endl <<"Number of indexes with no collisions: "<< noProbes << endl;
-		cout << endl <<"Max number of probes is " << largestProbes << ", at index locations:" < <endl <<endl;
-	
-		/** Prints indexes that have largest amount of Probes */
-		for( i = 0; i < indexofLargestProbes.size(); i++ )
-		{
-			cout<<"index "<< indexofLargestProbes[i] <<": ";
-			table[indexofLargestProbes[i]].display();
-		}
+		cout << endl <<"Largest number of probes is " << largestProbes << endl;
+		//cout << endl <<"Max number of probes is " << largestProbes << ", at index locations:" < <endl <<endl;
+		///** Prints indexes that have largest amount of Probes */
+		//for( i = 0; i < indexofLargestProbes.size(); i++ )
+		//{
+		//	cout<<"index "<< indexofLargestProbes[i] <<": ";
+		//	table[indexofLargestProbes[i]].display();
+		//}
 
 		return true;
 	}
