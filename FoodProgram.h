@@ -14,13 +14,14 @@ using namespace std;
 class FoodProgram
 {
 private:
-	SortedList<Food> fDB;
+	SortedList<Food*> fDB;
 	HashTable<string, Food*> fHT;
+	BinarySearchTree<Food*> fBST;
 	string fileName;
 public:
 	/** Intializes fDB and fHT */
 	FoodProgram();
-	/** Parses food file and inputs into fDB */
+	/** Parses food file and inputs into fDB, fHT, fBST */
 	FoodProgram(string filename);
 	/** Saves any changes made to fDB to file */
 	~FoodProgram();
@@ -28,9 +29,9 @@ public:
 	void menu() const;
 	/** Accepts option and builds BST from fDB sorted by said option */
 	bool buildBST(int option);
-	/** Inserts new entries into fDB */
+	/** Inserts new entries into fDB, fHT, fBST */
 	bool insert(string newEntry);
-	/** Removes entries from fDB */
+	/** Removes entries from fDB, fHT, fBST */
 	bool remove(string targetEntry);
 
 };
