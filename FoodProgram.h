@@ -1,6 +1,7 @@
 #ifndef _FOOD_PROGRAM
 #define _FOOD_PROGRAM
 
+#include <iostream>
 #include <string>
 #include "SortedList.h"
 #include "Food.h"
