@@ -17,7 +17,7 @@ class HashTable
 {
 private:
 	SortedList<ItemType> table[MAX];
-	float sizeofArray;
+	float occupiedIndexes;
 	int count;
 	
 	
@@ -25,7 +25,7 @@ public:
 	HashTable()
 	{
 		count = 0;
-		sizeofArray = 0;
+		occupiedIndexes = 0;
 	}
 	bool isEmpty()
 	{
@@ -66,7 +66,6 @@ public:
 	{
 		bool success = false;
 	
-
 		return success;
 	}
 	bool getItem(const KeyType& sKey, ItemType& foundItem)
@@ -86,40 +85,62 @@ public:
 		float loadFactor = 0.0;
 		int noProbes = 0;
 		vector<int> indexofLargestProbes;	//holds the index values of the elements with largest number of probes
+		vector<int> probeCountofEachIndex;	//holds the number of probes in each index
 	
-		for( i = 0; i < MAX; i++ )	//walking the hashedtable array
+		/** Determines the largest amount of collisions found in HT */
+		for( i = 0; i < MAX; i++ )
 		{
 			count += table[i].size();
-			if(!table[i].isEmpty())
-				sizeofArray++;
-			if( (table[i].size()-1) > largestProbes )	//Determining the largest number of probes in the hashedtable
+			if(table[i].size() != 0)
+				occupiedIndexes++;
+			if( (table[i].size()-1) > largestProbes )
 				largestProbes = table[i].size()-1;
 		}
 
 		cout << "There are "<<count<<" foods in this database." << endl;
-		cout << "The size of the database is " << sizeofArray <<endl;
-		loadFactor = (sizeofArray/MAX)*100;
-		cout << "Load factor is "<< loadFactor << "%" << endl <<endl;
+		cout << "The size of the database is " << sizeofArray << endl;
+		loadFactor = (occupiedIndexes/MAX)*100;
+		cout << "Load factor is "<< loadFactor << "%" << endl << endl;
 		cout << "Collisions: " << endl <<endl;
 	
+		/** Walking whole table */
 		for(i = 0; i < MAX; i++)
 		{
-			if( !table[i].isEmpty() && table[i].size() > 1 )	//If index is not empty and linked list inside index is larger than 1 key, than output probes
+			/** Prints to screen indexes which have collisions */
+			/** Tracks probe count of each index */
+			if( table[i].size() != 0 && table[i].size() > 1 )
+			{
 				cout << "Index:	"<< i <<" Probes:	"<< table[i].size() << endl;
-			if( !table[i].isEmpty() && table[i].size() == 1)	//if index is not empty and size of linked list is 1, then increment noProbe count.
+				probeCountofEachIndex.push_back(table[i].size());
+			}
+			/** Tracks all indexes with no collisions */
+			if( table[i].size() != 0 && table[i].size() == 1)
 				noProbes++;
-			if( (table[i].size() - 1) == largestProbes )	//if element's probes is equal to largest number of probes. Than store index in vector for later printing.
+			
+			/** Stores indexes equal to the greatest number of probes in vector for later printing */
+			if( (table[i].size() - 1) == largestProbes )
 				indexofLargestProbes.push_back(i);
+
 		}
 
-		cout << endl <<"Max number of probes is " << largestProbes << ", at:" < <endl <<endl;
+		cout << endl <<"Max number of probes is " << largestProbes << ", at index locations:" < <endl <<endl;
 	
-		for( i = 0; i<indexofLargestProbes.size(); i++ )
+		/** Prints indexes that have largest amount of Probes */
+		for( i = 0; i < indexofLargestProbes.size(); i++ )
 		{
 			cout<<"index "<< indexofLargestProbes[i] <<": ";
 			table[indexofLargestProbes[i]].display();
 		}
-		cout<<endl<<"No collisions: "<<noProbes<<endl;
+
+		/** Calculates average amount of probes */
+		for( i = 0; i < probeCountofEachIndex.size(); i++)
+		{
+			averageProbes =+ probeCountofEachIndex[i];
+			averageProbes =/ occupiedIndexes;
+		}
+
+		cout << endl <<"Average amount of probes is " << averageProbes << endl;
+		cout << endl <<"Number of indexes with no collisions: "<< noProbes << endl;
 
 	}
 	int hashingFunction(const KeyType key)
