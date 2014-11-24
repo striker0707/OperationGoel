@@ -84,6 +84,7 @@ public:
 		int i = 0;
 		float loadFactor = 0.0;
 		int noProbes = 0;
+		int averageProbes;
 		vector<int> indexofLargestProbes;	//holds the index values of the elements with largest number of probes
 		vector<int> probeCountofEachIndex;	//holds the number of probes in each index
 		
@@ -94,8 +95,6 @@ public:
 		/** Walking whole table and making stats*/
 		for(i = 0; i < MAX; i++)
 		{			
-			/** Number of Entries */
-			count += table[i].size();
 
 			/** Prints to screen indexes which have collisions */
 			/** Tracks probe count of each index */
@@ -133,8 +132,8 @@ public:
 			averageProbes =/ occupiedIndexes;
 		}
 
-		cout << "There are currently" << count <<" items." << endl;
-		cout << "Number of the occupied indexes:" << sizeofArray << endl;
+		cout << "There are currently " << count <<" items." << endl;
+		cout << "Number of the occupied indexes: " << occupiedIndexes << endl;
 		loadFactor = (occupiedIndexes/MAX)*100;
 		cout << "Load factor: "<< loadFactor << "%" << endl << endl;
 		cout << endl <<"Average amount of probes: " << averageProbes << endl;
