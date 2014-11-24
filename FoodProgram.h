@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/** Change what you need to get it to work. Need to have all menu functions implemented */
 class FoodProgram
 {
 private:
@@ -17,6 +18,7 @@ private:
 	HashTable<string, Food*> fHT;
 	string fileName;
 public:
+	/** Intializes fDB and fHT */
 	FoodProgram();
 	/** Parses food file and inputs into fDB */
 	FoodProgram(string filename);
