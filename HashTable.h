@@ -78,7 +78,7 @@ public:
 		}
 		return false;
 	}
-	void displayStats()
+	bool displayStats()
 	{
 		int largestProbes = 0;
 		int i = 0;
@@ -86,26 +86,17 @@ public:
 		int noProbes = 0;
 		vector<int> indexofLargestProbes;	//holds the index values of the elements with largest number of probes
 		vector<int> probeCountofEachIndex;	//holds the number of probes in each index
-	
-		/** Determines the largest amount of collisions found in HT */
-		for( i = 0; i < MAX; i++ )
-		{
-			count += table[i].size();
-			if(table[i].size() != 0)
-				occupiedIndexes++;
-			if( (table[i].size()-1) > largestProbes )
-				largestProbes = table[i].size()-1;
-		}
+		
+		if(count == 0)
+			return false;
 
-		cout << "There are "<<count<<" foods in this database." << endl;
-		cout << "The size of the database is " << sizeofArray << endl;
-		loadFactor = (occupiedIndexes/MAX)*100;
-		cout << "Load factor is "<< loadFactor << "%" << endl << endl;
-		cout << "Collisions: " << endl <<endl;
-	
-		/** Walking whole table */
+		cout << "Collisions at: " << endl << endl;
+		/** Walking whole table and making stats*/
 		for(i = 0; i < MAX; i++)
-		{
+		{			
+			/** Number of Entries */
+			count += table[i].size();
+
 			/** Prints to screen indexes which have collisions */
 			/** Tracks probe count of each index */
 			if( table[i].size() != 0 && table[i].size() > 1 )
@@ -113,16 +104,37 @@ public:
 				cout << "Index:	"<< i <<" Probes:	"<< table[i].size() << endl;
 				probeCountofEachIndex.push_back(table[i].size());
 			}
+
+			/** Determines how many indexes are occupied */
+			if(table[i].size() != 0)
+				occupiedIndexes++;
+
+			/** Determines the largest amount of collisions found in HT */
+			if( (table[i].size()-1) > largestProbes )
+				largestProbes = table[i].size()-1;
+
 			/** Tracks all indexes with no collisions */
 			if( table[i].size() != 0 && table[i].size() == 1)
 				noProbes++;
-			
-			/** Stores indexes equal to the greatest number of probes in vector for later printing */
-			if( (table[i].size() - 1) == largestProbes )
-				indexofLargestProbes.push_back(i);
-
 		}
 
+		/** Calculates average amount of probes */
+		/** Stores indexes equal to the greatest number of probes in vector for later printing */
+		for( i = 0; i < probeCountofEachIndex.size(); i++)
+		{
+			averageProbes =+ probeCountofEachIndex[i];
+			averageProbes =/ occupiedIndexes;
+
+			if( (probeCountofEachIndex) == largestProbes )
+				indexofLargestProbes.push_back(i);
+		}
+
+		cout << "There are currently" << count <<" items." << endl;
+		cout << "Number of the occupied indexes:" << sizeofArray << endl;
+		loadFactor = (occupiedIndexes/MAX)*100;
+		cout << "Load factor: "<< loadFactor << "%" << endl << endl;
+		cout << endl <<"Average amount of probes: " << averageProbes << endl;
+		cout << endl <<"Number of indexes with no collisions: "<< noProbes << endl;
 		cout << endl <<"Max number of probes is " << largestProbes << ", at index locations:" < <endl <<endl;
 	
 		/** Prints indexes that have largest amount of Probes */
@@ -132,16 +144,7 @@ public:
 			table[indexofLargestProbes[i]].display();
 		}
 
-		/** Calculates average amount of probes */
-		for( i = 0; i < probeCountofEachIndex.size(); i++)
-		{
-			averageProbes =+ probeCountofEachIndex[i];
-			averageProbes =/ occupiedIndexes;
-		}
-
-		cout << endl <<"Average amount of probes is " << averageProbes << endl;
-		cout << endl <<"Number of indexes with no collisions: "<< noProbes << endl;
-
+		return true;
 	}
 	int hashingFunction(const KeyType key)
 	{
