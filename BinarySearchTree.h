@@ -1,4 +1,4 @@
-// Binary Search Tree ADT
+/// Binary Search Tree ADT
 
 #ifndef _BINARY_SEARCH_TREE
 #define _BINARY_SEARCH_TREE
@@ -34,7 +34,7 @@ public:
 	// insert a node at the correct location
     bool insert(const ItemType & newEntry);
 	// remove a node if found
-	bool remove(const ItemType & anEntry);
+	void remove( ItemType target);
 	// find a target node
 	bool getEntry(const ItemType & target, ItemType & returnedItem) const;
 	// update data
@@ -59,12 +59,125 @@ bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry)
 }  
 
 template<class ItemType>
-bool BinarySearchTree<ItemType>::remove(const ItemType & target)
+void BinarySearchTree<ItemType>::remove( ItemType target )
 {
-	bool isSuccessful = false;
-	rootPtr = _remove(rootPtr, target, isSuccessful);
-	count--;
-	return isSuccessful; 
+	//bool isSuccessful = false;
+	//rootPtr = _remove(rootPtr, target, isSuccessful);
+	//count--;
+	//return isSuccessful; 
+	/* Pre: a name
+	Post: node with the given name is removed from the tree and pointers are rebound
+	Return: none */
+	BinaryNode<ItemType>* current;
+	current = rootPtr;
+	BinaryNode<ItemType>* parent = 0;
+	while (*current->getItem() != *target) //traverse tree and search for name
+	{
+		parent = current;
+		if (*target > *current->getItem())
+		{
+			current = current->getRightPtr();
+		}
+		else
+		{
+			current = current->getLeftPtr();
+		}
+		if (current == 0)//if we never find the name
+		{
+			cout << "No entry by that name exists." << endl;
+			return;
+		}
+	}
+	//removing leaf node
+	if (current->getLeftPtr() == 0 && current->getRightPtr() == 0)
+	{
+		if (parent->getLeftPtr() == current)
+		{
+			parent->setLeftPtr(0);
+		}
+		else
+		{
+			parent->setRightPtr(0);
+		}
+		delete current;
+		cout << "Entry deleted (by Name). (Leaf)" << endl;
+		return;
+	}
+	//case: has left child but no right child
+	if ((current->getLeftPtr() != 0) && (current->getRightPtr() == 0))
+	{
+		if (parent->getLeftPtr() == current)
+		{
+			parent->setLeftPtr(current->getLeftPtr());
+			delete current;
+		}
+		else
+		{
+			parent->setRightPtr(current->getLeftPtr());
+			delete current;
+		}
+		cout << "Entry deleted (by Name). (Left Child)" << endl;
+		return;
+	}
+	//case: has right child but no left child
+	if ((current->getLeftPtr() == 0) && (current->getRightPtr() != 0))
+	{
+		if (parent->getLeftPtr() == current)
+		{
+			parent->setLeftPtr(current->getRightPtr());
+			delete current;
+		}
+		else
+		{
+			parent->setRightPtr(current->getRightPtr());
+			delete current;
+		}
+		cout << "Entry deleted (by Name). (Right Child)" << endl;
+		return;
+	}
+	//case: has 2 children
+	//logic: when we delete a node, replace it with the smallest value in
+	// the right subtree of the node we are deleting then delete
+	// that node
+	if ((current->getLeftPtr() != 0) && (current->getRightPtr() != 0))
+	{
+		BinaryNode<ItemType>* check;
+		check = current->getRightPtr();
+		//if right node is a leaf, replace current node with it and set right node to 0
+		if ((check->getLeftPtr() == 0) && (check->getRightPtr() == 0))
+		{
+			current->setItem(check->getItem());
+			delete check;
+			current->setRightPtr(0);
+		}
+		else //traverse right side to find smallest element if right node has left child
+		{
+			if (current->getRightPtr()->getLeftPtr() != 0)
+			{
+				//new reference pointers not to be confused with initial parent/current pointers,
+				//which will allow us to travers the tree further
+				BinaryNode<ItemType>* parent2 = current->getRightPtr();
+				BinaryNode<ItemType>* current2 = current->getRightPtr()->getLeftPtr();
+				while (current2->getLeftPtr() != 0)//find smallest element in the subtree
+				{
+					parent2 = current2;
+					current2 = current2->getLeftPtr();
+				}
+				current->setItem(current2->getItem()); //replacing node (see logic above)
+				delete current2;
+				parent2->setLeftPtr(0); //delete node we used to replace the node we wanted to deleted
+			}
+			else //if nothing on the left of subtree
+			{
+				BinaryNode<ItemType>* temp = current->getRightPtr();
+				current->setItem(temp->getItem());
+				current->setRightPtr(temp->getRightPtr());
+				delete temp;
+			}
+		}
+		cout << "Entry deleted (by Name). (2 Children)" << endl;
+		return;
+	}
 }  
 
 template<class ItemType>
@@ -142,24 +255,39 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_insert(BinaryNode<ItemType>* 
 
 }  
 
+
 template<class ItemType>
 BinaryNode<ItemType>* BinarySearchTree<ItemType>::_remove(BinaryNode<ItemType>* nodePtr,
                                                           const ItemType target, bool & success)
 {
-	if (nodePtr == 0)                   
-	{
-		success = false;
-		return 0;
-	}
-	if (nodePtr->getItem() > target)		 
-		nodePtr->setLeftPtr(_remove(nodePtr->getLeftPtr(), target, success));
-	else if (nodePtr->getItem() < target)	 
-		nodePtr->setRightPtr(_remove(nodePtr->getRightPtr(), target, success));
-	else		
-	{
-		nodePtr = deleteNode(nodePtr);
-		success = true;
-	}      
+	//BinaryNode<ItemType> prev = new BinaryNode<Item>()
+	//prev = 0;
+	//if (nodePtr == 0)                   
+	//{
+	//	success = false;
+	//	return 0;
+	//}
+
+	//else if (*nodePtr->getItem() == *target)
+	//{
+	//	nodePtr = deleteNode(nodePtr);
+	//	prev->set
+	//	success = true;
+
+
+	//	return 0;
+	//}
+
+	//else
+	//{
+	//	prev = nodePtr;
+	//	if (*nodePtr->getItem() > *target)		 
+	//		nodePtr->setLeftPtr(_remove(nodePtr->getLeftPtr(), target, success));
+	//	else if (*nodePtr->getItem() < *target)	 
+	//		nodePtr->setRightPtr(_remove(nodePtr->getRightPtr(), target, success));   
+	//}
+
+
 	return nodePtr;   
 }  
 
@@ -237,9 +365,8 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemT
 	else
 	{
 		_indentedTree(nodePtr->getRightPtr(), indent + "	");
-		cout << indent <<"|"<< nodePtr->getItem() <<"|"<< endl;
+		cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
 		_indentedTree(nodePtr->getLeftPtr(), indent + "	");
-		
 		return nodePtr;
 	}
 }
