@@ -16,6 +16,9 @@ void printToOutput(ofstream &outputFile, HashTable<string,Food> hobj); // Need h
 
 int main()
 {
+	SortedList<Food*> fDB;
+	HashTable<string, Food*> fHT;
+	BinarySearchTree<Food*> fBST;
 	char choice;
 	string fname;
 	float cal, gfat, chol, sodi, prot;
@@ -40,8 +43,10 @@ int main()
     while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
 	{
 		Food newFood = new Food(fname, cal, gfat, chol, sodi, prot);
-		//hashedTable.insertTHEMEMORYADDRESS
+		//linked list add
 	}
+    
+    //build hashtable/bst using linked list
     
     //printToOutput(outputFile, hashedTable);
 	while(choice != 9)
