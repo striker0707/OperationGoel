@@ -35,7 +35,7 @@ bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 		return true;
 	}
 
-	while(currentPtr != 0 && currentPtr->getItem() < newEntry) 
+	while(currentPtr != 0 && *currentPtr->getItem() < *newNodePtr->getItem()) 
 	//walks through list till the end or where data needs to be added, pointers get set to prepare for data insertion
 	{
 		prev = currentPtr;
@@ -52,6 +52,8 @@ bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 		else
 		//else the new data is the head
 			headPtr = newNodePtr;
+
+
 	}
 	else
 	{
@@ -76,7 +78,9 @@ bool SortedList<ItemType>::remove(const ItemType& anEntry)
 
 	while( currentPtr != 0 )
 	{
-		if( currentPtr->getItem() == anEntry )
+
+		const ItemType item = currentPtr->getItem();
+		if( *item == *anEntry)
 		{
 			ptrToDelete = currentPtr;
 			if( prev != 0 )
@@ -102,10 +106,10 @@ bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) 
 	while(currentPtr != 0 && found == false)
 	// walk list
 	{
-		if( currentPtr->getItem() == target )
+		if( *currentPtr->getItem() == *target )
 		//need to overload "==" operator
 		{
-			returnedEntry = currentPtr->getItem();
+			*returnedEntry = *currentPtr->getItem();
 			found = true;
 		}
 		currentPtr = currentPtr->getNext();
@@ -114,3 +118,4 @@ bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) 
 }
 
 #endif 
+
