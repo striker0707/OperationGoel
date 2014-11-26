@@ -31,7 +31,7 @@ public:
 
 	// abstract functions to be implemented by derived class
 	virtual bool insert(const ItemType & newData) = 0; 
-	virtual bool remove(const ItemType & data) = 0; 
+	virtual void remove( ItemType target) = 0;
 	virtual bool getEntry(const ItemType & anEntry, ItemType & returnedItem) const = 0;
 
 private:   
@@ -195,7 +195,6 @@ void BinaryTree<ItemType>::breadthfirst(void visit(ItemType &)) const
 	{
 		item = q.front()->getItem();
 		visit(item);
-		cout << q.front()->getItem() << endl;
 		if(q.front()->getLeftPtr() != 0)
 			q.push(q.front()->getLeftPtr());
 		if(q.front()->getRightPtr() != 0)
