@@ -38,8 +38,8 @@ int main()
 
     while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
 	{
-		Food newFood = Food(fname, cal, gfat, chol, sodi, prot);
-		//hashedTable.insert
+		Food newFood = new Food(fname, cal, gfat, chol, sodi, prot);
+		//hashedTable.insertTHEMEMORYADDRESS
 	}
     
     //printToOutput(outputFile, hashedTable);
