@@ -248,7 +248,7 @@ bool FoodProgram::remove()
 
 	fDB.remove(&removeFood);
 	fBST.remove(&removeFood);
-	fHT.remove("iName");
+	fHT.remove(iName);
 
 	return true;
 }
