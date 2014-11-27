@@ -146,7 +146,7 @@ Food Food::operator - (const Food& aFood)
 ostream& operator << (ostream& foodPrint, const Food& aFood)
 {
 	//foodPrint << "Your total nutrition facts are:" << endl;
-	foodPrint << "Name: " << aFood.getName();/* << endl;*/
+	foodPrint /*<< "Name: "*/ << aFood.getName();/* << endl;*/
 	//foodPrint << "Fat: " << aFood.getGramsFat() << endl;
 	//foodPrint << "Cholesterol: " << aFood.getCholesterol() << endl;
 	//foodPrint << "Sodium: " << aFood.getSodium() << endl;

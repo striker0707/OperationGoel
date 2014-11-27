@@ -185,7 +185,7 @@ bool openoutputFile(ofstream &outputFile)
 bool FoodProgram::insert()
 {
 	string iname = "Elton";
-	float ical, igf, isod, ipro, ix;
+	/*float ical, igf, isod, ipro, ix;*/
 	//cout << "Hellos. pls add in calories, gramsfat, soidum, x, x,xprotei
 
 	Food* insertFood = new Food(iname, 60, 25, 0, 0, 0);
@@ -218,7 +218,7 @@ bool FoodProgram::Search(string key)
 	Food* fd = new Food();
 	if (fHT.contains(key, fd))
 	{
-		cout << fd;
+		fd->print(*fd);
 		return true;
 	}
 

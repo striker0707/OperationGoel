@@ -18,8 +18,6 @@ void print(char& c)
 
 int main()
 {
-	
-	char choice;
 	string fd = "Noodles";
 	string fc = "Noodles";
 
