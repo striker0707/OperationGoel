@@ -107,6 +107,11 @@ void Food::setProtein(float inputpro)
     protein = inputpro;
 }
 
+void Food::setSortKey(string skey)
+{
+	sortKey = skey;
+}
+
 void Food::print(Food& fd)
 {
 	cout << endl << fd.getName() << endl;

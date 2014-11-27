@@ -30,7 +30,7 @@ public:
 	void breadthfirst(void visit(ItemType &)) const;
 
 	// abstract functions to be implemented by derived class
-	virtual bool insert(const ItemType & newData) = 0; 
+	virtual bool insert(const ItemType & newEntry, BinaryNode<ItemType>* nodePtr) = 0; 
 	virtual void remove( ItemType target) = 0;
 	virtual bool getEntry(const ItemType & anEntry, ItemType & returnedItem) const = 0;
 

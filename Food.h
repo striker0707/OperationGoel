@@ -47,7 +47,8 @@ public:
 	void setCholesterol(float cholest);
 	void setSodium(float inputsodium);
 	void setProtein(float inputpro);
-	
+	void setSortKey(string skey);
+
 	//Prints attributes of food class
 	void print(Food& fd);
 	

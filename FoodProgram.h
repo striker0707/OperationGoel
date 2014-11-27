@@ -50,10 +50,6 @@ FoodProgram::FoodProgram()
 {
 	ifstream inputFile;
 	string fname;
-	float cal, gfat, chol, sodi, prot;
-	char ch;
-
-
 
 	bool openinputFile(ifstream &inputFile);
 
@@ -73,38 +69,40 @@ FoodProgram::FoodProgram()
 		Food* newFood = new Food();
 		Food food;
 
-		//dummy node stuff
+	//dummy node stuff
 	Food* dummy = new Food();
 	fDB.insert(dummy);
 	fBST.insert(dummy);
 
-		if(inputFile.is_open())
-			{
-			 while( getline(inputFile, buffer) )
-				{
-					stringstream ss(buffer);
+	if(inputFile.is_open())
+	{
+		while( getline(inputFile, buffer) )
+		{
+			stringstream ss(buffer);
   
-					getline(ss,ssbuffer, ',');
-					food.setName(ssbuffer);
-					getline(ss,ssbuffer, ',');
-					food.setCalories(stof(ssbuffer));
-					getline(ss,ssbuffer, ',');
-					food.setGramsF(stof(ssbuffer));
-					getline(ss,ssbuffer, ',');
-					food.setCholesterol(stof(ssbuffer));
-					getline(ss,ssbuffer, ',');
-					food.setSodium(stof(ssbuffer));
-					getline(ss,ssbuffer, ',');
-					food.setProtein(stof(ssbuffer));
+			getline(ss,ssbuffer, ',');
+			food.setName(ssbuffer);
+			food.setSortKey(ssbuffer);
+			getline(ss,ssbuffer, ',');
+			food.setCalories(stof(ssbuffer));
+			getline(ss,ssbuffer, ',');
+			food.setGramsF(stof(ssbuffer));
+			getline(ss,ssbuffer, ',');
+			food.setCholesterol(stof(ssbuffer));
+			getline(ss,ssbuffer, ',');
+			food.setSodium(stof(ssbuffer));
+			getline(ss,ssbuffer, ',');
+			food.setProtein(stof(ssbuffer));
+			
 
-					Food* newFood = new Food();
-					*newFood = food;
+			Food* newFood = new Food();
+			*newFood = food;
 
-					fDB.insert(newFood);
-					fHT.insert(newFood, newFood->getName());
-					fBST.insert(newFood);
-				}
-			}
+			fDB.insert(newFood);
+			fHT.insert(newFood, newFood->getName());
+			fBST.insert(newFood);
+		}
+	}
 
 }
 
