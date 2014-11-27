@@ -66,7 +66,6 @@ bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 	return true;
 }
 
-
 template<class ItemType>
 bool SortedList<ItemType>::remove(const ItemType& anEntry)
 {
@@ -116,5 +115,4 @@ bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) 
 	}
 	return found;
 }
-
 #endif 

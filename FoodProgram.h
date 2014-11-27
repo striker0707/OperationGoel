@@ -24,8 +24,6 @@ private:
 	HashTable<string, Food*> fHT;
 	BinarySearchTree<Food*> fBST;
 public:
-	ifstream inputFile;
-	ofstream outputFile;
 	/** Intializes fDB and fHT */
 	FoodProgram();
 	/** Parses food file and inputs into fDB */
@@ -49,13 +47,13 @@ public:
 
 FoodProgram::FoodProgram()
 {
+	ifstream inputFile;
 	string fname;
 	float cal, gfat, chol, sodi, prot;
 
 	bool openinputFile(ifstream &inputFile);
-	bool openoutputFile(ofstream &outputFile);
 
-	if (openinputFile(inputFile) == false || openoutputFile(outputFile) == false)       // Checks if both output and input are false
+	if (openinputFile(inputFile) == false)       // Checks if both output and input are false
 	{
 		cout << "Unable to open input file" << endl;                      // If false, prints an error message
 		cout << "Ending Program" << endl;
@@ -77,6 +75,7 @@ FoodProgram::FoodProgram()
 
 FoodProgram::~FoodProgram()
 {
+	fDB.printToFile("output.txt");
 	fDB.clear();
 	fBST.clear();
 	fHT.clear();

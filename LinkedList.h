@@ -4,6 +4,10 @@
 #define _LINKED_LIST
 
 #include "Node.h"
+#include <fstream>
+#include <string>
+
+using namespace std;
 
 template<class ItemType>
 class LinkedList 
@@ -27,8 +31,10 @@ public:
 	void clear();
 	// display list from front to end
 	void display() const;
+	bool printToFile(string outFile);
 	// abstract insert function
 	virtual bool insert(const ItemType& newEntry, int newPosition = 1) = 0;
+
 }; 
 
 #include "LinkedList.h"
@@ -111,5 +117,25 @@ void LinkedList<ItemType>::clear()
 	itemCount = 0;
 }
 
+template<class ItemType>
+bool LinkedList<ItemType>::printToFile(string outFile)
+{
+	ofstream out;
+	out.open(outFile);
+	Node<ItemType>* currPtr = headPtr;
+	if(this->isEmpty())
+		return false;
 
+	else
+	{
+		while (currPtr != 0)					// walk until end of list
+		{
+			out << *currPtr->getItem() << endl;
+			currPtr = currPtr->getNext();
+		}
+		return true;
+	}
+
+	out.close();
+}
 #endif 
