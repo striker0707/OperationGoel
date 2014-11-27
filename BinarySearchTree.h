@@ -366,8 +366,8 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemT
 		return nodePtr;
 	else
 	{
-		_indentedTree(nodePtr->getRightPtr(), indent + "\t");
 		cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
+		_indentedTree(nodePtr->getRightPtr(), indent + "\t");
 		_indentedTree(nodePtr->getLeftPtr(), indent + "\t");
 		return nodePtr;
 	}
