@@ -244,7 +244,7 @@ bool FoodProgram::remove()
 	string iName;
 	cout << "Name of food to remove: ";
 	cin >> iName;
-	Food removeFood("iName");
+	Food removeFood(iName);
 
 	fDB.remove(&removeFood);
 	fBST.remove(&removeFood);
