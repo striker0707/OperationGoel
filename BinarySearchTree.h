@@ -197,7 +197,8 @@ template<class ItemType>
 bool BinarySearchTree<ItemType>::update(bool updatedName, ItemType& target, ItemType& newData)
 {
 	BinaryNode<ItemType>* nodePtr;
-	if( nodePtr = findNode(rootPtr, target) )
+	nodePtr = findNode(rootPtr, target);
+	if( nodePtr )
 	{
 		if(updatedName)
 		{
@@ -209,8 +210,8 @@ bool BinarySearchTree<ItemType>::update(bool updatedName, ItemType& target, Item
 		
 		return true;
 	}
-	else
-		return false;
+	
+	return false;
 } 
 
 template<class ItemType>
@@ -365,9 +366,9 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemT
 		return nodePtr;
 	else
 	{
-		_indentedTree(nodePtr->getRightPtr(), indent + "	");
+		_indentedTree(nodePtr->getRightPtr(), indent + "/t");
 		cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
-		_indentedTree(nodePtr->getLeftPtr(), indent + "	");
+		_indentedTree(nodePtr->getLeftPtr(), indent + "/t");
 		return nodePtr;
 	}
 }

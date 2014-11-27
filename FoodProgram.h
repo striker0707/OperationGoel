@@ -47,9 +47,6 @@ public:
 
 #endif;
 
-/* Remember that all food data needs to be stored as dynamic memory in both the BST and HT */
-/* "As the records are read, they are placed in dynamic memory and the memory location (address) is then inserted" */
-
 FoodProgram::FoodProgram()
 {
 	string fname;
@@ -230,7 +227,7 @@ bool FoodProgram::insert()
 	cout << "Protein: ";
 	cin >> iPro; 
 
-	Food* insertFood = new Food(iName,iCal,igFat,iChol,iSod,iPro);
+	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
 	
 	fBST.insert(insertFood);
 	fDB.insert(insertFood);
