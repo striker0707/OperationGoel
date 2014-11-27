@@ -110,8 +110,13 @@ void FoodProgram::menu()
 				this->remove();
 				break;
 			}
-			//case 3:
-			//  break;
+			case 3:
+			{
+				this->Search("Beans");
+				break;
+			
+			}
+			 
 			//case 4:
 			//  break;
 			//case 5:
@@ -210,5 +215,12 @@ bool FoodProgram::remove()
 
 bool FoodProgram::Search(string key)
 {
-	
+	Food* fd = new Food();
+	if (fHT.contains(key, fd))
+	{
+		cout << fd;
+		return true;
+	}
+
+	return false;
 }

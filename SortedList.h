@@ -118,4 +118,3 @@ bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) 
 }
 
 #endif 
-
