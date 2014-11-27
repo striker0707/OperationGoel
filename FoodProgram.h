@@ -64,6 +64,12 @@ FoodProgram::FoodProgram()
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
 
+	//dummy node stuff
+	Food* dummy = new Food();
+	fDB.insert(dummy);
+	fBST.insert(dummy);
+
+
 	while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
 	{
 		Food* newFood = new Food(fname,fname, cal, gfat, chol, sodi, prot);
