@@ -234,6 +234,12 @@ bool FoodProgram::insert()
 	cin >> iSod;
 	cout << "Protein: ";
 	cin >> iPro; 
+	
+	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
+	{
+		cout << "Cannot input negative values bro." << endl;
+		return true;
+	}
 
 	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
 	
