@@ -40,6 +40,7 @@ public:
 	bool openoutputFile(ofstream &stream);
 	bool Search(string key);
 
+
 };
 
 #endif;
@@ -220,7 +221,9 @@ bool FoodProgram::insert()
 	
 	cout << endl << "Please enter information about new food." << endl;
 	cout << "Name: ";
-	cin >> iName;
+	//cin >> iName;
+	cin.ignore(); //ignore newline
+	getline(cin, iName);
 	cout << "Calories: ";
 	cin >> iCal;
 	cout << "Grams Fat: ";
