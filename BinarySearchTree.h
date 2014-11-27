@@ -347,14 +347,15 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::findNode(BinaryNode<ItemType>*
 	{
 		return 0;
 	}
-	if (nodePtr->getItem() > target)		 
+	if (*nodePtr->getItem() > *target)		 
 		findNode(nodePtr->getLeftPtr(), target);
-	else if (nodePtr->getItem() < target)	 
+	else if (*nodePtr->getItem() < *target)	 
 		findNode(nodePtr->getRightPtr(), target);
-	else if (nodePtr->getItem() == target)
+	else if (*nodePtr->getItem() == *target)
 	{
 			return nodePtr;
-	}      
+	}
+	return nodePtr;
 		
 } 
 template<class ItemType>

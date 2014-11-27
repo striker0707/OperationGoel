@@ -17,7 +17,6 @@ void bstPrint(ItemType& item)
 	cout << *item << endl;
 }
 
-/** Change what you need to get it to work. Need to have all menu functions implemented */
 class FoodProgram
 {
 private:
@@ -31,7 +30,7 @@ public:
 	FoodProgram();
 	/** Parses food file and inputs into fDB */
 	/** Saves any changes made to fDB to file */
-	~FoodProgram() {}
+	~FoodProgram();
 	void menu();
 	/** Accepts option and builds BST from fDB sorted by said option */
 	bool buildBST(int option);
@@ -79,6 +78,12 @@ FoodProgram::FoodProgram()
 	}
 }
 
+FoodProgram::~FoodProgram()
+{
+	fDB.clear();
+	fBST.clear();
+	fHT.clear();
+}
 
 void FoodProgram::menu()
 {
@@ -87,13 +92,11 @@ void FoodProgram::menu()
 
 	while (choice != 9)
 	{
-		//menu text is taken directly from the project req
-		//recommend we change or lsightly modify some of the names so more "user friendly"ish
 		cout << endl << "///////////////////////////////////////////////" << endl;
 		cout << "     MENU" << endl;
 		cout << "1) Add new data" << endl;
 		cout << "2) Delete data" << endl;
-		cout << "3) Display nutritional information of a food" << endl;
+		cout << "3) Look up nutritional information of food" << endl;
 		cout << "4) List data in hash table sequence" << endl;
 		cout << "5) List data in key sequence (sorted)" << endl;
 		cout << "6) Print indented tree" << endl;
@@ -105,8 +108,6 @@ void FoodProgram::menu()
 
 		cin >> choice;
 
-		//ENTER FUNCTION CALLS FOR EACH MODULE AS WE COMPLETE IT,
-		//PLEASE COMMENT OUT YOUR FUNCTION CALL IF YOU COMMIT A CHANGE THAT IS NOT COMPILABLE
 		switch (choice)
 		{
 			case 1:

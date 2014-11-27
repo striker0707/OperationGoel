@@ -85,7 +85,7 @@ public:
 		int i = 0;
 		float loadFactor = 0.0;
 		int noProbes = 0;
-		int averageProbes = -1;
+		float averageProbes = -1;
 		vector<int> indexofLargestProbes; //holds the index values of the elements with largest number of probes
 		vector<int> probeCountofEachIndex; //holds the number of probes in each index
 		if (count == 0)
@@ -120,9 +120,9 @@ public:
 		// indexofLargestProbes.push_back(i);
 		//}
 		/** Calculates average amount of probes */
-		for (i = 0; i < probeCountofEachIndex.size(); i++)
+		for (size_t s = 0; s < probeCountofEachIndex.size(); s++)
 		{
-			averageProbes = +probeCountofEachIndex[i];
+			averageProbes =+ (float)probeCountofEachIndex[s];
 			averageProbes /= occupiedIndexes;
 		}
 
@@ -164,7 +164,7 @@ public:
 		{
 			for (int i = 0; i < MAX; i++)
 			{
-				if(!table[i].isEmpty());
+				if(!table[i].isEmpty())
 				{
 					table[i].display();
 					cout << endl;
