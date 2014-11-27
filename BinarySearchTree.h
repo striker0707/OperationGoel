@@ -165,7 +165,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 				}
 				current->setItem(current2->getItem()); //replacing node (see logic above)
 				delete current2;
-				parent2->setLeftPtr(0); //delete node we used to replace the node we wanted to deleted
+				parent2->setLeftPtr(current2->getRightPtr()); //delete node we used to replace the node we wanted to deleted, set right subtree to left of parent
 			}
 			else //if nothing on the left of subtree
 			{
