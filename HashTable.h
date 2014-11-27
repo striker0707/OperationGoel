@@ -167,7 +167,6 @@ public:
 				if(!table[i].isEmpty())
 				{
 					table[i].display();
-					cout << endl;
 				}
 			}
 		}

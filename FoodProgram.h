@@ -53,6 +53,8 @@ FoodProgram::FoodProgram()
 	float cal, gfat, chol, sodi, prot;
 	char ch;
 
+
+
 	bool openinputFile(ifstream &inputFile);
 
 	if (openinputFile(inputFile) == false)       // Checks if both output and input are false
@@ -66,11 +68,15 @@ FoodProgram::FoodProgram()
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
 
-
 		string buffer;
 		string ssbuffer;
 		Food* newFood = new Food();
 		Food food;
+
+		//dummy node stuff
+	Food* dummy = new Food();
+	fDB.insert(dummy);
+	fBST.insert(dummy);
 
 		if(inputFile.is_open())
 			{
@@ -99,15 +105,11 @@ FoodProgram::FoodProgram()
 					fBST.insert(newFood);
 				}
 			}
-	}
 
-	//while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
-	//{
-		//Food* newFood = new Food(fname,fname, cal, gfat, chol, sodi, prot);
-		//fDB.insert(newFood);
-		//fHT.insert(newFood, newFood->getName());
-		//fBST.insert(newFood);
-	//
+}
+
+
+	
 
 FoodProgram::~FoodProgram()
 {
@@ -270,6 +272,12 @@ bool FoodProgram::insert()
 	cin >> iSod;
 	cout << "Protein: ";
 	cin >> iPro; 
+	
+	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
+	{
+		cout << "Cannot input negative values bro." << endl;
+		return true;
+	}
 
 	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
 	{

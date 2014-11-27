@@ -1,4 +1,4 @@
-// Binary Search Tree ADT
+ // Binary Search Tree ADT
 
 #ifndef _BINARY_SEARCH_TREE
 #define _BINARY_SEARCH_TREE
@@ -164,8 +164,8 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 					current2 = current2->getLeftPtr();
 				}
 				current->setItem(current2->getItem()); //replacing node (see logic above)
+				parent2->setLeftPtr(current2->getRightPtr()); //delete node we used to replace the node we wanted to deleted, set right subtree to left of parent
 				delete current2;
-				parent2->setLeftPtr(0); //delete node we used to replace the node we wanted to deleted
 			}
 			else //if nothing on the left of subtree
 			{
@@ -366,8 +366,8 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemT
 		return nodePtr;
 	else
 	{
-		_indentedTree(nodePtr->getRightPtr(), indent + "\t");
 		cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
+		_indentedTree(nodePtr->getRightPtr(), indent + "\t");
 		_indentedTree(nodePtr->getLeftPtr(), indent + "\t");
 		return nodePtr;
 	}
