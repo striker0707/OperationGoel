@@ -13,6 +13,7 @@ Food::Food()
 Food::Food(string n)
 {
 	name = n;
+	sortKey = n;
 }
 
 Food::Food(const Food &fobj)

@@ -110,11 +110,13 @@ void FoodProgram::menu()
 			case 1:
 			{
 				this->insert();
+				system("pause");
 				break;
 			}
 			case 2:
 			{
 				this->remove();
+				system("pause");
 				break;
 			}
 			case 3:
@@ -122,12 +124,14 @@ void FoodProgram::menu()
 				cout << endl << "What food would you like to look up?: ";
 				cin >> item;
 				this->Search(item);
+				system("pause");
 				break;
 			}
 			 
 			case 4:
 			{
 				fHT.print();
+				system("pause");
 				break;
 			}
 			case 5:
@@ -136,16 +140,19 @@ void FoodProgram::menu()
 				cout << endl << "=============================" << endl;
 				fBST.inOrder(bstPrint);
 				cout << endl;
+				system("pause");
 				break;
 			}
 			case 6:
 			{
 				fBST.indentedTree();
+				system("pause");
 				break;
 			}
 			case 7:
 			{
 				fHT.displayStats();
+				system("pause");
 				break;
 			}
 			//case 8:
@@ -157,14 +164,13 @@ void FoodProgram::menu()
 			default:
 			{
 				cout << "Invalid Option, please enter a valid option (1-9)." << endl;
-				system("pause");
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(),'\n');
 				break;
 			}
-
 		}
-		system("pause");
-
 	}
+
 }
 
 bool openinputFile(ifstream &inputFile)
@@ -214,6 +220,7 @@ bool FoodProgram::insert()
 	string iName = "Elton";
 	float iCal, igFat, iChol, iSod, iPro;
 	
+	cout << endl << "Please enter information about new food." << endl;
 	cout << "Name: ";
 	cin >> iName;
 	cout << "Calories: ";
@@ -258,6 +265,9 @@ bool FoodProgram::Search(string key)
 		fd->print(*fd);
 		return true;
 	}
-
+	else
+	{
+		cout << "No food with that name found." << endl;
+	}
 	return false;
 }
