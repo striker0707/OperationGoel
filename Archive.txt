@@ -13,3 +13,13 @@ Potato       110         0            0              0         3
 Beans        34          0            0              7         2
 Noodles      192         .35          0              33.44     1.6
 Apple        130         0            0              0         1
+Egg          70          4.5          215             65        6
+Strawberry   20         0             0              0         0
+PhoBeef      2936        48           280            3072       192
+Gordon      0           0             0                0         0
+Elton        30000      256           1200            0           1
+FriedChicken 230        17            45              370        14
+Coleslaw    213         8.5           7.09            326.06     1.42
+ChickenPotPie 484       29.1          875.15          42.71      13.04
+Brownies      151       4.82          88.45           18.12      1.36
+Curry          230      11            0               1360       7
