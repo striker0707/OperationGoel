@@ -18,17 +18,8 @@ void print(char& c)
 
 int main()
 {
-	string fd = "Noodles";
-	string fc = "Noodles";
-
-	if (fd == fc)
-	{
-		cout << "YEAH";
-	}
-
-	FoodProgram testrun;
-	testrun.menu();
-		cout << "HERE " << endl;
+	FoodProgram NutritionDictionary;
+	NutritionDictionary.menu();
 
 	///* BST TEST///////////////////////////*/
 	//BinarySearchTree<char> bst;

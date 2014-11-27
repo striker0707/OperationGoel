@@ -11,6 +11,12 @@
 
 using namespace std;
 
+template<class ItemType>
+void bstPrint(ItemType& item)
+{
+	cout << *item << endl;
+}
+
 /** Change what you need to get it to work. Need to have all menu functions implemented */
 class FoodProgram
 {
@@ -66,33 +72,36 @@ FoodProgram::FoodProgram()
 
 	while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
 	{
-		Food* newFood = new Food(fname, cal, gfat, chol, sodi, prot);
+		Food* newFood = new Food(fname,fname, cal, gfat, chol, sodi, prot);
 		fDB.insert(newFood);
 		fHT.insert(newFood, newFood->getName());
 		fBST.insert(newFood);
 	}
-	fBST.indentedTree();
 }
 
 
 void FoodProgram::menu()
 {
 	int choice = -1;
+	string item;
 
 	while (choice != 9)
 	{
 		//menu text is taken directly from the project req
 		//recommend we change or lsightly modify some of the names so more "user friendly"ish
+		cout << endl << "///////////////////////////////////////////////" << endl;
 		cout << "     MENU" << endl;
 		cout << "1) Add new data" << endl;
 		cout << "2) Delete data" << endl;
-		cout << "3) Find and display one data record using the primary key" << endl;
+		cout << "3) Display nutritional information of a food" << endl;
 		cout << "4) List data in hash table sequence" << endl;
 		cout << "5) List data in key sequence (sorted)" << endl;
 		cout << "6) Print indented tree" << endl;
 		cout << "7) Effeciency" << endl;
 		cout << "8) SECRET MENU OPTION" << endl;
 		cout << "9) Quit" << endl;
+		cout << "///////////////////////////////////////////////" << endl;
+		cout << ": ";
 
 		cin >> choice;
 
@@ -112,31 +121,50 @@ void FoodProgram::menu()
 			}
 			case 3:
 			{
-				this->Search("Beans");
+				cout << endl << "What food would you like to look up?: ";
+				cin >> item;
+				this->Search(item);
 				break;
-			
 			}
 			 
-			//case 4:
-			//  break;
-			//case 5:
-			//  break;
-			//case 6:
-			//  break;
-			//case 7:
-			//  break;
+			case 4:
+			{
+				fHT.print();
+				break;
+			}
+			case 5:
+			{
+				cout << endl << "Ordered foods in dictionary";
+				cout << endl << "=============================" << endl;
+				fBST.inOrder(bstPrint);
+				cout << endl;
+				break;
+			}
+			case 6:
+			{
+				fBST.indentedTree();
+				break;
+			}
+			case 7:
+			{
+				fHT.displayStats();
+				break;
+			}
 			//case 8:
 			//  break;
-			//case 9: //user quit case
-			//  return 0;
-			//  break;
+			case 9: //user quit case
+			{
+				return;
+			}
 			default:
 			{
 				cout << "Invalid Option, please enter a valid option (1-9)." << endl;
 				system("pause");
 				break;
 			}
+
 		}
+		system("pause");
 
 	}
 }
@@ -166,10 +194,11 @@ bool openoutputFile(ofstream &outputFile)
 {
 	string outputFileName;          // Declares variable for output name
 
-	cout << "Enter output filename: " << endl;         //Prompts user for output file name
-	getline(cin, outputFileName);                            // Reads output file name
+	//cout << "Enter output filename: " << endl;         //Prompts user for output file name
+	//getline(cin, outputFileName);                            // Reads output file name
 
-	outputFile.open(outputFileName.c_str());                // Opens output file with given name
+	/*outputFile.open(outputFileName.c_str());  */              // Opens output file with given name
+	outputFile.open("output.txt");
 
 	if (outputFile.fail())                                   // If the output file fails
 	{
@@ -184,33 +213,43 @@ bool openoutputFile(ofstream &outputFile)
 
 bool FoodProgram::insert()
 {
-	string iname = "Elton";
-	/*float ical, igf, isod, ipro, ix;*/
-	//cout << "Hellos. pls add in calories, gramsfat, soidum, x, x,xprotei
+	string iName = "Elton";
+	float iCal, igFat, iChol, iSod, iPro;
+	
+	cout << "Name: ";
+	cin >> iName;
+	cout << "Calories: ";
+	cin >> iCal;
+	cout << "Grams Fat: ";
+	cin >> igFat;
+	cout << "Cholesterol: ";
+	cin >> iChol;
+	cout << "Sodium: ";
+	cin >> iSod;
+	cout << "Protein: ";
+	cin >> iPro; 
 
-	Food* insertFood = new Food(iname, 60, 25, 0, 0, 0);
+	Food* insertFood = new Food(iName,iCal,igFat,iChol,iSod,iPro);
+	
 	fBST.insert(insertFood);
 	fDB.insert(insertFood);
 	fHT.insert(insertFood, insertFood->getName());
-
-	fHT.displayStats();
-	fBST.indentedTree();
 
 	return true;
 }
 
 bool FoodProgram::remove()
 {
-	Food removeFood("Waffles");
+	string iName;
+	cout << "Name of food to remove: ";
+	cin >> iName;
+	Food removeFood("iName");
 
 	fDB.remove(&removeFood);
 	fBST.remove(&removeFood);
-	fHT.remove("Waffles");
+	fHT.remove("iName");
 
-	fHT.displayStats();
-	fBST.indentedTree();
-
-	return 1;
+	return true;
 }
 
 bool FoodProgram::Search(string key)

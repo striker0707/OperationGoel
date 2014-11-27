@@ -77,7 +77,7 @@ LinkedList<ItemType>::LinkedList(const LinkedList<ItemType>& aList)
 template<class ItemType>
 bool LinkedList<ItemType>::isEmpty() const
 { 
-	return itemCount == 0; 
+	return (itemCount == 0); 
 }
 
 template<class ItemType>
@@ -86,11 +86,10 @@ void LinkedList<ItemType>::display() const
 	Node<ItemType>* currPtr = headPtr;		// start at front of list
 	while (currPtr != 0)					// walk until end of list
 	{
-		cout << currPtr->getItem() << " ";	// display data, NEED to overload "<<" operator of item class
+		cout << *currPtr->getItem() << endl;	// display data, NEED to overload "<<" operator of item class
 							//being displayed
 		currPtr = currPtr->getNext();		// go to next node
 	}
-	cout << endl << endl;
 }
 
 template<class ItemType>

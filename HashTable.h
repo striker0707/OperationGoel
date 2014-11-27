@@ -152,5 +152,24 @@ public:
 			index = index % MAX;
 		return index;
 	}
+	bool print() const
+	{
+		if(count == 0)
+		{
+			return false;
+		}
+		else
+		{
+			for (int i = 0; i < MAX; i++)
+			{
+				if(!table[i].isEmpty());
+				{
+					table[i].display();
+					cout << endl;
+				}
+			}
+		}
+		return true;
+	}
 };
 #endif;
