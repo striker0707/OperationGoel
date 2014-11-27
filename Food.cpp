@@ -35,6 +35,16 @@ Food::Food(string inputfname, float inputcal, float inputgFat, float inputcho, f
     sodium = inputsod;
     protein = inputpro;
 }
+Food::Food(string inputskey, string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro)
+{
+	sortKey = inputskey;
+    name = inputfname;
+    calories = inputcal;
+    gramsFat = inputgFat;
+    cholesterol = inputcho;
+    sodium = inputsod;
+    protein = inputpro;
+}
 
 string Food::getName() const
 {
@@ -98,7 +108,8 @@ void Food::setProtein(float inputpro)
 
 void Food::print(Food& fd)
 {
-	cout << "Name : " << fd.getName() << endl;
+	cout << endl << fd.getName() << endl;
+	cout << "=======================" << endl;
     cout << "Calories : " << fd.getCalories() << endl;
     cout << "Grams Fat : " << fd.getGramsFat() << endl;
     cout << "Cholesterol : " << fd.getCholesterol() << endl;
