@@ -8,6 +8,7 @@
 #include "Food.h"
 #include "HashTable.h"
 #include "BinarySearchTree.h"
+#include <sstream>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ FoodProgram::FoodProgram()
 	ifstream inputFile;
 	string fname;
 	float cal, gfat, chol, sodi, prot;
+	char ch;
 
 	bool openinputFile(ifstream &inputFile);
 
@@ -64,14 +66,48 @@ FoodProgram::FoodProgram()
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
 
-	while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
-	{
-		Food* newFood = new Food(fname,fname, cal, gfat, chol, sodi, prot);
-		fDB.insert(newFood);
-		fHT.insert(newFood, newFood->getName());
-		fBST.insert(newFood);
+
+		string buffer;
+		string ssbuffer;
+		Food* newFood = new Food();
+		Food food;
+
+		if(inputFile.is_open())
+			{
+			 while( getline(inputFile, buffer) )
+				{
+					stringstream ss(buffer);
+  
+					getline(ss,ssbuffer, ',');
+					food.setName(ssbuffer);
+					getline(ss,ssbuffer, ',');
+					food.setCalories(stof(ssbuffer));
+					getline(ss,ssbuffer, ',');
+					food.setGramsF(stof(ssbuffer));
+					getline(ss,ssbuffer, ',');
+					food.setCholesterol(stof(ssbuffer));
+					getline(ss,ssbuffer, ',');
+					food.setSodium(stof(ssbuffer));
+					getline(ss,ssbuffer, ',');
+					food.setProtein(stof(ssbuffer));
+
+					Food* newFood = new Food();
+					*newFood = food;
+
+					fDB.insert(newFood);
+					fHT.insert(newFood, newFood->getName());
+					fBST.insert(newFood);
+				}
+			}
 	}
-}
+
+	//while (inputFile >> fname >> cal >> gfat >> chol >> sodi >> prot) // Reads file inputs continously until it runs out of inputs
+	//{
+		//Food* newFood = new Food(fname,fname, cal, gfat, chol, sodi, prot);
+		//fDB.insert(newFood);
+		//fHT.insert(newFood, newFood->getName());
+		//fBST.insert(newFood);
+	//
 
 FoodProgram::~FoodProgram()
 {
@@ -221,7 +257,9 @@ bool FoodProgram::insert()
 	
 	cout << endl << "Please enter information about new food." << endl;
 	cout << "Name: ";
-	cin >> iName;
+	//cin >> iName;
+	cin.ignore(); //ignore newline
+	getline(cin, iName);
 	cout << "Calories: ";
 	cin >> iCal;
 	cout << "Grams Fat: ";
@@ -232,6 +270,12 @@ bool FoodProgram::insert()
 	cin >> iSod;
 	cout << "Protein: ";
 	cin >> iPro; 
+
+	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
+	{
+		cout << "Cannot input negative values bro." << endl;
+		return true;
+	}
 
 	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
 	
