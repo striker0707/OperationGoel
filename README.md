@@ -18,7 +18,7 @@ To DO ASAP:
 
 	- Main
 	- FoodProgam.h
-	- Structure Charts
+	- Structure Charts 80%
 	- PowerPoint Presentation
 
 
