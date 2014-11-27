@@ -98,7 +98,7 @@ void Food::setProtein(float inputpro)
 
 void Food::print(Food& fd)
 {
-    cout << "Name : " << fd.getName() << endl;
+	cout << "Name : " << fd.getName() << endl;
     cout << "Calories : " << fd.getCalories() << endl;
     cout << "Grams Fat : " << fd.getGramsFat() << endl;
     cout << "Cholesterol : " << fd.getCholesterol() << endl;
@@ -106,10 +106,7 @@ void Food::print(Food& fd)
     cout << "Protein : " << fd.getProtein() << endl;
 }
 
-bool Food::operator == (const Food& rdr)
-{
-	return (name == rdr.name);
-}
+
 
 bool Food::operator < (const Food& rdr)
 {
@@ -148,12 +145,20 @@ Food Food::operator - (const Food& aFood)
 
 ostream& operator << (ostream& foodPrint, const Food& aFood)
 {
-	foodPrint << "Your total nutrition facts are:" << endl;
-	foodPrint << "Calories: " << aFood.getCalories() << endl;
-	foodPrint << "Fat: " << aFood.getGramsFat() << endl;
-	foodPrint << "Cholesterol: " << aFood.getCholesterol() << endl;
-	foodPrint << "Sodium: " << aFood.getSodium() << endl;
-	foodPrint << "Protien: " << aFood.getProtein() << endl;
+	//foodPrint << "Your total nutrition facts are:" << endl;
+	foodPrint << "Name: " << aFood.getName();/* << endl;*/
+	//foodPrint << "Fat: " << aFood.getGramsFat() << endl;
+	//foodPrint << "Cholesterol: " << aFood.getCholesterol() << endl;
+	//foodPrint << "Sodium: " << aFood.getSodium() << endl;
+	//foodPrint << "Protien: " << aFood.getProtein() << endl;
 
 	return foodPrint;
+}
+bool operator == (const Food& ldr, const Food& rdr)
+{
+	return (ldr.name == rdr.name);
+}
+bool operator != (const Food& ldr, const Food& rdr)
+{
+	return (ldr.name != rdr.name);
 }

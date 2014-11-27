@@ -52,7 +52,8 @@ public:
 	void print(Food& fd);
 	
 	//Overloaded functions
-	bool operator == (const Food& rdr);
+	friend bool operator == (const Food& ldr, const Food& rdr);
+	friend bool operator != (const Food& ldr, const Food& rdr);
 	bool operator > (const Food& rdr);
 	bool operator < (const Food& rdr);
 	Food operator + (const Food&);

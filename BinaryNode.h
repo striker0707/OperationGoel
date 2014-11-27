@@ -18,7 +18,7 @@ public:
 		       BinaryNode<ItemType>* left, 
 			   BinaryNode<ItemType>* right)		   {item = anItem; leftPtr = left; rightPtr = right;}
 	// accessors
-	void setItem(const ItemType & anItem)		   {item = anItem;}
+	void setItem(ItemType  anItem)		   {item = anItem;}
 	void setLeftPtr(BinaryNode<ItemType>* left)	   {leftPtr = left;}
 	void setRightPtr(BinaryNode<ItemType>* right)  {rightPtr = right;}
 	// mutators
@@ -30,3 +30,4 @@ public:
 }; 
 
 #endif 
+

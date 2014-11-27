@@ -27,11 +27,11 @@ public:
 	void preOrder(void visit(ItemType &)) const;
 	void inOrder(void visit(ItemType &)) const;
 	void postOrder(void visit(ItemType &)) const;
-	void breadthfirst() const;
+	void breadthfirst(void visit(ItemType &)) const;
 
 	// abstract functions to be implemented by derived class
 	virtual bool insert(const ItemType & newData) = 0; 
-	virtual bool remove(const ItemType & data) = 0; 
+	virtual void remove( ItemType target) = 0;
 	virtual bool getEntry(const ItemType & anEntry, ItemType & returnedItem) const = 0;
 
 private:   
@@ -183,25 +183,24 @@ void BinaryTree<ItemType>::_postorder(void visit(ItemType &), BinaryNode<ItemTyp
 }  
  
 template<class ItemType>
-void BinaryTree<ItemType>::breadthfirst() const
+void BinaryTree<ItemType>::breadthfirst(void visit(ItemType &)) const
 {
 	queue<BinaryNode<ItemType>*> q;
-	ofstream fout("BreadthFirstContacts.txt");
+	ItemType item;
 
 	if(rootPtr != 0)
 		q.push(rootPtr);
 	
 	while (!q.empty())
 	{
-		cout << q.front()->getItem() << endl;
-		fout << q.front()->getItem() << endl;
+		item = q.front()->getItem();
+		visit(item);
 		if(q.front()->getLeftPtr() != 0)
 			q.push(q.front()->getLeftPtr());
 		if(q.front()->getRightPtr() != 0)
 			q.push(q.front()->getRightPtr());
 		q.pop();
 	}
-	fout.close();
 }
 
 #endif

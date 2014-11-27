@@ -1,4 +1,4 @@
-// Linked List abstract base class
+t base class
 
 #ifndef _LINKED_LIST
 #define _LINKED_LIST
