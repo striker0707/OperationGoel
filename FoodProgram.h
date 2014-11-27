@@ -40,7 +40,6 @@ public:
 	bool openoutputFile(ofstream &stream);
 	bool Search(string key);
 
-
 };
 
 #endif;
