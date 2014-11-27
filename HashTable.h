@@ -126,7 +126,6 @@ public:
 		//}
 
 		/** Calculates average amount of probes */
-
 		for( i = 0; i < probeCountofEachIndex.size(); i++)
 		{
 			averageProbes =+ probeCountofEachIndex[i];
