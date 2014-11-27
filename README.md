@@ -13,10 +13,13 @@ Status:
 	-Main 30%
 	-FoodProgram.h 30%
 	
+	
 To DO ASAP:
 
 	- Main
 	- FoodProgam.h
+	- Structure Charts
+	- PowerPoint Presentation
 
 
 Weekly Report
