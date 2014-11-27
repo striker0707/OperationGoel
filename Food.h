@@ -20,7 +20,7 @@ private:
     float sodium;
     float protein;
     /* sortKey is used by BST to sort BST based on one of the attributes above */
-	float sortKey;
+	string sortKey;
 public:
 	//Default Constructor
 	Food();
