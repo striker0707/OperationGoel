@@ -12,7 +12,8 @@ private:
 	BinaryNode<ItemType>* rightPtr;		// Pointer to right child
 
 public:
-	// constructors		
+	// constructors
+	BinaryNode()									{item = 0; leftPtr = 0; rightPtr = 0;}
 	BinaryNode(const ItemType & anItem)			   {item = anItem; leftPtr = 0; rightPtr = 0;}
 	BinaryNode(const ItemType & anItem, 
 		       BinaryNode<ItemType>* left, 
