@@ -1,4 +1,4 @@
- d// Binary Search Tree ADT
+ // Binary Search Tree ADT
 
 #ifndef _BINARY_SEARCH_TREE
 #define _BINARY_SEARCH_TREE
