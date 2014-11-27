@@ -245,7 +245,7 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::_insert(BinaryNode<ItemType>* 
 		return newNodePtr;
 	else
 	{
-		if( newNodePtr->getItem() < nodePtr->getItem() )
+		if( *newNodePtr->getItem() < *nodePtr->getItem() )
 			nodePtr->setLeftPtr(_insert( nodePtr->getLeftPtr(), newNodePtr ));
 		else
 			nodePtr->setRightPtr(_insert( nodePtr->getRightPtr(), newNodePtr ));
