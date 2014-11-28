@@ -6,6 +6,8 @@
 #include "Node.h"
 #include <fstream>
 #include <string>
+#include <sstream>
+#include "Food.h"
 
 using namespace std;
 
@@ -31,7 +33,7 @@ public:
 	void clear();
 	// display list from front to end
 	void display() const;
-	bool printToFile(string outFile);
+	bool printToFile(string outFile, void peek(stringstream&, Food&));
 	// abstract insert function
 	virtual bool insert(const ItemType& newEntry, int newPosition = 1) = 0;
 
@@ -118,10 +120,12 @@ void LinkedList<ItemType>::clear()
 }
 
 template<class ItemType>
-bool LinkedList<ItemType>::printToFile(string outFile)
+bool LinkedList<ItemType>::printToFile(string outFile, void peek(stringstream&, Food&))
 {
 	ofstream out;
 	out.open(outFile);
+	string buffer;
+
 	Node<ItemType>* currPtr = headPtr;
 	if(this->isEmpty())
 		return false;
@@ -130,7 +134,10 @@ bool LinkedList<ItemType>::printToFile(string outFile)
 	{
 		while (currPtr != 0)					// walk until end of list
 		{
-			out << *currPtr->getItem() << endl;
+			stringstream ss;
+			peek(ss, *currPtr->getItem());
+			getline(ss,buffer);
+			out << buffer << endl;
 			currPtr = currPtr->getNext();
 		}
 		return true;
