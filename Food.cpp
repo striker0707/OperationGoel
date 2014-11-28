@@ -47,6 +47,10 @@ Food::Food(string inputskey, string inputfname, float inputcal, float inputgFat,
     protein = inputpro;
 }
 
+Food::~Food()
+{
+}
+
 string Food::getName() const
 {
     return name;

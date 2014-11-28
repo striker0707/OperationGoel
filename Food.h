@@ -33,7 +33,8 @@ public:
 	Food(string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro);
 	//Sortkey constructor
 	Food(string inputskey, string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro);
-	
+	~Food();
+
 	//Accessor functions
 	string getName() const;
     float getCalories() const;

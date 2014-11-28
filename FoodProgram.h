@@ -31,21 +31,21 @@ void prnToFile(stringstream& foodPrint, Food& item)
 class FoodProgram
 {
 private:
-	SortedList<Food*> fDB;
+	SortedList<Food*> fLL;
 	HashTable<string, Food*> fHT;
 	BinarySearchTree<Food*> fBST;
 public:
-	/** Intializes fDB and fHT */
+	/** Intializes fLL and fHT */
 	FoodProgram();
-	/** Parses food file and inputs into fDB */
-	/** Saves any changes made to fDB to file */
+	/** Parses food file and inputs into fLL */
+	/** Saves any changes made to fLL to file */
 	~FoodProgram();
 	void menu();
-	/** Accepts option and builds BST from fDB sorted by said option */
+	/** Accepts option and builds BST from fLL sorted by said option */
 	bool buildBST(int option);
-	/** Inserts new entries into fDB */
+	/** Inserts new entries into fLL */
 	bool insert();
-	/** Removes entries from fDB */
+	/** Removes entries from fLL */
 	bool remove();
 	bool openinputFile(ifstream &stream);
 	bool openoutputFile(ofstream &stream);
@@ -71,16 +71,16 @@ FoodProgram::FoodProgram()
 	{
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
-
+	
+	Food food;
 	string buffer;
 	string ssbuffer;
-	Food* newFood = new Food();
-	Food food;
 
 	//dummy node stuff
 	Food* dummy = new Food();
 	fBST.insert(dummy);
-
+	
+	
 	if(inputFile.is_open())
 	{
 		while( getline(inputFile, buffer) )
@@ -101,11 +101,10 @@ FoodProgram::FoodProgram()
 			getline(ss,ssbuffer, ',');
 			food.setProtein(stof(ssbuffer));
 			
+			Food* newFood = new Food(food.getName(), food.getName(), food.getCalories(), food.getGramsFat(), food.getCholesterol(), food.getSodium(), food.getProtein());
+			
 
-			Food* newFood = new Food();
-			*newFood = food;
-
-			fDB.insert(newFood);
+			fLL.insert(newFood);
 			fHT.insert(newFood, newFood->getName());
 			fBST.insert(newFood);
 		}
@@ -117,10 +116,10 @@ FoodProgram::~FoodProgram()
 {
 	cout << endl << "Saving changes..." << endl;
 	system("pause");
-	fDB.printToFile("Archive.txt", prnToFile);
-	fDB.clear();
+	fLL.printToFile("Archive.txt", prnToFile);
 	fBST.clear();
 	fHT.clear();
+	fLL.clear();
 }
 
 void FoodProgram::menu()
@@ -334,7 +333,7 @@ bool FoodProgram::insert()
 	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
 	
 	fBST.insert(insertFood);
-	fDB.insert(insertFood);
+	fLL.insert(insertFood);
 	fHT.insert(insertFood, insertFood->getName());
 
 	return true;
@@ -350,7 +349,7 @@ bool FoodProgram::remove()
 
 	Food removeFood(iName);
 
-	fDB.remove(&removeFood);
+	fLL.remove(&removeFood);
 	fBST.remove(&removeFood);
 	fHT.remove(iName);
 
