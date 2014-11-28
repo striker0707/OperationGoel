@@ -77,6 +77,7 @@ bool SortedList<ItemType>::remove(const ItemType& anEntry)
 
 	while( currentPtr != 0 )
 	{
+
 		const ItemType item = currentPtr->getItem();
 		if( *item == *anEntry)
 		{
@@ -86,12 +87,12 @@ bool SortedList<ItemType>::remove(const ItemType& anEntry)
 			else
 				headPtr = currentPtr->getNext();
 			found = true;
-			delete ptrToDelete;
-			itemCount--;
+			return found;
 		}
 		prev = currentPtr;	
 		currentPtr = currentPtr->getNext();
 	}
+	delete ptrToDelete;
 	return found;
 }  
 
