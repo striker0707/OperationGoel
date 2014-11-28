@@ -6,7 +6,7 @@
 #include <string>
 #include "SortedList.h"
 using namespace std;
-const int MAX = 17;
+const int MAX = 31;
 template<class KeyType, class ItemType>
 class HashTable
 {
@@ -90,8 +90,9 @@ public:
 		vector<int> probeCountofEachIndex; //holds the number of probes in each index
 		if (count == 0)
 			return false;
-		cout << endl << "HashTable Statistics" << endl;
-		cout << "====================================" << endl;
+		cout << "------------------------------------------" << endl;
+		cout << "HashTable Statistics" << endl;
+		cout << "------------------------------------------" << endl;
 		cout << endl << "Collisions at: " << endl;
 		/** Walking whole table and making stats*/
 		for (i = 0; i < MAX; i++)
@@ -133,6 +134,7 @@ public:
 		cout << "Load factor: " << loadFactor << "%";
 		cout << endl << "Average amount of collisions: " << averageProbes;
 		cout << endl << "Number of indexes with no collisions: " << noProbes;
+		cout << endl << "Number of indexes with collisions: " << occupiedIndexes - noProbes;
 		cout << endl << "Largest bucket size is " << largestProbes << endl << endl;
 		//cout << endl <<"Max number of probes is " << largestProbes << ", at index locations:" < <endl <<endl;
 		///** Prints indexes that have largest amount of Probes */
