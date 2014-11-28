@@ -35,21 +35,19 @@ private:
 	HashTable<string, Food*> fHT;
 	BinarySearchTree<Food*> fBST;
 public:
-	/** Intializes fLL and fHT */
+	/** Parses food input file and inputs into fLL, fHT, and fBST */
 	FoodProgram();
-	/** Parses food file and inputs into fLL */
 	/** Saves any changes made to fLL to file */
 	~FoodProgram();
 	void menu();
 	/** Accepts option and builds BST from fLL sorted by said option */
 	bool buildBST(int option);
-	/** Inserts new entries into fLL */
+	/** Inserts new user defined entry into fLL, fHT, and fBST */
 	bool insert();
-	/** Removes entries from fLL */
+	/** Removes user defined entry from fLL, fHT, and fBST */
 	bool remove();
-	bool openinputFile(ifstream &stream);
-	bool openoutputFile(ofstream &stream);
-	bool Search(string key);
+	/** Search for entry based on name and then prints entries attributes */
+	bool search(string key);
 };
 
 #endif;
@@ -58,10 +56,13 @@ FoodProgram::FoodProgram()
 {
 	ifstream inputFile;
 	string fname;
+	string name;
+	string buffer;
+	string ssbuffer;
+	float cal, gfat, chole, sodi, prot;
 
-	bool openinputFile(ifstream &inputFile);
-
-	if (openinputFile(inputFile) == false)       // Checks if both output and input are false
+	inputFile.open("Archive.txt");
+	if (inputFile.fail())       // Checks if both output and input are false
 	{
 		cout << "Unable to open input file" << endl;                      // If false, prints an error message
 		cout << "Ending Program" << endl;
@@ -71,15 +72,11 @@ FoodProgram::FoodProgram()
 	{
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
-	
-	Food food;
-	string buffer;
-	string ssbuffer;
 
-	//dummy node stuff
-	Food* dummy = new Food(); //needs to be delete
+
+	//Setting a dummy head pointer for BST
+	Food* dummy = new Food();
 	fBST.insert(dummy);
-	
 	
 	if(inputFile.is_open())
 	{
@@ -88,20 +85,19 @@ FoodProgram::FoodProgram()
 			stringstream ss(buffer);
   
 			getline(ss,ssbuffer, ',');
-			food.setName(ssbuffer);
-			food.setSortKey(ssbuffer);
+			name = ssbuffer;
 			getline(ss,ssbuffer, ',');
-			food.setCalories(stof(ssbuffer));
+			cal = stof(ssbuffer);
 			getline(ss,ssbuffer, ',');
-			food.setGramsF(stof(ssbuffer));
+			gfat = stof(ssbuffer);
 			getline(ss,ssbuffer, ',');
-			food.setCholesterol(stof(ssbuffer));
+			chole = stof(ssbuffer);
 			getline(ss,ssbuffer, ',');
-			food.setSodium(stof(ssbuffer));
+			sodi = stof(ssbuffer);
 			getline(ss,ssbuffer, ',');
-			food.setProtein(stof(ssbuffer));
+			prot = stof(ssbuffer);
 
-			Food* newFood = new Food(food.getName(), food.getName(), food.getCalories(), food.getGramsFat(), food.getCholesterol(), food.getSodium(), food.getProtein()); //needs to be delete
+			Food* newFood = new Food(name,name,cal,gfat,chole,sodi,prot); //needs to be delete
 			
 
 			fLL.insert(newFood);
@@ -164,7 +160,7 @@ void FoodProgram::menu()
 				cout << endl << "What food would you like to look up?: ";
 				cin.ignore(); //ignore newline
 				getline(cin, item);
-				this->Search(item);
+				this->search(item);
 				system("pause");
 				break;
 			}
@@ -230,48 +226,6 @@ void FoodProgram::menu()
 	}
 
 }
-
-bool openinputFile(ifstream &inputFile)
-{
-	string inputFileName;           // Declares variable for input name
-
-	//cout << "Enter input filename: " << endl;          // Prompts user for input file name
-	//getline(cin, inputFileName);                             // Reads input file name
-
-	inputFile.open("Archive.txt");
-	/*inputFile.open(inputFileName.c_str());  */                // Opens input file with given name
-
-	if (inputFile.fail())                                   // If the input file fails
-	{
-		return 0;                                           // End program if input file cannot open
-	}
-	else
-	{
-		return 1;                                           // Continues program if input file opens
-	}
-
-} // End bool
-
-bool openoutputFile(ofstream &outputFile)
-{
-	string outputFileName;          // Declares variable for output name
-
-	//cout << "Enter output filename: " << endl;         //Prompts user for output file name
-	//getline(cin, outputFileName);                            // Reads output file name
-
-	/*outputFile.open(outputFileName.c_str());  */              // Opens output file with given name
-	outputFile.open("output.txt");
-
-	if (outputFile.fail())                                   // If the output file fails
-	{
-		return 0;                                           // End program if output file cannot open
-	}
-	else
-	{
-		return 1;                                           // Continues program if output file opens
-	}
-
-}// End bool
 
 bool FoodProgram::insert()
 {
@@ -357,7 +311,7 @@ bool FoodProgram::remove()
 	return true;
 }
 
-bool FoodProgram::Search(string key)
+bool FoodProgram::search(string key)
 {
 	Food* fd;
 	if (fHT.contains(key, fd))
