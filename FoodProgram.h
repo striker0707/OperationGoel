@@ -77,7 +77,7 @@ FoodProgram::FoodProgram()
 	string ssbuffer;
 
 	//dummy node stuff
-	Food* dummy = new Food();
+	Food* dummy = new Food(); //needs to be delete
 	fBST.insert(dummy);
 	
 	
@@ -100,8 +100,8 @@ FoodProgram::FoodProgram()
 			food.setSodium(stof(ssbuffer));
 			getline(ss,ssbuffer, ',');
 			food.setProtein(stof(ssbuffer));
-			
-			Food* newFood = new Food(food.getName(), food.getName(), food.getCalories(), food.getGramsFat(), food.getCholesterol(), food.getSodium(), food.getProtein());
+
+			Food* newFood = new Food(food.getName(), food.getName(), food.getCalories(), food.getGramsFat(), food.getCholesterol(), food.getSodium(), food.getProtein()); //needs to be delete
 			
 
 			fLL.insert(newFood);
@@ -330,7 +330,7 @@ bool FoodProgram::insert()
 		return false;
 	}
 
-	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
+	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro); //needs to be delete
 	
 	fBST.insert(insertFood);
 	fLL.insert(insertFood);
@@ -349,16 +349,17 @@ bool FoodProgram::remove()
 
 	Food removeFood(iName);
 
-	fLL.remove(&removeFood);
+	
 	fBST.remove(&removeFood);
 	fHT.remove(iName);
+	fLL.remove(&removeFood);
 
 	return true;
 }
 
 bool FoodProgram::Search(string key)
 {
-	Food* fd = new Food();
+	Food* fd;
 	if (fHT.contains(key, fd))
 	{
 		fd->print(*fd);

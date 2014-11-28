@@ -115,7 +115,6 @@ void LinkedList<ItemType>::clear()
 		deletePtr = headPtr;			// remove each node
 		headPtr = headPtr->getNext();
 		
-		delete deletePtr->getItem();
 		delete deletePtr;
 
 	}
