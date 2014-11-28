@@ -116,11 +116,23 @@ void Food::print(Food& fd)
 {
 	cout << endl << fd.getName() << endl;
 	cout << "=======================" << endl;
-    cout << "Calories : " << fd.getCalories() << endl;
-    cout << "Grams Fat : " << fd.getGramsFat() << endl;
-    cout << "Cholesterol : " << fd.getCholesterol() << endl;
-    cout << "Sodium : " << fd.getSodium() << endl;
-    cout << "Protein : " << fd.getProtein() << endl;
+    cout << "Calories: " << fd.getCalories() << endl;
+    cout << "Grams Fat: " << fd.getGramsFat() << endl;
+    cout << "Cholesterol: " << fd.getCholesterol() << endl;
+    cout << "Sodium: " << fd.getSodium() << endl;
+    cout << "Protein: " << fd.getProtein() << endl << endl;
+}
+stringstream& Food::printtoFile()
+{
+	stringstream foodPrint;
+	foodPrint << this->getName() << ",";
+	foodPrint << this->getCalories() << ",";
+	foodPrint << this->getGramsFat() << ",";
+	foodPrint << this->getCholesterol() << ",";
+	foodPrint << this->getSodium() << ",";
+	foodPrint << this->getProtein() << ",";
+	
+	return foodPrint;
 }
 
 
@@ -162,13 +174,12 @@ Food Food::operator - (const Food& aFood)
 
 ostream& operator << (ostream& foodPrint, const Food& aFood)
 {
-	//foodPrint << "Your total nutrition facts are:" << endl;
-	foodPrint /*<< "Name: "*/ << aFood.getName();
-	foodPrint <<"\t"<< aFood.getCalories();
-	foodPrint <<"\t"<< aFood.getGramsFat();
-	foodPrint <<"\t"<< aFood.getCholesterol();
-	foodPrint <<"\t"<< aFood.getSodium();
-	foodPrint <<"\t"<< aFood.getProtein();
+	foodPrint << setw(17) << left << aFood.getName();
+	foodPrint << setw(9) << left << aFood.getCalories();
+	foodPrint << setw(11) << left << aFood.getGramsFat();
+	foodPrint << setw(12) << left << aFood.getCholesterol();
+	foodPrint << setw(9) << left << aFood.getSodium();
+	foodPrint << setw(7) << left << aFood.getProtein();
 
 	return foodPrint;
 }

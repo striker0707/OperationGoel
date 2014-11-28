@@ -18,6 +18,16 @@ void bstPrint(ItemType& item)
 	cout << *item << endl;
 }
 
+void prnToFile(stringstream& foodPrint, Food& item)
+{
+	foodPrint << item.getName() << ", ";
+	foodPrint << item.getCalories() << ", ";
+	foodPrint << item.getGramsFat() << ", ";
+	foodPrint << item.getCholesterol() << ", ";
+	foodPrint << item.getSodium() << ", ";
+	foodPrint << item.getProtein();
+}
+
 class FoodProgram
 {
 private:
@@ -40,8 +50,6 @@ public:
 	bool openinputFile(ifstream &stream);
 	bool openoutputFile(ofstream &stream);
 	bool Search(string key);
-
-
 };
 
 #endif;
@@ -64,14 +72,13 @@ FoodProgram::FoodProgram()
 		cout << "Files opened successfully, open output file to see results when program ends" << endl;
 	} // end if else
 
-		string buffer;
-		string ssbuffer;
-		Food* newFood = new Food();
-		Food food;
+	string buffer;
+	string ssbuffer;
+	Food* newFood = new Food();
+	Food food;
 
 	//dummy node stuff
 	Food* dummy = new Food();
-	fDB.insert(dummy);
 	fBST.insert(dummy);
 
 	if(inputFile.is_open())
@@ -106,12 +113,11 @@ FoodProgram::FoodProgram()
 
 }
 
-
-	
-
 FoodProgram::~FoodProgram()
 {
-	fDB.printToFile("output.txt");
+	cout << endl << "Saving changes..." << endl;
+	system("pause");
+	fDB.printToFile("Archive.txt", prnToFile);
 	fDB.clear();
 	fBST.clear();
 	fHT.clear();
@@ -157,7 +163,8 @@ void FoodProgram::menu()
 			case 3:
 			{
 				cout << endl << "What food would you like to look up?: ";
-				cin >> item;
+				cin.ignore(); //ignore newline
+				getline(cin, item);
 				this->Search(item);
 				system("pause");
 				break;
@@ -165,14 +172,31 @@ void FoodProgram::menu()
 			 
 			case 4:
 			{
+				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << "Food listed in Hash Sequence";
+				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << left << setw(17) << "Name";
+				cout << left << setw(9) << "Calories";
+				cout << left << setw(11) << "Grams Fat";
+				cout << left << setw(12) << "Cholesterol";
+				cout << left << setw(9) << "Sodium";
+				cout << left << setw(7) << "Protein" << endl << endl;
 				fHT.print();
+				cout << endl;
 				system("pause");
 				break;
 			}
 			case 5:
 			{
-				cout << endl << "Ordered foods in dictionary";
-				cout << endl << "=============================" << endl;
+				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << "Food listed in Alphabetical Order";
+				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << left << setw(17) << "Name";
+				cout << left << setw(9) << "Calories";
+				cout << left << setw(11) << "Grams Fat";
+				cout << left << setw(12) << "Cholesterol";
+				cout << left << setw(9) << "Sodium";
+				cout << left << setw(7) << "Protein" << endl;
 				fBST.inOrder(bstPrint);
 				cout << endl;
 				system("pause");
@@ -256,30 +280,54 @@ bool FoodProgram::insert()
 	float iCal, igFat, iChol, iSod, iPro;
 	
 	cout << endl << "Please enter information about new food." << endl;
+	
 	cout << "Name: ";
-	//cin >> iName;
 	cin.ignore(); //ignore newline
 	getline(cin, iName);
+	
 	cout << "Calories: ";
-	cin >> iCal;
+	while(!(cin >> iCal))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
+
 	cout << "Grams Fat: ";
-	cin >> igFat;
+	while(!(cin >> igFat))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
+	
 	cout << "Cholesterol: ";
-	cin >> iChol;
+	while(!(cin >> iChol))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
+	
 	cout << "Sodium: ";
-	cin >> iSod;
+	while(!(cin >> iSod))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
+	
 	cout << "Protein: ";
-	cin >> iPro; 
+	while(!(cin >> iPro))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
 	
 	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
 	{
-		cout << "Cannot input negative values bro." << endl;
-		return true;
-	}
-
-	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
-	{
-		cout << "Cannot input negative values bro." << endl;
+		cout << "Negative values are invalid." << endl;
 		return true;
 	}
 
@@ -295,8 +343,11 @@ bool FoodProgram::insert()
 bool FoodProgram::remove()
 {
 	string iName;
+
 	cout << "Name of food to remove: ";
-	cin >> iName;
+	cin.ignore(); //ignore newline
+	getline(cin, iName);
+
 	Food removeFood(iName);
 
 	fDB.remove(&removeFood);

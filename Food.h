@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
@@ -51,6 +53,7 @@ public:
 
 	//Prints attributes of food class
 	void print(Food& fd);
+	stringstream& printtoFile();
 	
 	//Overloaded functions
 	friend bool operator == (const Food& ldr, const Food& rdr);
