@@ -6,6 +6,8 @@
 #include <queue>
 #include "BinaryNode.h"
 
+using namespace std;
+
 template<class ItemType>
 class BinaryTree
 {
