@@ -328,7 +328,7 @@ bool FoodProgram::insert()
 	if(iCal < 0 || igFat < 0 || iChol < 0 || iSod < 0 || iPro < 0)
 	{
 		cout << "Negative values are invalid." << endl;
-		return true;
+		return false;
 	}
 
 	Food* insertFood = new Food(iName,iName,iCal,igFat,iChol,iSod,iPro);
