@@ -40,8 +40,6 @@ public:
 	/** Saves any changes made to fLL to file */
 	~FoodProgram();
 	void menu();
-	/** Accepts option and builds BST from fLL sorted by said option */
-	bool buildBST(int option);
 	/** Inserts new user defined entry into fLL, fHT, and fBST */
 	bool insert();
 	/** Removes user defined entry from fLL, fHT, and fBST */
