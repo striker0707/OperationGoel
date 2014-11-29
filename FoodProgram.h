@@ -209,8 +209,34 @@ void FoodProgram::menu()
 				system("pause");
 				break;
 			}
-			//case 8:
-			//  break;
+			case 8:
+			{
+				float targetcal;
+				int targetnum;
+				string foodname;
+				Food foodsum = Food();
+
+				cout << "Enter a maximum calorie amount: ";
+					cin >> targetcal;
+				cout << "Enter the number of food items in your meal: ";
+					cin >> targetnum;
+
+				for (int i = 0; i < targetnum; i++)
+				{
+					cout << "Enter the name of a food item: ";
+						cin >> foodname;
+						//wtf is the get function to return a food obj (any database), dont get wtf all the arguemnts are for the get functions
+						//foodsum = foodsum + get(foodname) 
+				}
+				//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
+				cout << "The total nutrition facts for your meal is: " << endl;
+				cout << foodsum << endl << endl;
+				cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
+				cout << "Possible items to add are: " << endl;
+				//print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories?
+			
+			break;
+			}
 			case 9: //user quit case
 			{
 				return;
