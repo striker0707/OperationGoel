@@ -60,24 +60,27 @@ public:
 		*targetKey = fd;
 		ItemType foundItem = new Food();
 		bool success = false;
-		int i;
-		i = this->hashingFunction(sKey);
+
+		int i = this->hashingFunction(sKey);
 		if (table[i].getEntry(targetKey, foundItem))
 		{
-			item = foundItem;
 			success = true;
 		}
 		return success;
 	}
 	bool getItem(const KeyType& sKey, ItemType& foundItem)
 	{
-		ItemType targetKey = ItemType(skey);
-		int i = hashingFunction(skey);
-		if (table[i].getEntry(targetKey, foundItem))
+		bool success = false;
+		Food fd = Food(sKey);
+		ItemType targetItem = new Food();
+		*targetItem = fd;
+
+		int i = hashingFunction(sKey);
+		if (table[i].getEntry(targetItem, foundItem))
 		{
-			return true;
+			success = true;
 		}
-		return false;
+		return success;
 	}
 	bool displayStats()
 	{

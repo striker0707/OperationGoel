@@ -213,6 +213,7 @@ void FoodProgram::menu()
 				int targetnum;
 				string foodname;
 				Food foodsum = Food();
+				Food* targetFood;
 
 				cout << "Enter a maximum calorie amount: ";
 					cin >> targetcal;
@@ -223,6 +224,8 @@ void FoodProgram::menu()
 				{
 					cout << "Enter the name of a food item: ";
 						cin >> foodname;
+						fHT.getItem(foodname, targetFood);
+						foodsum = foodsum + *targetFood;
 						//wtf is the get function to return a food obj (any database), dont get wtf all the arguemnts are for the get functions
 						//foodsum = foodsum + get(foodname) 
 				}

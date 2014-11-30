@@ -154,11 +154,11 @@ Food Food::operator + (const Food& aFood)
 {
 	Food food;
 	food.name = " ";
-	food.calories = this->calories + aFood.calories;
-	food.gramsFat = this->gramsFat + aFood.gramsFat;
-	food.cholesterol = this->cholesterol + aFood.cholesterol;
-    food.sodium = this->sodium + aFood.sodium;
-    food.protein = this->protein + aFood.protein;
+	food.setCalories(this->calories + aFood.getCalories());
+	food.setGramsF(this->gramsFat + aFood.getGramsFat());
+	food.setCholesterol(this->cholesterol + aFood.getCholesterol());
+	food.setSodium(this->sodium + aFood.getSodium());
+	food.setProtein(this->protein + aFood.getProtein());
 
 	return food;
 }
