@@ -132,7 +132,7 @@ void FoodProgram::menu()
 		cout << "5) List data in key sequence (sorted)" << endl;
 		cout << "6) Print indented tree" << endl;
 		cout << "7) Effeciency" << endl;
-		cout << "8) SECRET MENU OPTION" << endl;
+		cout << "8) Food Calculator" << endl;
 		cout << "9) Quit" << endl;
 		cout << "///////////////////////////////////////////////" << endl;
 		cout << ": ";
@@ -209,11 +209,12 @@ void FoodProgram::menu()
 			}
 			case 8:
 			{
+				int number;
 				float targetcal;
 				int targetnum;
 				string foodname;
 				Food foodsum = Food();
-				Food* targetFood;
+				Food targetFood;
 
 				cout << "Enter a maximum calorie amount: ";
 					cin >> targetcal;
@@ -222,20 +223,47 @@ void FoodProgram::menu()
 
 				for (int i = 0; i < targetnum; i++)
 				{
-					cout << "Enter the name of a food item: ";
+					cout << "Enter the name of a food item (enter QUIT to exit): ";
 						cin >> foodname;
-						fHT.getItem(foodname, targetFood);
-						foodsum = foodsum + *targetFood;
-						//wtf is the get function to return a food obj (any database), dont get wtf all the arguemnts are for the get functions
-						//foodsum = foodsum + get(foodname) 
+						targetFood = fLL.getFood(foodname);
+
+					if(targetFood != Food())
+					{
+						cout << "Enter the amount of " << foodname << ": " << endl;
+							cin >> number;
+							targetFood = targetFood * number;
+					}
+
+					foodsum = foodsum + targetFood;
+					if(targetFood == Food())
+					{
+						i--;
+					}
+					if(foodname == "QUIT")
+						break;
 				}
+				if(foodname == "QUIT")
+						break;
 				//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
 				cout << "The total nutrition facts for your meal is: " << endl;
+				cout << setw(17) << left << " ";
+				cout << setw(9) << left << "Calories";
+				cout << setw(11) << left << "Fat";
+				cout << setw(12) << left << "Cholesterol";
+				cout << setw(9) << left << "Sodium";
+				cout << setw(7) << left << "Protein" << endl;
 				cout << foodsum << endl << endl;
-				cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
-				cout << "Possible items to add are: " << endl;
-				//print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories?
-			
+				if (targetcal - foodsum.getCalories() >= 0)
+				{
+					cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
+					cout << "Possible items to add are: " << endl;
+					//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
+				}
+				else
+				{
+					cout << "You are " << (targetcal - foodsum.getCalories()) * -1 << " calories over your maximum!" << endl << endl;
+				}
+
 			break;
 			}
 			case 9: //user quit case
