@@ -209,60 +209,60 @@ void FoodProgram::menu()
 			}
 			case 8:
 			{
-				//int number;
-				//float targetcal;
-				//int targetnum;
-				//string foodname;
-				//Food foodsum = Food();
-				//Food targetFood;
+				int number;
+				float targetcal;
+				int targetnum;
+				string foodname;
+				Food foodsum = Food();
+				Food targetFood;
 
-				//cout << "Enter a maximum calorie amount: ";
-				//	cin >> targetcal;
-				//cout << "Enter the number of food items in your meal: ";
-				//	cin >> targetnum;
+				cout << "Enter a maximum calorie amount: ";
+					cin >> targetcal;
+				cout << "Enter the number of food items in your meal: ";
+					cin >> targetnum;
 
-				//for (int i = 0; i < targetnum; i++)
-				//{
-				//	cout << "Enter the name of a food item (enter QUIT to exit): ";
-				//		cin >> foodname;
-				//		targetFood = fLL.getFood(foodname);
+				for (int i = 0; i < targetnum; i++)
+				{
+					cout << "Enter the name of a food item (enter QUIT to exit): ";
+						cin >> foodname;
+						targetFood = fLL.getFood(foodname);
 
-				//	if(targetFood != Food())
-				//	{
-				//		cout << "Enter the amount of " << foodname << ": " << endl;
-				//			cin >> number;
-				//			targetFood = targetFood * number;
-				//	}
+					if(targetFood != Food())
+					{
+						cout << "Enter the amount of " << foodname << ": " << endl;
+							cin >> number;
+							targetFood = targetFood * number;
+					}
 
-				//	foodsum = foodsum + targetFood;
-				//	if(targetFood == Food())
-				//	{
-				//		i--;
-				//	}
-				//	if(foodname == "QUIT")
-				//		break;
-				//}
-				//if(foodname == "QUIT")
-				//		break;
-				////is someone using the overloaded ostream operator for food for soemthing or cna i change it?
-				//cout << "The total nutrition facts for your meal is: " << endl;
-				//cout << setw(17) << left << " ";
-				//cout << setw(9) << left << "Calories";
-				//cout << setw(11) << left << "Fat";
-				//cout << setw(12) << left << "Cholesterol";
-				//cout << setw(9) << left << "Sodium";
-				//cout << setw(7) << left << "Protein" << endl;
-				//cout << foodsum << endl << endl;
-				//if (targetcal - foodsum.getCalories() >= 0)
-				//{
-				//	cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
-				//	cout << "Possible items to add are: " << endl;
-				//	//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
-				//}
-				//else
-				//{
-				//	cout << "You are " << (targetcal - foodsum.getCalories()) * -1 << " calories over your maximum!" << endl << endl;
-				//}
+					foodsum = foodsum + targetFood;
+					if(targetFood == Food())
+					{
+						i--;
+					}
+					if(foodname == "QUIT")
+						break;
+				}
+				if(foodname == "QUIT")
+						break;
+				//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
+				cout << "The total nutrition facts for your meal is: " << endl;
+				cout << setw(17) << left << " ";
+				cout << setw(9) << left << "Calories";
+				cout << setw(11) << left << "Fat";
+				cout << setw(12) << left << "Cholesterol";
+				cout << setw(9) << left << "Sodium";
+				cout << setw(7) << left << "Protein" << endl;
+				cout << foodsum << endl << endl;
+				if (targetcal - foodsum.getCalories() >= 0)
+				{
+					cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
+					cout << "Possible items to add are: " << endl;
+					//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
+				}
+				else
+				{
+					cout << "You are " << (targetcal - foodsum.getCalories()) * -1 << " calories over your maximum!" << endl << endl;
+				}
 
 			break;
 			}
