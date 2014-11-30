@@ -28,6 +28,7 @@ public:
 	void clear();
 	void preOrder(void visit(ItemType &)) const;
 	void inOrder(void visit(ItemType &)) const;
+	void inOrder(void visit(ItemType &), BinaryNode<ItemType>* startNode) const;
 	void postOrder(void visit(ItemType &)) const;
 	void breadthfirst(void visit(ItemType &)) const;
 
@@ -100,6 +101,12 @@ template<class ItemType>
 void BinaryTree<ItemType>::inOrder(void visit(ItemType &)) const		
 {
 	_inorder(visit, rootPtr);
+}
+
+template<class ItemType>
+void BinaryTree<ItemType>::inOrder(void visit(ItemType &), BinaryNode<ItemType>* startNode) const
+{
+	_inorder(visit, startNode);
 }
 
 template<class ItemType>
