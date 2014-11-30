@@ -176,6 +176,19 @@ Food Food::operator - (const Food& aFood)
 	return food;
 }
 
+Food Food::operator * (int number)
+{
+	Food food;
+	food.name = " ";
+	food.calories = this->calories * number;
+	food.gramsFat = this->gramsFat * number;
+	food.cholesterol = this->cholesterol * number;
+    food.sodium = this->sodium * number;
+    food.protein = this->protein * number;
+
+	return food;
+}
+
 ostream& operator << (ostream& foodPrint, const Food& aFood)
 {
 	foodPrint << setw(17) << left << aFood.getName();

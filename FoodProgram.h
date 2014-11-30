@@ -132,7 +132,7 @@ void FoodProgram::menu()
 		cout << "5) List data in key sequence (sorted)" << endl;
 		cout << "6) Print indented tree" << endl;
 		cout << "7) Effeciency" << endl;
-		cout << "8) Food Calculator" << endl;
+		cout << "8) SECRET MENU OPTION" << endl;
 		cout << "9) Quit" << endl;
 		cout << "///////////////////////////////////////////////" << endl;
 		cout << ": ";
