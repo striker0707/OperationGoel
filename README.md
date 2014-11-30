@@ -16,9 +16,10 @@ Status:
 	
 To DO ASAP:
 
-	- Main
-	- FoodProgam.h
-	- Structure Charts 80%
+	- Main 100%
+	- FoodProgam.h 100%
+	- Structure Charts 100%
+	- DSD 0%
 	- PowerPoint Presentation
 
 
