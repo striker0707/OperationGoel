@@ -214,7 +214,7 @@ void FoodProgram::menu()
 				int targetnum;
 				string foodname;
 				Food foodsum = Food();
-				Food targetFood;
+				Food* targetFood = new Food();
 
 				cout << "Enter a maximum calorie amount: ";
 					cin >> targetcal;
@@ -225,17 +225,19 @@ void FoodProgram::menu()
 				{
 					cout << "Enter the name of a food item (enter QUIT to exit): ";
 						cin >> foodname;
-						targetFood = fLL.getFood(foodname);
+						targetFood->setName(foodname);
+						fHT.contains(foodname,targetFood);
+						//targetFood = fLL.getFood(foodname);
 
-					if(targetFood != Food())
+					if(*targetFood != Food())
 					{
 						cout << "Enter the amount of " << foodname << ": " << endl;
 							cin >> number;
-							targetFood = targetFood * number;
+							*targetFood = *targetFood * number;
 					}
 
-					foodsum = foodsum + targetFood;
-					if(targetFood == Food())
+					foodsum = foodsum + *targetFood;
+					if(*targetFood == Food())
 					{
 						i--;
 					}

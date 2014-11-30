@@ -36,6 +36,7 @@ Food::Food(string inputfname, float inputcal, float inputgFat, float inputcho, f
     sodium = inputsod;
     protein = inputpro;
 }
+
 Food::Food(string inputskey, string inputfname, float inputcal, float inputgFat, float inputcho, float inputsod, float inputpro)
 {
 	sortKey = inputskey;
@@ -126,6 +127,7 @@ void Food::print(Food& fd)
     cout << "Sodium: " << fd.getSodium() << endl;
     cout << "Protein: " << fd.getProtein() << endl << endl;
 }
+
 stringstream& Food::printtoFile()
 {
 	stringstream foodPrint;
@@ -139,17 +141,16 @@ stringstream& Food::printtoFile()
 	return foodPrint;
 }
 
-
-
 bool Food::operator < (const Food& rdr)
 {
 	return (sortKey < rdr.sortKey);
 }
+
 bool Food::operator > (const Food& rdr)
 {
 	return (sortKey > rdr.sortKey);
-}
-    
+}    
+
 Food Food::operator + (const Food& aFood)
 {
 	Food food;
@@ -200,10 +201,12 @@ ostream& operator << (ostream& foodPrint, const Food& aFood)
 
 	return foodPrint;
 }
+
 bool operator == (const Food& ldr, const Food& rdr)
 {
 	return (ldr.name == rdr.name);
 }
+
 bool operator != (const Food& ldr, const Food& rdr)
 {
 	return (ldr.name != rdr.name);
