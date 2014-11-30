@@ -368,7 +368,7 @@ bool FoodProgram::remove()
 
 bool FoodProgram::search(string key)
 {
-	Food* fd;
+	Food* fd = new Food();
 	if (fHT.contains(key, fd))
 	{
 		fd->print(*fd);
