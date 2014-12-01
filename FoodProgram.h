@@ -359,12 +359,15 @@ void FoodProgram::nutritionCalc()
 
 	for (int i = 0; i < targetnum; i++)
 	{
+		bool found;
 		cout << "Enter the name of a food item (enter QUIT to exit): ";
 		cin >> foodname;
 		targetFood->setName(foodname);
-		fHT.contains(foodname,targetFood);
+		found = fHT.contains(foodname,targetFood);
 
-		if(*targetFood != Food())
+		if(!found)
+			cout << "Entry not found." << endl;
+		else
 		{
 			cout << "Enter the amount of " << foodname << ": ";
 				cin >> number;
@@ -372,7 +375,7 @@ void FoodProgram::nutritionCalc()
 		}
 
 		foodsum = foodsum + *targetFood;
-		if(*targetFood == Food())
+		if(!found && i >= 0)
 		{
 			i--;
 		}
