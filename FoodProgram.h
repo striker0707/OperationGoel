@@ -54,7 +54,7 @@ public:
 	/** Removes user defined entry from fLL, fHT, and fBST */
 	bool remove();
 	/** Search for entry based on name and then prints entries attributes */
-	bool search(string key);
+	bool search();
 	/**  Calculates total meal nutrition facts */
 	void nutritionCalc();
 };
@@ -130,7 +130,6 @@ FoodProgram::~FoodProgram()
 void FoodProgram::menu()
 {
 	int choice = -1;
-	string item;
 
 	while (choice != 9)
 	{
@@ -166,10 +165,7 @@ void FoodProgram::menu()
 			}
 			case 3:
 			{
-				cout << endl << "What food would you like to look up?: ";
-				cin.ignore(); //ignore newline
-				getline(cin, item);
-				this->search(item);
+				this->search();
 				system("pause");
 				break;
 			}
@@ -220,64 +216,8 @@ void FoodProgram::menu()
 			}
 			case 8:
 			{
-				int number;
-				float targetcal;
-				int targetnum;
-				string foodname;
-				Food foodsum = Food();
-				Food* targetFood = new Food();
-
-				cout << "Enter a maximum calorie amount: ";
-					cin >> targetcal;
-				cout << "Enter the number of food items in your meal: ";
-					cin >> targetnum;
-
-				for (int i = 0; i < targetnum; i++)
-				{
-					cout << "Enter the name of a food item (enter QUIT to exit): ";
-						cin >> foodname;
-						targetFood->setName(foodname);
-						fHT.contains(foodname,targetFood);
-						//targetFood = fLL.getFood(foodname);
-
-					if(*targetFood != Food())
-					{
-						cout << "Enter the amount of " << foodname << ": " << endl;
-							cin >> number;
-							*targetFood = *targetFood * number;
-					}
-
-					foodsum = foodsum + *targetFood;
-					if(*targetFood == Food())
-					{
-						i--;
-					}
-					if(foodname == "QUIT")
-						break;
-				}
-				if(foodname == "QUIT")
-						break;
-				//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
-				cout << "The total nutrition facts for your meal is: " << endl;
-				cout << setw(17) << left << " ";
-				cout << setw(9) << left << "Calories";
-				cout << setw(11) << left << "Fat";
-				cout << setw(12) << left << "Cholesterol";
-				cout << setw(9) << left << "Sodium";
-				cout << setw(7) << left << "Protein" << endl;
-				cout << foodsum << endl << endl;
-				if (targetcal - foodsum.getCalories() >= 0)
-				{
-					cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
-					cout << "Possible items to add are: " << endl;
-					//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
-				}
-				else
-				{
-					cout << "You are " << (targetcal - foodsum.getCalories()) * -1 << " calories over your maximum!" << endl << endl;
-				}
-
-			break;
+				this->nutritionCalc();
+				break;
 			}
 			case 9: //user quit case
 			{
@@ -379,10 +319,16 @@ bool FoodProgram::remove()
 	return true;
 }
 
-bool FoodProgram::search(string key)
+bool FoodProgram::search()
 {
 	Food* fd = new Food();
-	if (fHT.contains(key, fd))
+	string item;
+	
+	cout << endl << "What food would you like to look up?: ";
+	cin.ignore(); //ignore newline
+	getline(cin, item);
+	
+	if (fHT.contains(item, fd))
 	{
 		fd->print(*fd);
 		return true;
@@ -392,4 +338,64 @@ bool FoodProgram::search(string key)
 		cout << "No food with that name found." << endl;
 	}
 	return false;
+}
+
+void FoodProgram::nutritionCalc()
+{
+	int number;
+	float targetcal;
+	int targetnum;
+	string foodname;
+	Food foodsum = Food();
+	Food* targetFood = new Food();
+
+	cout << "Enter a maximum calorie amount: ";
+		cin >> targetcal;
+	cout << "Enter the number of food items in your meal: ";
+		cin >> targetnum;
+
+	for (int i = 0; i < targetnum; i++)
+	{
+		cout << "Enter the name of a food item (enter QUIT to exit): ";
+			cin >> foodname;
+			targetFood->setName(foodname);
+			fHT.contains(foodname,targetFood);
+			//targetFood = fLL.getFood(foodname);
+
+		if(*targetFood != Food())
+		{
+			cout << "Enter the amount of " << foodname << ": ";
+				cin >> number;
+				*targetFood = *targetFood * number;
+		}
+
+		foodsum = foodsum + *targetFood;
+		if(*targetFood == Food())
+		{
+			i--;
+		}
+		if(foodname == "QUIT")
+			break;
+	}
+	if(foodname == "QUIT")
+			return;
+	//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
+	cout << "The total nutrition facts for your meal is: " << endl;
+	cout << setw(17) << left << " ";
+	cout << setw(9) << left << "Calories";
+	cout << setw(11) << left << "Fat";
+	cout << setw(12) << left << "Cholesterol";
+	cout << setw(9) << left << "Sodium";
+	cout << setw(7) << left << "Protein" << endl;
+	cout << foodsum << endl << endl;
+	if (targetcal - foodsum.getCalories() >= 0)
+	{
+		cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
+		cout << "Possible items to add are: " << endl;
+		//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
+	}
+	else
+	{
+		cout << "You are " << (targetcal - foodsum.getCalories()) * -1 << " calories over your maximum!" << endl << endl;
+	}
 }

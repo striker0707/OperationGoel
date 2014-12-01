@@ -15,13 +15,11 @@ class HashTable
 {
 private:
 	SortedList<ItemType> table[MAX];
-	float occupiedIndexes;
 	int count;
 public:
 	HashTable()
 	{
 		count = 0;
-		occupiedIndexes = 0;
 	}
 	bool isEmpty()
 	{
@@ -92,14 +90,17 @@ public:
 		float loadFactor = 0.0;
 		int noProbes = 0;
 		float averageProbes = -1;
+		float occupiedIndexes = 0.0;
 		vector<int> indexofLargestProbes; //holds the index values of the elements with largest number of probes
 		vector<int> probeCountofEachIndex; //holds the number of probes in each index
+		
 		if (count == 0)
 			return false;
 		cout << "------------------------------------------" << endl;
 		cout << "HashTable Statistics" << endl;
 		cout << "------------------------------------------" << endl;
 		cout << endl << "Collisions at: " << endl;
+		
 		/** Walking whole table and making stats*/
 		for (i = 0; i < MAX; i++)
 		{
