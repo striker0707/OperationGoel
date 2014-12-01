@@ -1,17 +1,17 @@
 Waffles, 200, 9, 20, 500, 4
 Banana, 110, 0, 0, 0, 1
-Chocolate Milk, 210, 8, 30, 200, 9
-Cheddar, 110, 9, 30, 180, 6
-Ham, 70, 2.2, 28.35, 786.24, 10.52
-Lettuce, 15, 0, 0, 35, 1
-Tomato, 35, 0, 0, 9, 2
-Sliced Bread, 70, 1, 0, 90, 2
-Milk, 110, 5, 35, 80, 6
-Spam, 174, 15, 39, 767, 7
-Rice, 205, .4, 0, 2, 4.3
-Potato, 110, 0, 0, 0, 3
-Beans, 34, 0, 0, 7, 2
-Noodles, 192, .35, 0, 33.44, 1.6
+Chocolate Milk, 209, 8.5, 30, 150, 7.9
+Cheddar, 140, 7, 0, 230, 3
+Honey Ham, 60, 2.2, 28.35, 580, 9
+Lettuce, 15, 0, 0, 10, 1
+Tomato, 22, 0.2, 0, 6.2, 1.1
+White Bread, 79, 1, 0, 147.3, 2.7
+Whole Milk, 148, 7.9, 24.4, 104.9, 7.7
+Spam, 280, 16, 70, 767, 7
+Steamed White Rice, 199, .4, 0, 6.6, 4.3
+Potato, 163, 0.2, 0, 12.8, 4.3
+Adzuki Beans, 295, 0.2, 0, 18.4, 17.3
+Buckwheat Noodles, 190, 0.5, 0, 420, 8
 Apple, 130, 0, 0 ,0, 1
 Egg, 70, 4.5 ,215, 65, 6
 Strawberry, 20, 0, 0, 0, 0
