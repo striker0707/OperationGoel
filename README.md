@@ -37,3 +37,15 @@ Week 4: Loc
 Week 5: Ethan
 
 Week 6: Elton
+
+
+hashingFunction(key:KeyType):int
+	
+	i = index position
+	for ( index position < length of key; i++)
+		‌index = prime number * index ^ key[i]
+
+	while( index > sizeOfTable - 1)
+		index = index mod sizeFfTable
+	
+	return index
