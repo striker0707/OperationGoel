@@ -5,8 +5,11 @@
 #include <vector>
 #include <string>
 #include "SortedList.h"
+
 using namespace std;
+
 const int MAX = 31;
+
 template<class KeyType, class ItemType>
 class HashTable
 {

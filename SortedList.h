@@ -16,8 +16,6 @@ public:
 	bool remove(const ItemType& anEntry);
 	// Returns true for found, false for not found anEntry
 	bool getEntry( ItemType & target, ItemType & returnedEntry) const;
-	//// TESTING
-	//Food getFood(string);
 }; 
 
 /** Inserts data in sorted position in Linked list in descending order*/
@@ -119,27 +117,5 @@ bool SortedList<ItemType>::getEntry( ItemType& target, ItemType& returnedEntry) 
 	}
 	return found;
 }
-
-//testing hardcoded function
-//template<class ItemType>
-//Food SortedList<ItemType>::getFood(string name)
-//{
-//	bool found = false;
-//
-//	Node<ItemType>* currentPtr = headPtr;
-//	while(currentPtr != 0 && found == false)
-//	// walk list
-//	{
-//		if( (*currentPtr->getItem()).getName() == name)
-//		//need to overload "==" operator
-//		{
-//			found = true;
-//			return *currentPtr->getItem();
-//		}
-//		currentPtr = currentPtr->getNext();
-//	}
-//	cout << "Food entry not found in database" << endl;
-//	return Food();
-//}
 
 #endif 
