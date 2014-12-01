@@ -192,7 +192,7 @@ Food Food::operator * (int number)
 
 ostream& operator << (ostream& foodPrint, const Food& aFood)
 {
-	foodPrint << setw(17) << left << aFood.getName();
+	foodPrint << setw(19) << left << aFood.getName();
 	foodPrint << setw(9) << left << aFood.getCalories();
 	foodPrint << setw(11) << left << aFood.getGramsFat();
 	foodPrint << setw(12) << left << aFood.getCholesterol();

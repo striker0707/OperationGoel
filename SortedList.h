@@ -18,7 +18,6 @@ public:
 	bool getEntry( ItemType & target, ItemType & returnedEntry) const;
 }; 
 
-/** Inserts data in sorted position in Linked list in descending order*/
 template<class ItemType>
 bool SortedList<ItemType>::insert(const ItemType& newEntry, int newPosition)
 {

@@ -27,10 +27,10 @@ void prnToFile(stringstream& foodPrint, Food& item)
 	foodPrint << item.getProtein();
 }
 
-template<class ItemType>
-void prnName(ItemType&)
+
+void prnName(string indent, Food& item)
 {
-	cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
+	cout << indent<< item.getName()<< endl;
 }
 
 class FoodProgram
@@ -78,7 +78,7 @@ FoodProgram::FoodProgram()
 	}      // End if
 	else    // When successful opening, program will print sucession
 	{
-		cout << "Files opened successfully, open output file to see results when program ends" << endl;
+		cout << "Files opened successfully, open output file to see results when program ends." << endl;
 	} // end if else
 
 
@@ -134,14 +134,14 @@ void FoodProgram::menu()
 	{
 		cout << endl << "///////////////////////////////////////////////" << endl;
 		cout << "     MENU" << endl;
-		cout << "1) Add new data" << endl;
-		cout << "2) Delete data" << endl;
+		cout << "1) Add new food data" << endl;
+		cout << "2) Delete new food data" << endl;
 		cout << "3) Look up nutritional information of food" << endl;
 		cout << "4) List data in hash table sequence" << endl;
-		cout << "5) List data in key sequence (sorted)" << endl;
+		cout << "5) List food data (sorted by name)" << endl;
 		cout << "6) Print indented tree" << endl;
-		cout << "7) Effeciency" << endl;
-		cout << "8) SECRET MENU OPTION" << endl;
+		cout << "7) Print Hash Table Statistics" << endl;
+		cout << "8) Food Calculator" << endl;
 		cout << "9) Quit" << endl;
 		cout << "///////////////////////////////////////////////" << endl;
 		cout << ": ";
@@ -171,10 +171,10 @@ void FoodProgram::menu()
 			 
 			case 4:
 			{
-				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << endl << "-------------------------------------------------------------------" << endl;
 				cout << "Food listed in Hash Sequence";
-				cout << endl << "-----------------------------------------------------------------" << endl;
-				cout << left << setw(17) << "Name";
+				cout << endl << "-------------------------------------------------------------------" << endl;
+				cout << left << setw(19) << "Name";
 				cout << left << setw(9) << "Calories";
 				cout << left << setw(11) << "Grams Fat";
 				cout << left << setw(12) << "Cholesterol";
@@ -187,10 +187,10 @@ void FoodProgram::menu()
 			}
 			case 5:
 			{
-				cout << endl << "-----------------------------------------------------------------" << endl;
+				cout << endl << "-------------------------------------------------------------------" << endl;
 				cout << "Food listed in Alphabetical Order";
-				cout << endl << "-----------------------------------------------------------------" << endl;
-				cout << left << setw(17) << "Name";
+				cout << endl << "-------------------------------------------------------------------" << endl;
+				cout << left << setw(19) << "Name";
 				cout << left << setw(9) << "Calories";
 				cout << left << setw(11) << "Grams Fat";
 				cout << left << setw(12) << "Cholesterol";
@@ -203,7 +203,7 @@ void FoodProgram::menu()
 			}
 			case 6:
 			{
-				fBST.indentedTree();
+				fBST.indentedTree(prnName);
 				system("pause");
 				break;
 			}
@@ -215,6 +215,9 @@ void FoodProgram::menu()
 			}
 			case 8:
 			{
+				cout << endl << "-------------------------------------------------------------------" << endl;
+				cout << "Food Calculator";
+				cout << endl << "-------------------------------------------------------------------" << endl;
 				this->nutritionCalc();
 				break;
 			}
@@ -377,9 +380,9 @@ void FoodProgram::nutritionCalc()
 	}
 	if(foodname == "QUIT")
 			return;
-	//is someone using the overloaded ostream operator for food for soemthing or cna i change it?
+
 	cout << "The total nutrition facts for your meal is: " << endl;
-	cout << setw(17) << left << " ";
+	cout << setw(19) << left << " ";
 	cout << setw(9) << left << "Calories";
 	cout << setw(11) << left << "Fat";
 	cout << setw(12) << left << "Cholesterol";

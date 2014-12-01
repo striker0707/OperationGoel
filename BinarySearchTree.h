@@ -5,6 +5,7 @@
 
 #include <string>
 #include "BinaryTree.h"
+#include "Food.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ private:
 	BinaryNode<ItemType>* findNode(BinaryNode<ItemType>* treePtr, const ItemType & target) const;
 
 	// internal print indentend tree
-	BinaryNode<ItemType>* _indentedTree(BinaryNode<ItemType>* nodePtr, string indent);
+	BinaryNode<ItemType>* _indentedTree(BinaryNode<ItemType>* nodePtr, string indent, void visit(string, Food&));
    
 public:  
 	// insert a node at the correct location
@@ -41,8 +42,8 @@ public:
 	// update data
 	bool update(bool updatedName, ItemType& target, ItemType& newData);
 	// prints indented tree
-	bool indentedTree(BinaryNode<ItemType>* nodePtr);
-	bool indentedTree();
+	bool indentedTree(BinaryNode<ItemType>* nodePtr, void visit(string, Food&));
+	bool indentedTree(void visit(string, Food&));
  
 };
 
@@ -59,6 +60,7 @@ bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry)
 	//	insert(newEntry, rootPtr->getRightPtr());
 	return true;
 }  
+
 template<class ItemType>
 bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry, BinaryNode<ItemType>* nodePtr)
 {
@@ -73,6 +75,7 @@ bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry, BinaryNode<It
 
 	return true;
 }  
+
 template<class ItemType>
 void BinarySearchTree<ItemType>::remove( ItemType target )
 {
@@ -194,6 +197,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 		return;
 	}
 }  
+
 template<class ItemType>
 bool BinarySearchTree<ItemType>::getEntry(const ItemType& anEntry, ItemType & returnedItem) const
 {
@@ -229,22 +233,22 @@ bool BinarySearchTree<ItemType>::update(bool updatedName, ItemType& target, Item
 } 
 
 template<class ItemType>
-bool BinarySearchTree<ItemType>::indentedTree()
+bool BinarySearchTree<ItemType>::indentedTree(void visit(string, Food&))
 {
 	BinaryNode<ItemType>* nodePtr;
 	cout<<endl;
-	nodePtr = _indentedTree(rootPtr,"");
+	nodePtr = _indentedTree(rootPtr,"", visit);
 	if(nodePtr == 0)
 		return false;
 	return true;
 }
 
 template<class ItemType>
-bool BinarySearchTree<ItemType>::indentedTree(BinaryNode<ItemType>* nodePtr)
+bool BinarySearchTree<ItemType>::indentedTree(BinaryNode<ItemType>* nodePtr, void visit(string, Food&))
 {
 	BinaryNode<ItemType>* nodePtr;
 	cout<<endl;
-	nodePtr = _indentedTree(nodePtr,"");
+	nodePtr = _indentedTree(nodePtr,"", visit);
 	if(nodePtr == 0)
 		return false;
 	return true;
@@ -371,15 +375,15 @@ BinaryNode<ItemType>* BinarySearchTree<ItemType>::findNode(BinaryNode<ItemType>*
 } 
 
 template<class ItemType>
-BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemType>* nodePtr, string indent)
+BinaryNode<ItemType>* BinarySearchTree<ItemType>::_indentedTree(BinaryNode<ItemType>* nodePtr, string indent, void visit(string, Food&))
 {
 	if(nodePtr == 0)
 		return nodePtr;
 	else
 	{
-		cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
-		_indentedTree(nodePtr->getRightPtr(), indent + "\t");
-		_indentedTree(nodePtr->getLeftPtr(), indent + "\t");
+		visit(indent, *nodePtr->getItem());
+		_indentedTree(nodePtr->getRightPtr(), indent + "\t", visit);
+		_indentedTree(nodePtr->getLeftPtr(), indent + "\t", visit);
 		return nodePtr;
 	}
 }
