@@ -205,11 +205,15 @@ bool HashTable<KeyType,ItemType>::print() const
 	else
 	{
 		for (int i = 0; i < MAX; i++)
-		{
+		{	
+			cout << "Index #:";
+			cout << i << endl;
+			cout << "-----------------" << endl;
 			if(!table[i].isEmpty())
 			{
 				table[i].display();
 			}
+			cout << endl;
 		}
 	}
 	return true;
