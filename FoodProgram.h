@@ -28,11 +28,20 @@ void prnToFile(stringstream& foodPrint, Food& item)
 	foodPrint << item.getProtein();
 }
 
+template<class ItemType>
+void prnName(ItemType&)
+{
+	cout << indent <<"|"<< *nodePtr->getItem() <<"|"<< endl;
+}
+
 class FoodProgram
 {
 private:
+	/** Sorted Linked List */
 	SortedList<Food*> fLL;
+	/** Hash table that uses name of food as key and linked lists for buckets */
 	HashTable<string, Food*> fHT;
+	/** Binary Search Tree that uses name to insert */
 	BinarySearchTree<Food*> fBST;
 public:
 	/** Parses food input file and inputs into fLL, fHT, and fBST */
@@ -46,6 +55,8 @@ public:
 	bool remove();
 	/** Search for entry based on name and then prints entries attributes */
 	bool search(string key);
+	/**  Calculates total meal nutrition facts */
+	void nutritionCalc();
 };
 
 #endif;
