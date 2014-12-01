@@ -2,6 +2,7 @@
 // By Elton Vinh
 #ifndef _HASH_TABLE
 #define _HASH_TABLE
+
 #include <vector>
 #include <string>
 #include "SortedList.h"

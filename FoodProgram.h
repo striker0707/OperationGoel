@@ -4,11 +4,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "SortedList.h"
-#include "Food.h"
+#include <sstream>
 #include "HashTable.h"
 #include "BinarySearchTree.h"
-#include <sstream>
+
 
 using namespace std;
 
@@ -357,10 +356,9 @@ void FoodProgram::nutritionCalc()
 	for (int i = 0; i < targetnum; i++)
 	{
 		cout << "Enter the name of a food item (enter QUIT to exit): ";
-			cin >> foodname;
-			targetFood->setName(foodname);
-			fHT.contains(foodname,targetFood);
-			//targetFood = fLL.getFood(foodname);
+		cin >> foodname;
+		targetFood->setName(foodname);
+		fHT.contains(foodname,targetFood);
 
 		if(*targetFood != Food())
 		{

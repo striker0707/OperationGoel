@@ -5,7 +5,6 @@
 
 #include <string>
 #include "BinaryTree.h"
-#include "Food.h"
 
 using namespace std;
 
