@@ -28,9 +28,10 @@ void prnToFile(stringstream& foodPrint, Food& item)
 }
 
 
-void prnName(string indent, Food& item)
+void prnName(int indent, Food& item)
 {
-	cout << indent<< item.getName()<< endl;
+	cout << setw(indent) << ' ';
+	cout<<item.getName()<< endl;
 }
 
 class FoodProgram
