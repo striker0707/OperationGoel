@@ -6,10 +6,11 @@
 #include <vector>
 #include <string>
 #include "SortedList.h"
+#include "Food.h"
 
 using namespace std;
 
-const int MAX = 31;
+const int MAX = 33;
 
 template<class KeyType, class ItemType>
 class HashTable

@@ -27,7 +27,6 @@ void prnToFile(stringstream& foodPrint, Food& item)
 	foodPrint << item.getProtein();
 }
 
-
 void prnName(int indent, Food& item)
 {
 	cout << setw(indent) << ' ';
@@ -76,11 +75,11 @@ FoodProgram::FoodProgram()
 		cout << "Unable to open input file" << endl;                      // If false, prints an error message
 		cout << "Ending Program" << endl;
 		return;   // Ends Program if the if statement is true
-	}      // End if
-	else    // When successful opening, program will print sucession
+	}
+	else 
 	{
 		cout << "Files opened successfully, open output file to see results when program ends." << endl;
-	} // end if else
+	}
 
 
 	//Setting a dummy head pointer for BST
@@ -119,9 +118,12 @@ FoodProgram::FoodProgram()
 
 FoodProgram::~FoodProgram()
 {
+	ofstream outFile;
+	outFile.open("Archive.txt");
 	cout << endl << "Saving changes..." << endl;
 	system("pause");
-	fLL.printToFile("Archive.txt", prnToFile);
+	fBST.printToFile(outFile, prnToFile);
+	outFile.close();
 	fBST.clear();
 	fHT.clear();
 	fLL.clear();
@@ -353,9 +355,20 @@ void FoodProgram::nutritionCalc()
 	Food* targetFood = new Food();
 
 	cout << "Enter a maximum calorie amount: ";
-		cin >> targetcal;
+	while(!(cin >> targetcal))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
+
 	cout << "Enter the number of food items in your meal: ";
-		cin >> targetnum;
+	while(!(cin >> targetnum))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input. Try again: ";
+	}
 
 	for (int i = 0; i < targetnum; i++)
 	{
@@ -370,8 +383,13 @@ void FoodProgram::nutritionCalc()
 		else
 		{
 			cout << "Enter the amount of " << foodname << ": ";
-				cin >> number;
-				*targetFood = *targetFood * number;
+			while(!(cin >> number))
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Invalid input. Try again: ";
+			}
+			*targetFood = *targetFood * number;
 		}
 
 		foodsum = foodsum + *targetFood;
@@ -396,7 +414,7 @@ void FoodProgram::nutritionCalc()
 	if (targetcal - foodsum.getCalories() >= 0)
 	{
 		cout << "You are " << targetcal - foodsum.getCalories() << " calories short of your maximum." << endl << endl;
-		cout << "Possible items to add are: " << endl;
+		/*cout << "Possible items to add are: " << endl;*/
 		//IMPLEMENT:print out all items that have < targetcal - foodsum.getCalories() calories from bst sorted by calories
 	}
 	else

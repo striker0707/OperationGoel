@@ -5,6 +5,7 @@
 
 #include <queue>
 #include "BinaryNode.h"
+#include "Food.h"
 
 using namespace std;
 
@@ -28,9 +29,9 @@ public:
 	void clear();
 	void preOrder(void visit(ItemType &)) const;
 	void inOrder(void visit(ItemType &)) const;
-	void inOrder(void visit(ItemType &), BinaryNode<ItemType>* startNode) const;
 	void postOrder(void visit(ItemType &)) const;
-	void breadthfirst(void visit(ItemType &)) const;
+	void breadthfirst(void visit(ItemType&)) const;
+	void printToFile(ofstream& outFile, void visit(stringstream&, Food&)) const;
 
 	// abstract functions to be implemented by derived class
 	virtual bool insert(const ItemType & newEntry, BinaryNode<ItemType>* nodePtr) = 0; 
@@ -48,7 +49,7 @@ private:
 	void _preorder(void visit(ItemType &), BinaryNode<ItemType>* nodePtr) const;
 	void _inorder(void visit(ItemType &), BinaryNode<ItemType>* nodePtr) const;
 	void _postorder(void visit(ItemType &), BinaryNode<ItemType>* nodePtr) const;
-   
+	void _printToFile(ofstream& outFile, void visit(stringstream&, Food&),BinaryNode<ItemType>* nodePtr) const;
 }; 
 
 template<class ItemType>
@@ -104,18 +105,10 @@ void BinaryTree<ItemType>::inOrder(void visit(ItemType &)) const
 }
 
 template<class ItemType>
-void BinaryTree<ItemType>::inOrder(void visit(ItemType &), BinaryNode<ItemType>* startNode) const
-{
-	_inorder(visit, startNode);
-}
-
-template<class ItemType>
 void BinaryTree<ItemType>::postOrder(void visit(ItemType &)) const	
 {
 	_postorder(visit, rootPtr);
 }
-
-
 
 template<class ItemType>
 BinaryTree<ItemType> & BinaryTree<ItemType>::operator=(const BinaryTree<ItemType> & sourceTree)
@@ -173,7 +166,10 @@ void BinaryTree<ItemType>::_inorder(void visit(ItemType &), BinaryNode<ItemType>
 	{
 		_inorder(visit, nodePtr->getLeftPtr());
 		ItemType item = nodePtr->getItem();
-		visit(item);
+		if(*item != *rootPtr->getItem())
+		{
+			visit(item);
+		}
 		_inorder(visit, nodePtr->getRightPtr());
 	}
 }  
@@ -192,18 +188,23 @@ void BinaryTree<ItemType>::_postorder(void visit(ItemType &), BinaryNode<ItemTyp
 }  
  
 template<class ItemType>
-void BinaryTree<ItemType>::breadthfirst(void visit(ItemType &)) const
+void BinaryTree<ItemType>::breadthfirst(void visit(ItemType&)) const
 {
+
 	queue<BinaryNode<ItemType>*> q;
-	ItemType item;
 
 	if(rootPtr != 0)
 		q.push(rootPtr);
 	
 	while (!q.empty())
 	{
-		item = q.front()->getItem();
-		visit(item);
+		ItemType item = q.front()->getItem();
+		
+		if(*item != *rootPtr->getItem())
+		{
+			visit(item);
+		}
+
 		if(q.front()->getLeftPtr() != 0)
 			q.push(q.front()->getLeftPtr());
 		if(q.front()->getRightPtr() != 0)
@@ -211,6 +212,33 @@ void BinaryTree<ItemType>::breadthfirst(void visit(ItemType &)) const
 		q.pop();
 	}
 }
+
+template<class ItemType>
+void BinaryTree<ItemType>::printToFile(ofstream& outFile, void visit(stringstream&, Food&)) const
+{
+	_printToFile(outFile, visit, rootPtr);
+} 
+
+template<class ItemType>
+void BinaryTree<ItemType>::_printToFile(ofstream& outFile, void visit(stringstream&, Food&),BinaryNode<ItemType>* nodePtr) const
+{
+	string buffer;
+
+	if (nodePtr != 0)
+	{
+		ItemType item = nodePtr->getItem();
+		if(*item != *rootPtr->getItem())
+		{
+			stringstream ss;
+			visit(ss, *item);
+			getline(ss,buffer);
+			outFile << buffer << endl;
+		}
+		_printToFile(outFile, visit, nodePtr->getLeftPtr());
+		_printToFile(outFile, visit, nodePtr->getRightPtr());
+	}
+
+} 
 
 #endif
 
