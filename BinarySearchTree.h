@@ -118,7 +118,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 			parent->setRightPtr(0);
 		}
 		delete current;
-		cout << "Entry deleted (by Name). (Leaf)" << endl;
+		cout << "Entry deleted." << endl;
 		return;
 	}
 	//case: has left child but no right child
@@ -134,7 +134,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 			parent->setRightPtr(current->getLeftPtr());
 			delete current;
 		}
-		cout << "Entry deleted (by Name). (Left Child)" << endl;
+		cout << "Entry deleted." << endl;
 		return;
 	}
 	//case: has right child but no left child
@@ -150,7 +150,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 			parent->setRightPtr(current->getRightPtr());
 			delete current;
 		}
-		cout << "Entry deleted (by Name). (Right Child)" << endl;
+		cout << "Entry deleted." << endl;
 		return;
 	}
 	//case: has 2 children
@@ -193,7 +193,7 @@ void BinarySearchTree<ItemType>::remove( ItemType target )
 				delete temp;
 			}
 		}
-		cout << "Entry deleted (by Name). (2 Children)" << endl;
+		cout << "Entry deleted." << endl;
 		return;
 	}
 }  
