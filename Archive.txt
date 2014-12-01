@@ -13,7 +13,7 @@ Potato, 163, 0.2, 0, 12.8, 4.3
 Adzuki Beans, 295, 0.2, 0, 18.4, 17.3
 Buckwheat Noodles, 190, 0.5, 0, 420, 8
 Apple, 130, 0, 0 ,0, 1
-Egg, 70, 4.5 ,215, 65, 6
+Scrambled Eggs, 91, 6.7 , 169, 88.4, 6.1
 Strawberry, 20, 0, 0, 0, 0
 Beef Pho, 2936, 48, 280, 3072, 192
 Bell Peppers, 24, 0.2, 0, 3.6, 1
