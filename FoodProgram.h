@@ -11,12 +11,15 @@
 
 using namespace std;
 
+/** Prints contents of food objects. To be passed to a traversal function */
 template<class ItemType>
 void bstPrint(ItemType& item)
 {
 	cout << *item << endl;
 }
 
+/** Prints food objects to file, each food object gets its own line, attributes seperated by commas. To be passed
+to a traversal function */
 void prnToFile(stringstream& foodPrint, Food& item)
 {
 	foodPrint << item.getName() << ", ";
@@ -27,6 +30,7 @@ void prnToFile(stringstream& foodPrint, Food& item)
 	foodPrint << item.getProtein();
 }
 
+/** Prints name of food object only. Used for indented tree printing */
 void prnName(int indent, Food& item)
 {
 	cout << setw(indent) << ' ';
