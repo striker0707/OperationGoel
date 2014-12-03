@@ -1,6 +1,9 @@
 /** Nutrition database
-    Created by Group 3: Elton Vinh, Gordon , Joanne Trinh, Ethan Huang, Loc, */
-
+  * Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Rama 
+  * Manish Goel
+  * CIS 22C
+  */
+  
 #include "FoodProgram.h"
 
 int main()
