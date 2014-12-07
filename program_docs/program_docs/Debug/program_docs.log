@@ -1,0 +1,20 @@
+﻿Build started 12/6/2014 10:11:55 PM.
+     1>Project "C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\program_docs\program_docs.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\FoodProgram.cpp ..\..\main.cpp
+         FoodProgram.cpp
+         Generating Code...
+     1>c:\users\elton\documents\github\operationgoel\binarysearchtree.h(277): warning C4715: 'BinarySearchTree<Food *>::_insert' : not all control paths return a value
+         Compiling...
+         main.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\Debug\program_docs.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\Debug\program_docs.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\Debug\program_docs.lib" /MACHINE:X86 Debug\Food.obj
+         Debug\FoodProgram.obj
+         Debug\main.obj
+         program_docs.vcxproj -> C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\Debug\program_docs.exe
+     1>Done Building Project "C:\Users\Elton\Documents\GitHub\OperationGoel\program_docs\program_docs\program_docs.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.43
