@@ -1,25 +1,25 @@
-Honey Ham, 60, 2.2, 28.35, 580, 9
+Waffles, 200, 9, 20, 500, 4
 Banana, 110, 0, 0, 0, 1
-Adzuki Beans, 295, 0.2, 0, 18.4, 17.3
-Apple, 60, 2, 0, 5, 0
 Chocolate Milk, 209, 8.5, 30, 150, 7.9
 Cheddar, 140, 7, 0, 230, 3
+Honey Ham, 60, 2.2, 28.35, 580, 9
+Lettuce, 15, 0, 0, 10, 1
+Tomato, 22, 0.2, 0, 6.2, 1.1
+White Bread, 79, 1, 0, 147.3, 2.7
+Whole Milk, 148, 7.9, 24.4, 104.9, 7.7
+Spam, 280, 16, 70, 767, 7
+Steamed White Rice, 199, .4, 0, 6.6, 4.3
+Potato, 163, 0.2, 0, 12.8, 4.3
+Adzuki Beans, 295, 0.2, 0, 18.4, 17.3
 Buckwheat Noodles, 190, 0.5, 0, 420, 8
+Apple, 130, 0, 0 ,0, 1
+Scrambled Eggs, 91, 6.7 , 169, 88.4, 6.1
+Strawberry, 20, 0, 0, 0, 0
 Beef Pho, 2936, 48, 280, 3072, 192
 Bell Peppers, 24, 0.2, 0, 3.6, 1
-Brownies, 151, 4.82, 88.45, 18.12, 1.36
-Chicken Pot Pie, 484, 29.1, 875.15, 42.71, 13.04
 Honey, 1031, 0, 0, 13.6, 1
 Fried Chicken, 230, 17, 45, 370, 14
 Coleslaw, 213, 8.5, 7.09, 326.06, 1.42
+Chicken Pot Pie, 484, 29.1, 875.15, 42.71, 13.04
+Brownies, 151, 4.82, 88.45, 18.12, 1.36
 Curry, 230, 11, 0, 1360, 7
-Spam, 280, 16, 70, 767, 7
-Lettuce, 15, 0, 0, 10, 1
-Potato, 163, 0.2, 0, 12.8, 4.3
-Scrambled Eggs, 91, 6.7, 169, 88.4, 6.1
-Waffles, 200, 9, 20, 500, 4
-Tomato, 22, 0.2, 0, 6.2, 1.1
-Steamed White Rice, 199, 0.4, 0, 6.6, 4.3
-Strawberry, 20, 0, 0, 0, 0
-White Bread, 79, 1, 0, 147.3, 2.7
-Whole Milk, 148, 7.9, 24.4, 104.9, 7.7
