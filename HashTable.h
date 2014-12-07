@@ -1,5 +1,8 @@
-// HashedTable adt
-// By Elton Vinh
+/*  Hashed Table
+  *	Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+  * Manish Goel
+  * CIS 22C
+  */
 #ifndef _HASH_TABLE
 #define _HASH_TABLE
 
@@ -21,11 +24,23 @@ private:
 public:
 	HashTable();
 	bool isEmpty();
+	/** Insert 
+	@param key to be used to generate a index location
+	*/
 	bool insert(const ItemType& newEntry, const KeyType& key);
+	/** Remove 
+	@param key used to locate index to remove
+	*/
 	bool remove(const KeyType& key);
 	void clear();
+	/** Gives you the item of your target
+	@param item is provided by user and is the found item object
+	*/
 	bool contains(const KeyType& sKey,  ItemType& item);
 	bool getItem(const KeyType& sKey, ItemType& foundItem);
+	/** Displays efficient stats of Hash Table such as load factor,
+	and collision info.
+	*/
 	bool displayStats();
 	int hashingFunction(const KeyType key);
 	bool print() const;

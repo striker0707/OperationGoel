@@ -1,5 +1,8 @@
-// Binary tree abstract base class
- 
+/*  Binary Tree ADT
+  *	Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+  * Manish Goel
+  * CIS 22C
+  */
 #ifndef _BINARY_TREE
 #define _BINARY_TREE
 

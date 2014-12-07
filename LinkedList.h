@@ -1,5 +1,8 @@
-// Linked List abstract base class
-
+/** Linked List abstract base class
+  *	Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+  * Manish Goel
+  * CIS 22C
+  */
 #ifndef _LINKED_LIST
 #define _LINKED_LIST
 

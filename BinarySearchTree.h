@@ -1,5 +1,8 @@
- // Binary Search Tree ADT
-
+/* Binary Search Tree ADT
+  *	Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+  * Manish Goel
+  * CIS 22C
+  */
 #ifndef _BINARY_SEARCH_TREE
 #define _BINARY_SEARCH_TREE
 
@@ -79,16 +82,12 @@ bool BinarySearchTree<ItemType>::insert(const ItemType & newEntry, BinaryNode<It
 template<class ItemType>
 void BinarySearchTree<ItemType>::remove( ItemType target )
 {
-	//bool isSuccessful = false;
-	//rootPtr = _remove(rootPtr, target, isSuccessful);
-	//count--;
-	//return isSuccessful; 
-	/* Pre: a name
-	Post: node with the given name is removed from the tree and pointers are rebound
-	Return: none */
 	BinaryNode<ItemType>* current;
+
 	current = rootPtr;
+	
 	BinaryNode<ItemType>* parent = 0;
+
 	while (*current->getItem() != *target) //traverse tree and search for name
 	{
 		parent = current;
@@ -235,11 +234,17 @@ bool BinarySearchTree<ItemType>::update(bool updatedName, ItemType& target, Item
 template<class ItemType>
 bool BinarySearchTree<ItemType>::indentedTree(void visit(int, Food&))
 {
+	cout << "=============================================================";
+	cout << endl << "*                    Indented Tree                          *" << endl;
+	cout << "* First line is Head, first sub tree is left subtree        *" << endl;
+	cout << "* and second is right subtree.                              *" << endl;
+	cout << "=============================================================";
 	BinaryNode<ItemType>* nodePtr;
 	cout<<endl;
 	nodePtr = _indentedTree(rootPtr,0, visit);
 	if(nodePtr == 0)
 		return false;
+	cout << endl;
 	return true;
 }
 

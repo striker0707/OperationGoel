@@ -1,3 +1,9 @@
+/* Node for Linked List
+ * Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+ * Manish Goel
+ * CIS 22C
+ */
+
 #ifndef _NODE
 #define _NODE
 

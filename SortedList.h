@@ -1,5 +1,8 @@
-// Sorted Linked list ADT
-// By Elton Vinh
+/** Sorted Linked list ADT
+  *	Created by Group 3: Elton Vinh, Gordon Wang, Joanne Trinh, Ethan Huang, Loc Giang, Shyanaka Ramachandra
+  * Manish Goel
+  * CIS 22C
+  */
 
 #ifndef _SORTED_LIST
 #define _SORTED_LIST
